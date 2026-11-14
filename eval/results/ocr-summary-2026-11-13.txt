@@ -1,0 +1,7 @@
+OCR 汇总（testset/ocr.json，RapidOCR PP-OCRv6 medium）
+
+图片数: 73
+字符数（只算字母、数字、汉字）: 2749
+错字率: 1.24%
+错字率大于 0 的图片: 7 张（zh-t18, zh-t23, zh-t29, zh-t44, zh-t45, zh-t48, en-t44）
+每张图 OCR 耗时中位数: 4.4 秒

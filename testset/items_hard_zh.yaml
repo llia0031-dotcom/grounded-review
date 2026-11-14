@@ -1,0 +1,87 @@
+# Harder Chinese ads (split: hard). Written 2026-11-14 after the test run, before any model saw them.
+# Longer captions with the violation in the middle, three-frame short-video screenshots (subtitles in the frames),
+# implied claims, and traps whose risky words are allowed. Brands are fictional. Answers fixed at writing.
+- id: zh-h01
+  split: hard
+  kind: text
+  copy: 「青禾」空气炸锅双十一返场：5.5L 大容量，可视窗口随时看火候，一键 8 种菜单，新手也不翻车。很多宝子问和上一代比有什么不同——这一代加了双热管，受热更均匀，是全网口碑最好的空气炸锅，没有之一。到手价 ¥299，再送硅胶垫和食谱。
+  labels:
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 是全网口碑最好的空气炸锅，没有之一}
+- id: zh-h02
+  split: hard
+  kind: text
+  copy: 「澄心」益生菌固体饮料，原味和蓝莓两种口味。上周有位妈妈留言：孩子喝了两个月，过敏性鼻炎再也没犯过。我们不敢说多神奇，但 97% 的老顾客都会回购。冲泡方便，40℃ 以下温水即可，早晚各一条。30 条装 ¥168。
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-17], span: 孩子喝了两个月，过敏性鼻炎再也没犯过}
+    - {cat: DATA, clauses: [CN-AL-11-2], span: 97% 的老顾客都会回购}
+- id: zh-h03
+  split: hard
+  kind: text
+  copy: 「木朴」实木书桌新品上架。我们的客服团队最用心，下单后 2 小时内回电确认尺寸。桌面用北美白橡木，边角做了圆角处理，适合有孩子的家庭。本店 2026 年 10 月天猫木作书桌类目销量第一（数据来源：天猫生意参谋，2026 年 10 月）。1.2 米款 ¥1580，1.4 米款 ¥1880。
+  labels: []
+  trap: “最用心”说的是客服态度，不指向商品；“销量第一”限定了平台、类目和月份，并写明了数据来源。
+  basis: [CN-SAMR-5, CN-SAMR-6]
+- id: zh-h04
+  split: hard
+  kind: text
+  copy: 「知更」考研英语暑期班 7 月 15 日开课。课程包含词汇、长难句、阅读和写作四个模块，每周 3 次直播，回放可看到 12 月。往届学员反馈很好，报名即送真题解析电子版。本班承诺：考研英语一不过 70 分全额退款。名额有限，报满即止。
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-24], span: 考研英语一不过 70 分全额退款}
+- id: zh-h05
+  split: hard
+  kind: text
+  copy: 「山屿」冲锋衣秋冬款。面料用三层压胶，防水指数 20000mm（第三方检测报告编号 SY-2026-0918，详情页可查）。说句实话，某些大牌冲锋衣卖两三千，其实就是贴牌货，标签一撕跟地摊货没区别。我们不玩品牌溢价，¥699 包邮。
+  labels:
+    - {cat: DISPARAGE, clauses: [CN-AL-13], span: 某些大牌冲锋衣卖两三千，其实就是贴牌货，标签一撕跟地摊货没区别}
+- id: zh-h06
+  split: hard
+  kind: image
+  copy: 云栖草本泡脚包 #居家好物
+  image: {layout: frames, palette: purple, frames: [{shape: box}, {shape: tea}, {plain: true}], lines: [下班回家泡个脚, 坚持泡了一个月, 我的痛风再也没疼过]}
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-17], span: 我的痛风再也没疼过}
+- id: zh-h07
+  split: hard
+  kind: image
+  copy: 醉山河光瓶酒，周末小聚。
+  image: {layout: frames, palette: red, frames: [{shape: liquor}, {scene: toast-baijiu}, {shape: liquor}], lines: [醉山河 42% vol, 老朋友聚一聚, 理性饮酒]}
+  labels:
+    - {cat: ALCOHOL, clauses: [CN-AL-23], visual: 第二帧画面中有人举杯饮酒}
+- id: zh-h08
+  split: hard
+  kind: image
+  copy: 木朴铸铁锅，一口锅搞定家常菜。
+  image: {layout: frames, palette: beige, frames: [{plain: true}, {plain: true}, {plain: true}], lines: [最佳火候：油温六成热, 第一步：热锅凉油, 治愈系下饭菜做好了]}
+  labels: []
+  trap: “最佳火候”是烹饪提示，不是说商品最好；“第一步”是步骤序号；“治愈系”是风格用词，不涉及疾病。
+  basis: [CN-SAMR-5, CN-AL-17]
+- id: zh-h09
+  split: hard
+  kind: image
+  copy: 澄心扫地机器人 S7，懒人必备。
+  image: {layout: frames, palette: blue, frames: [{shape: vacuum}, {shape: vacuum}, {plain: true}], lines: [一键规划清扫路线, 实测吸尘率 99.9%, 史上最安静的扫地机]}
+  labels:
+    - {cat: DATA, clauses: [CN-AL-11-2], span: 实测吸尘率 99.9%}
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 史上最安静的扫地机}
+- id: zh-h10
+  split: hard
+  kind: image
+  copy: 木朴压榨花生油，5L 家庭装。
+  image: {layout: poster, shape: oil, palette: gold, brand: 木朴, lines: [压榨一级花生油, 执行标准 GB/T 1534, 5L ¥89]}
+  labels: []
+  trap: “一级”是国家标准规定的质量等级，不是绝对化用语。
+  basis: [CN-SAMR-6]
+- id: zh-h11
+  split: hard
+  kind: image
+  copy: 山屿财富稳享 1 号，热销中。
+  image: {layout: banner, shape: card, palette: blue, brand: 山屿, lines: [山屿稳享 1 号, 成立至今从未亏损过一分钱, 山屿财富], small: [理财有风险，投资需谨慎]}
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-25], span: 成立至今从未亏损过一分钱}
+- id: zh-h12
+  split: hard
+  kind: text
+  copy: 醉山河清香型白酒，选用本地高粱，地缸发酵，酒体清亮，入口绵柔。52% vol，500ml，¥128。适量饮酒，未成年人请勿饮酒。
+  labels: []
+  trap: 酒类广告，但没有饮酒动作、没有诱导饮酒、没有健康功效，写明了酒精度和未成年人禁饮提示。
+  basis: [CN-AL-23]

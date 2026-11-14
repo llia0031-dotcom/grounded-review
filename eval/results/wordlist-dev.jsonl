@@ -1,0 +1,24 @@
+{"arm": "wordlist", "item": "zh-d01", "run": 1, "error": null, "output": {"decision": "reject", "violations": [{"category": "ABSOLUTE", "ad_quote": "第一", "rule": "adlaw-absolute"}]}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 0.001}
+{"arm": "wordlist", "item": "zh-d02", "run": 1, "error": null, "output": {"decision": "reject", "violations": [{"category": "GUARANTEE", "ad_quote": "根治", "rule": "adlaw-false-promise"}]}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 0.0}
+{"arm": "wordlist", "item": "zh-d03", "run": 1, "error": null, "output": {"decision": "reject", "violations": [{"category": "OTHER", "ad_quote": "少儿", "rule": "minors-protection"}]}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 0.0}
+{"arm": "wordlist", "item": "zh-d04", "run": 1, "error": null, "output": {"decision": "reject", "violations": [{"category": "ABSOLUTE", "ad_quote": "最好", "rule": "adlaw-absolute"}]}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 0.0}
+{"arm": "wordlist", "item": "zh-d05", "run": 1, "error": null, "output": {"decision": "approve", "violations": []}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 0.0}
+{"arm": "wordlist", "item": "zh-d06", "run": 1, "error": null, "output": {"decision": "approve", "violations": []}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 0.0}
+{"arm": "wordlist", "item": "zh-d07", "run": 1, "error": null, "output": {"decision": "approve", "violations": []}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 11.393}
+{"arm": "wordlist", "item": "zh-d08", "run": 1, "error": null, "output": {"decision": "approve", "violations": []}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 12.012}
+{"arm": "wordlist", "item": "zh-d09", "run": 1, "error": null, "output": {"decision": "approve", "violations": []}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 8.93}
+{"arm": "wordlist", "item": "zh-d10", "run": 1, "error": null, "output": {"decision": "approve", "violations": []}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 11.091}
+{"arm": "wordlist", "item": "zh-d11", "run": 1, "error": null, "output": {"decision": "reject", "violations": [{"category": "ABSOLUTE", "ad_quote": "第一", "rule": "adlaw-absolute"}, {"category": "OTHER", "ad_quote": "销量第一", "rule": "adlaw-description-false"}]}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 13.894}
+{"arm": "wordlist", "item": "zh-d12", "run": 1, "error": null, "output": {"decision": "approve", "violations": []}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 11.737}
+{"arm": "wordlist", "item": "en-d01", "run": 1, "error": null, "output": {"decision": "approve", "violations": []}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 0.003}
+{"arm": "wordlist", "item": "en-d02", "run": 1, "error": null, "output": {"decision": "reject", "violations": [{"category": "MEDICAL", "ad_quote": "cure", "rule": "medical_cure_claim"}]}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 0.0}
+{"arm": "wordlist", "item": "en-d03", "run": 1, "error": null, "output": {"decision": "reject", "violations": [{"category": "WEIGHT", "ad_quote": "Burn fat", "rule": "weight_loss_claim"}]}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 0.0}
+{"arm": "wordlist", "item": "en-d04", "run": 1, "error": null, "output": {"decision": "approve", "violations": []}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 0.0}
+{"arm": "wordlist", "item": "en-d05", "run": 1, "error": null, "output": {"decision": "approve", "violations": []}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 0.0}
+{"arm": "wordlist", "item": "en-d06", "run": 1, "error": null, "output": {"decision": "approve", "violations": []}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 0.0}
+{"arm": "wordlist", "item": "en-d07", "run": 1, "error": null, "output": {"decision": "approve", "violations": []}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 8.865}
+{"arm": "wordlist", "item": "en-d08", "run": 1, "error": null, "output": {"decision": "approve", "violations": []}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 8.976}
+{"arm": "wordlist", "item": "en-d09", "run": 1, "error": null, "output": {"decision": "approve", "violations": []}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 7.266}
+{"arm": "wordlist", "item": "en-d10", "run": 1, "error": null, "output": {"decision": "approve", "violations": []}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 6.367}
+{"arm": "wordlist", "item": "en-d11", "run": 1, "error": null, "output": {"decision": "approve", "violations": []}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 6.972}
+{"arm": "wordlist", "item": "en-d12", "run": 1, "error": null, "output": {"decision": "reject", "violations": [{"category": "GUARANTEE", "ad_quote": "Guaranteed", "rule": "guaranteed_outcome"}, {"category": "GUARANTEE", "ad_quote": "Guaranteed", "rule": "tiktok_misleading_content"}]}, "usage": {"cost_usd": 0.0, "calls": 0}, "latency_s": 9.371}

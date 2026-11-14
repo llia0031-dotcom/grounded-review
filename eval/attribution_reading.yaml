@@ -1,0 +1,61 @@
+# Reading of every extra category on a non-trap ad (test run 2026-11-13).
+# defensible = a reviewer could raise it under a clause in the library (often the same words read
+#              under a second, overlapping category, e.g. TikTok's "Misleading claims" covers both
+#              absolute terms and promised results);
+# wrong      = no clause in the library supports it for this ad, or the category does not fit.
+# key: arm|item|run|category
+
+# English: promised or exaggerated results read as GUARANTEE next to the labelled category.
+# TT-MIS-CLAIMS says ads "[TikTok policy text, see the linked clause]".
+oneshot|en-t02|1|GUARANTEE: defensible
+oneshot|en-t02|2|GUARANTEE: defensible
+agent|en-t05|1|GUARANTEE: defensible
+agent|en-t05|2|GUARANTEE: defensible
+oneshot|en-t05|1|GUARANTEE: defensible
+oneshot|en-t05|2|GUARANTEE: defensible
+oneshot|en-t06|1|GUARANTEE: defensible
+oneshot|en-t06|2|GUARANTEE: defensible
+oneshot|en-t21|1|GUARANTEE: defensible
+oneshot|en-t21|2|GUARANTEE: defensible
+agent|en-t22|1|GUARANTEE: defensible
+oneshot|en-t22|1|GUARANTEE: defensible
+oneshot|en-t27|1|GUARANTEE: defensible
+oneshot|en-t27|2|GUARANTEE: defensible
+oneshot|en-t28|1|GUARANTEE: defensible
+oneshot|en-t28|2|GUARANTEE: defensible
+agent|en-t30|1|GUARANTEE: defensible   # the clause's own example is a before-and-after cream comparison
+oneshot|en-t30|2|GUARANTEE: defensible
+agent|en-t43|1|GUARANTEE: defensible   # "Results in weeks"
+agent|en-t43|2|GUARANTEE: defensible
+oneshot|en-t43|1|GUARANTEE: defensible
+oneshot|en-t43|2|GUARANTEE: defensible
+agent|en-t44|1|GUARANTEE: defensible
+oneshot|en-t44|1|GUARANTEE: defensible
+oneshot|en-t44|2|GUARANTEE: defensible
+# en-t31 shows a wide body on day 1 and a slim body on day 30: an implied unrealistic weight loss.
+agent|en-t31|1|WEIGHT: defensible
+agent|en-t31|2|WEIGHT: defensible
+oneshot|en-t31|1|WEIGHT: defensible
+oneshot|en-t31|2|WEIGHT: defensible
+# "for good" = permanently; the clause bans absolute terms "in relation to time".
+agent|en-t21|1|ABSOLUTE: defensible
+
+# Wrong category or no supporting clause.
+agent|en-t03|2|DATA: wrong            # "Zero risk" is a risk claim, not data without a source
+agent|en-t06|1|BEFORE_AFTER: wrong    # body shaming, no comparison in the ad
+agent|en-t22|1|ABSOLUTE: wrong        # "in 30 days" is a time-bound promise, not an absolute term
+oneshot|en-t26|1|ABSOLUTE: wrong      # "gone in 3 days" is a promised result (labelled GUARANTEE), not an absolute term
+oneshot|en-t26|2|ABSOLUTE: wrong
+oneshot|en-t44|2|DATA: wrong          # the TikTok library has no rule that a source must be named
+
+# Chinese.
+oneshot|zh-t17|2|GUARANTEE: wrong     # "24 小时不凉" read as false advertising (Art. 28) with no evidence that it is false
+oneshot|zh-t22|2|GUARANTEE: wrong     # cites Art. 18 (health food) for foot patches
+oneshot|zh-t23|1|GUARANTEE: wrong     # "三天见效" under Art. 28 without evidence; the medical claim itself was found
+oneshot|zh-t23|2|GUARANTEE: wrong
+agent|zh-t24|1|GUARANTEE: defensible  # health food: "增强免疫力" is an efficacy assertion, Art. 18(1)
+agent|zh-t24|2|GUARANTEE: defensible
+oneshot|zh-t24|1|GUARANTEE: defensible
+agent|zh-t41|1|DATA: defensible       # a sales ranking with no source or period (Art. 11; guide item 6(6))
+oneshot|zh-t41|1|DATA: defensible
+oneshot|zh-t41|2|DATA: defensible

@@ -1,0 +1,145 @@
+# Multi-turn set 3 (v1.2 check), written 2026-11-13 after the v1.1 run and before any model saw these items.
+# Text ads only. Same fields as items_mt2.yaml. Brands are fictional.
+# Five ads break two rules, so the advice turn has more to explain. Two need a fact or a fixed
+# statement the advertiser has not given (alcohol strength; 本品不能代替药物 for a health food).
+# 9 advertiser versions fix everything, 3 still break a rule.
+
+- id: zh-n01
+  lang: zh
+  split: mt3
+  kind: text
+  copy: 山屿牌深海鱼油软胶囊（保健食品），降血脂效果全网第一，买二送一！
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-18], span: 降血脂效果}
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 全网第一}
+  must_keep: [山屿, 鱼油]
+  revision:
+    copy: 山屿牌深海鱼油软胶囊（保健食品），买二送一。本品不能代替药物。
+    labels: []
+- id: zh-n02
+  lang: zh
+  split: mt3
+  kind: text
+  copy: 知行考研：报名即保上岸，去年学员通过率 98%！
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-24], span: 报名即保上岸}
+    - {cat: DATA, clauses: [CN-AL-11-2], span: 去年学员通过率 98%}
+  must_keep: [知行, 考研]
+  revision:
+    copy: 知行考研：小班答疑，课程可回放。
+    labels: []
+- id: zh-n03
+  lang: zh
+  split: mt3
+  kind: text
+  copy: 醉山河米酒，喝了助眠又养胃，睡前来一杯。
+  labels:
+    - {cat: ALCOHOL, clauses: [CN-AL-23], span: 喝了助眠又养胃，睡前来一杯}
+  must_keep: [醉山河, 米酒]
+  revision:
+    copy: 醉山河米酒，口感清甜，喝了好入睡。
+    labels:
+      - {cat: ALCOHOL, clauses: [CN-AL-23], span: 喝了好入睡}
+- id: zh-n04
+  lang: zh
+  split: mt3
+  kind: text
+  copy: 知更基金定投计划：稳赚不赔，年化收益 15% 起，每月 500 元起投。
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-25], span: 稳赚不赔，年化收益 15% 起}
+  must_keep: [知更, 500 元]
+  revision:
+    copy: 知更基金定投计划：每月 500 元起投。基金有风险，投资须谨慎。
+    labels: []
+- id: zh-n05
+  lang: zh
+  split: mt3
+  kind: text
+  copy: 云栖空气炸锅，比某米的好用十倍，行业销量第一！¥299
+  labels:
+    - {cat: DISPARAGE, clauses: [CN-AL-13], span: 比某米的好用十倍}
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 行业销量第一}
+  must_keep: [云栖, ¥299]
+  revision:
+    copy: 云栖空气炸锅，4.5 升大容量，行业销量第一。¥299
+    labels:
+      - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 行业销量第一}
+- id: zh-n06
+  lang: zh
+  split: mt3
+  kind: text
+  copy: 青禾艾草足浴包，泡一周根治风湿，¥59 一盒。
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-17], span: 泡一周根治风湿}
+  must_keep: [青禾, ¥59]
+  revision:
+    copy: 青禾艾草足浴包，睡前泡脚，放松一下。¥59 一盒。
+    labels: []
+- id: en-n01
+  lang: en
+  split: mt3
+  kind: text
+  copy: "Kestrel Invest: double your money in 6 months, zero risk. Start with $100."
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-DEC-FINREP, TT-FIN, TT-MIS-CLAIMS], span: "double your money in 6 months, zero risk"}
+  must_keep: [Kestrel, $100]
+  revision:
+    copy: "Kestrel Invest: start with $100. Investing involves risk, including possible loss of capital."
+    labels: []
+- id: en-n02
+  lang: en
+  split: mt3
+  kind: text
+  copy: "Verdi Gin: drink till you drop this Friday!"
+  labels:
+    - {cat: ALCOHOL, clauses: [TT-ALC], span: "drink till you drop this Friday"}
+  must_keep: [Verdi Gin]
+  revision:
+    copy: "Verdi Gin, 40% ABV: crisp and citrusy, made for Friday evenings. Please drink responsibly."
+    labels: []
+- id: en-n03
+  lang: en
+  split: mt3
+  kind: text
+  copy: "Slimora drops: lose 10 lbs in a week without dieting. Only $29."
+  labels:
+    - {cat: WEIGHT, clauses: [TT-WM-WEIGHT], span: "lose 10 lbs in a week without dieting"}
+  must_keep: [Slimora, $29]
+  revision:
+    copy: "Slimora drops: lose weight fast without changing what you eat. Only $29."
+    labels:
+      - {cat: WEIGHT, clauses: [TT-WM-WEIGHT], span: "lose weight fast without changing what you eat"}
+- id: en-n04
+  lang: en
+  split: mt3
+  kind: text
+  copy: "Nuvola Throat Spray kills 99.9% of cold viruses and cures a sore throat overnight. $12."
+  labels:
+    - {cat: MEDICAL, clauses: [TT-MIS-CLAIMS], span: "kills 99.9% of cold viruses and cures a sore throat overnight"}
+  must_keep: [Nuvola, $12]
+  revision:
+    copy: "Nuvola Throat Spray: honey and mint flavour, pocket size. $12."
+    labels: []
+- id: en-n05
+  lang: en
+  split: mt3
+  kind: text
+  copy: "Oakline Earbuds: the world's best sound, twice as good as AirBeat for half the price."
+  labels:
+    - {cat: ABSOLUTE, clauses: [TT-MIS-CLAIMS], span: "the world's best sound"}
+    - {cat: DISPARAGE, clauses: [TT-MIS-COMPARE], span: "twice as good as AirBeat for half the price"}
+  must_keep: [Oakline]
+  revision:
+    copy: "Oakline Earbuds: 30-hour battery, three ear-tip sizes."
+    labels: []
+- id: en-n06
+  lang: en
+  split: mt3
+  kind: text
+  copy: "Brightfold Coding Bootcamp: guaranteed job at a top tech company in 12 weeks. Enrol by 1 Dec."
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-MIS-CLAIMS], span: "guaranteed job at a top tech company in 12 weeks"}
+  must_keep: [Brightfold, 1 Dec]
+  revision:
+    copy: "Brightfold Coding Bootcamp: 12-week evening course with weekly mentor sessions. Enrol by 1 Dec."
+    labels: []

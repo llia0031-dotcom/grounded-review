@@ -1,0 +1,416 @@
+{
+ "oneshot": {
+  "counts": {
+   "items": 32,
+   "tp": 24,
+   "exact_categories": 20,
+   "labels_span": 26,
+   "found_span": 26,
+   "clause_checked": 26,
+   "clause_right": 26,
+   "located": 26,
+   "ad_quotes": 65,
+   "ad_quotes_ok": 65,
+   "policy_quotes": 68,
+   "policy_quotes_ok": 68,
+   "fp": 5,
+   "traps": 8,
+   "traps_approved": 3,
+   "tn": 3,
+   "cost_total": 0.0216
+  },
+  "per_cat": {
+   "ABSOLUTE": {
+    "fp": 7,
+    "tp": 2
+   },
+   "MEDICAL": {
+    "tp": 22
+   },
+   "GUARANTEE": {
+    "fp": 5
+   },
+   "DISPARAGE": {},
+   "DATA": {
+    "tp": 2,
+    "fp": 4
+   },
+   "ALCOHOL": {},
+   "WEIGHT": {},
+   "BEFORE_AFTER": {
+    "fp": 1
+   },
+   "FLAG": {}
+  },
+  "per_lang": {
+   "zh": {
+    "items": 32,
+    "correct": 27
+   },
+   "en": {}
+  },
+  "cost_per_item": 0.00067528125,
+  "latency_median": null,
+  "calls_mean": 1.0,
+  "errors": [
+   {
+    "item": "zh-r16",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "zh-r04",
+    "run": 1,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "zh-r04",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "zh-r14",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "zh-r10",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "zh-r10",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "zh-r16",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "zh-r12",
+    "run": 2,
+    "type": "extra",
+    "cat": "BEFORE_AFTER",
+    "trap": false
+   },
+   {
+    "item": "zh-r10",
+    "run": 1,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "zh-r10",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "zh-r10",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "zh-r12",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "zh-r13",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "zh-r01",
+    "run": 2,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "zh-r01",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "zh-r04",
+    "run": 2,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "zh-r14",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   }
+  ],
+  "quote_fail": [],
+  "agree": {
+   "items": 16,
+   "same_decision": 15,
+   "same_categories": 11
+  }
+ },
+ "agent": {
+  "counts": {
+   "items": 32,
+   "tp": 24,
+   "labels_span": 26,
+   "ad_quotes": 74,
+   "ad_quotes_ok": 74,
+   "policy_quotes": 76,
+   "policy_quotes_ok": 76,
+   "found_span": 24,
+   "clause_checked": 24,
+   "clause_right": 24,
+   "located": 24,
+   "exact_categories": 14,
+   "fp": 6,
+   "traps": 8,
+   "traps_approved": 2,
+   "tn": 2,
+   "cost_total": 0.0523
+  },
+  "per_cat": {
+   "ABSOLUTE": {
+    "fp": 7,
+    "tp": 2
+   },
+   "MEDICAL": {
+    "fn": 2,
+    "tp": 20
+   },
+   "GUARANTEE": {
+    "fp": 6
+   },
+   "DISPARAGE": {},
+   "DATA": {
+    "fp": 7,
+    "tp": 2
+   },
+   "ALCOHOL": {},
+   "WEIGHT": {},
+   "BEFORE_AFTER": {
+    "fp": 1
+   },
+   "FLAG": {
+    "fp": 1
+   }
+  },
+  "per_lang": {
+   "zh": {
+    "items": 32,
+    "correct": 26
+   },
+   "en": {}
+  },
+  "cost_per_item": 0.00163490625,
+  "latency_median": null,
+  "calls_mean": 3.40625,
+  "errors": [
+   {
+    "item": "zh-r06",
+    "run": 2,
+    "type": "missed",
+    "cat": "MEDICAL",
+    "kind": "span"
+   },
+   {
+    "item": "zh-r01",
+    "run": 1,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "zh-r10",
+    "run": 2,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "zh-r10",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "zh-r14",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "zh-r14",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "zh-r08",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "zh-r13",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "zh-r13",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "zh-r12",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "zh-r16",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "zh-r09",
+    "run": 2,
+    "type": "missed",
+    "cat": "MEDICAL",
+    "kind": "span"
+   },
+   {
+    "item": "zh-r10",
+    "run": 1,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "zh-r10",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "zh-r10",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "zh-r01",
+    "run": 2,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "zh-r12",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "zh-r12",
+    "run": 2,
+    "type": "extra",
+    "cat": "BEFORE_AFTER",
+    "trap": false
+   },
+   {
+    "item": "zh-r04",
+    "run": 1,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "zh-r04",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "zh-r04",
+    "run": 2,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "zh-r04",
+    "run": 2,
+    "type": "extra",
+    "cat": "FLAG",
+    "trap": false
+   },
+   {
+    "item": "zh-r02",
+    "run": 1,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "zh-r16",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   }
+  ],
+  "quote_fail": [],
+  "agree": {
+   "items": 16,
+   "same_decision": 16,
+   "same_categories": 9
+  }
+ }
+}

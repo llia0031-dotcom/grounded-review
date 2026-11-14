@@ -1,0 +1,1228 @@
+{
+ "oneshot": {
+  "counts": {
+   "items": 60,
+   "tp": 43,
+   "exact_categories": 23,
+   "labels_span": 54,
+   "found_span": 49,
+   "clause_checked": 49,
+   "clause_right": 47,
+   "located": 41,
+   "ad_quotes": 173,
+   "ad_quotes_ok": 168,
+   "policy_quotes": 206,
+   "policy_quotes_ok": 205,
+   "fp": 8,
+   "traps": 14,
+   "traps_approved": 6,
+   "fn": 3,
+   "tn": 6,
+   "cost_total": 0.058
+  },
+  "per_cat": {
+   "ABSOLUTE": {
+    "fp": 16,
+    "tp": 4
+   },
+   "MEDICAL": {
+    "fn": 3,
+    "tp": 9
+   },
+   "GUARANTEE": {
+    "fp": 14,
+    "tp": 8
+   },
+   "DISPARAGE": {
+    "tp": 6,
+    "fp": 2
+   },
+   "DATA": {
+    "fp": 6,
+    "fn": 2,
+    "tp": 6
+   },
+   "ALCOHOL": {
+    "tp": 8,
+    "fp": 6
+   },
+   "WEIGHT": {
+    "tp": 6
+   },
+   "BEFORE_AFTER": {
+    "tp": 2,
+    "fp": 6
+   },
+   "FLAG": {}
+  },
+  "per_lang": {
+   "zh": {},
+   "en": {
+    "items": 60,
+    "correct": 49
+   }
+  },
+  "cost_per_item": 0.0009669,
+  "latency_median": null,
+  "calls_mean": 1.0,
+  "errors": [
+   {
+    "item": "en-r29",
+    "run": 2,
+    "type": "extra",
+    "cat": "ALCOHOL",
+    "trap": true
+   },
+   {
+    "item": "en-r28",
+    "run": 1,
+    "type": "extra",
+    "cat": "ALCOHOL",
+    "trap": true
+   },
+   {
+    "item": "en-r07",
+    "run": 1,
+    "type": "missed",
+    "cat": "MEDICAL",
+    "kind": "span"
+   },
+   {
+    "item": "en-r01",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r01",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r01",
+    "run": 2,
+    "type": "extra",
+    "cat": "DISPARAGE",
+    "trap": false
+   },
+   {
+    "item": "en-r06",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r04",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r04",
+    "run": 1,
+    "type": "extra",
+    "cat": "BEFORE_AFTER",
+    "trap": false
+   },
+   {
+    "item": "en-r09",
+    "run": 1,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r09",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r12",
+    "run": 1,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r12",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r19",
+    "run": 2,
+    "type": "missed",
+    "cat": "DATA",
+    "kind": "span"
+   },
+   {
+    "item": "en-r11",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r07",
+    "run": 2,
+    "type": "missed",
+    "cat": "MEDICAL",
+    "kind": "span"
+   },
+   {
+    "item": "en-r26",
+    "run": 1,
+    "type": "extra",
+    "cat": "ALCOHOL",
+    "trap": true
+   },
+   {
+    "item": "en-r16",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r05",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r02",
+    "run": 2,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r02",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r02",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r02",
+    "run": 2,
+    "type": "extra",
+    "cat": "BEFORE_AFTER",
+    "trap": false
+   },
+   {
+    "item": "en-r15",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r27",
+    "run": 1,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": true
+   },
+   {
+    "item": "en-r27",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "en-r21",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r01",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r01",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r01",
+    "run": 1,
+    "type": "extra",
+    "cat": "BEFORE_AFTER",
+    "trap": false
+   },
+   {
+    "item": "en-r01",
+    "run": 1,
+    "type": "extra",
+    "cat": "DISPARAGE",
+    "trap": false
+   },
+   {
+    "item": "en-r28",
+    "run": 2,
+    "type": "extra",
+    "cat": "ALCOHOL",
+    "trap": true
+   },
+   {
+    "item": "en-r27",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "en-r04",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r04",
+    "run": 2,
+    "type": "extra",
+    "cat": "BEFORE_AFTER",
+    "trap": false
+   },
+   {
+    "item": "en-r13",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r10",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r26",
+    "run": 2,
+    "type": "extra",
+    "cat": "ALCOHOL",
+    "trap": true
+   },
+   {
+    "item": "en-r05",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r05",
+    "run": 2,
+    "type": "extra",
+    "cat": "BEFORE_AFTER",
+    "trap": false
+   },
+   {
+    "item": "en-r09",
+    "run": 2,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r09",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r10",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r11",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r15",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r12",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r12",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r19",
+    "run": 1,
+    "type": "missed",
+    "cat": "DATA",
+    "kind": "span"
+   },
+   {
+    "item": "en-r02",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r02",
+    "run": 1,
+    "type": "extra",
+    "cat": "BEFORE_AFTER",
+    "trap": false
+   },
+   {
+    "item": "en-r06",
+    "run": 1,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r06",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r29",
+    "run": 1,
+    "type": "extra",
+    "cat": "ALCOHOL",
+    "trap": true
+   },
+   {
+    "item": "en-r17",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r03",
+    "run": 2,
+    "type": "missed",
+    "cat": "MEDICAL",
+    "kind": "span"
+   }
+  ],
+  "quote_fail": [
+   {
+    "item": "en-r09",
+    "run": 1,
+    "side": "policy",
+    "status": "quote_not_found",
+    "clause": "TT-DEC-FINREP",
+    "quote": "Making deceptive claims"
+   },
+   {
+    "item": "en-r02",
+    "run": 2,
+    "side": "ad",
+    "status": "quote_not_found",
+    "quote": "Day 0 / Day 90"
+   },
+   {
+    "item": "en-r02",
+    "run": 2,
+    "side": "ad",
+    "status": "quote_not_found",
+    "quote": "Reduces Morning Cough, Restores Easy Breathing, Clears Lung Congestion, Clears Tar & Buildup, Stop Wheezing. Start Breathing. Helps clear trapped mucus and phlegm from airways. Reduced wheezing, chest congestion, and breathing discomfort."
+   },
+   {
+    "item": "en-r02",
+    "run": 2,
+    "side": "ad",
+    "status": "quote_not_found",
+    "quote": "Just clear your lungs Daily. Clear your lungs from the inside out. fast-acting"
+   },
+   {
+    "item": "en-r21",
+    "run": 1,
+    "side": "ad",
+    "status": "quote_not_found",
+    "quote": "One to resurrect my soul\", \"One for emotional support\" and \"One to erase today\"; \"My health? Depends on all three"
+   },
+   {
+    "item": "en-r10",
+    "run": 1,
+    "side": "ad",
+    "status": "quote_not_found",
+    "quote": "give you the chance to invest in Gold & Silver for a fraction of the price!"
+   }
+  ],
+  "agree": {
+   "items": 30,
+   "same_decision": 29,
+   "same_categories": 19
+  }
+ },
+ "agent": {
+  "counts": {
+   "items": 60,
+   "tn": 5,
+   "traps": 14,
+   "traps_approved": 5,
+   "exact_categories": 26,
+   "tp": 46,
+   "labels_span": 54,
+   "found_span": 52,
+   "clause_checked": 52,
+   "clause_right": 47,
+   "located": 46,
+   "ad_quotes": 200,
+   "ad_quotes_ok": 200,
+   "policy_quotes": 210,
+   "policy_quotes_ok": 210,
+   "fp": 9,
+   "cost_total": 0.1807
+  },
+  "per_cat": {
+   "ABSOLUTE": {
+    "fp": 14,
+    "tp": 4
+   },
+   "MEDICAL": {
+    "tp": 10,
+    "fn": 2,
+    "fp": 1
+   },
+   "GUARANTEE": {
+    "tp": 8,
+    "fp": 14
+   },
+   "DISPARAGE": {
+    "fp": 4,
+    "tp": 6
+   },
+   "DATA": {
+    "fp": 12,
+    "tp": 8
+   },
+   "ALCOHOL": {
+    "tp": 8,
+    "fp": 6
+   },
+   "WEIGHT": {
+    "tp": 6
+   },
+   "BEFORE_AFTER": {
+    "tp": 2,
+    "fp": 7
+   },
+   "FLAG": {}
+  },
+  "per_lang": {
+   "zh": {},
+   "en": {
+    "items": 60,
+    "correct": 51
+   }
+  },
+  "cost_per_item": 0.0030122666666666667,
+  "latency_median": null,
+  "calls_mean": 4.016666666666667,
+  "errors": [
+   {
+    "item": "en-r27",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "en-r27",
+    "run": 1,
+    "type": "extra",
+    "cat": "DISPARAGE",
+    "trap": true
+   },
+   {
+    "item": "en-r28",
+    "run": 1,
+    "type": "extra",
+    "cat": "ALCOHOL",
+    "trap": true
+   },
+   {
+    "item": "en-r26",
+    "run": 1,
+    "type": "extra",
+    "cat": "ALCOHOL",
+    "trap": true
+   },
+   {
+    "item": "en-r10",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r26",
+    "run": 2,
+    "type": "extra",
+    "cat": "ALCOHOL",
+    "trap": true
+   },
+   {
+    "item": "en-r15",
+    "run": 1,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r15",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r06",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r13",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r13",
+    "run": 2,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r13",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r10",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r02",
+    "run": 1,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r02",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r02",
+    "run": 1,
+    "type": "extra",
+    "cat": "BEFORE_AFTER",
+    "trap": false
+   },
+   {
+    "item": "en-r07",
+    "run": 1,
+    "type": "missed",
+    "cat": "MEDICAL",
+    "kind": "span"
+   },
+   {
+    "item": "en-r12",
+    "run": 1,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r12",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r27",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "en-r09",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r07",
+    "run": 2,
+    "type": "missed",
+    "cat": "MEDICAL",
+    "kind": "span"
+   },
+   {
+    "item": "en-r07",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r06",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r29",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "en-r29",
+    "run": 1,
+    "type": "extra",
+    "cat": "ALCOHOL",
+    "trap": true
+   },
+   {
+    "item": "en-r28",
+    "run": 2,
+    "type": "extra",
+    "cat": "ALCOHOL",
+    "trap": true
+   },
+   {
+    "item": "en-r11",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r11",
+    "run": 2,
+    "type": "extra",
+    "cat": "DISPARAGE",
+    "trap": false
+   },
+   {
+    "item": "en-r16",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r15",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r03",
+    "run": 2,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r03",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r05",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r05",
+    "run": 1,
+    "type": "extra",
+    "cat": "BEFORE_AFTER",
+    "trap": false
+   },
+   {
+    "item": "en-r09",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r04",
+    "run": 1,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r04",
+    "run": 1,
+    "type": "extra",
+    "cat": "BEFORE_AFTER",
+    "trap": false
+   },
+   {
+    "item": "en-r02",
+    "run": 2,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r02",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r02",
+    "run": 2,
+    "type": "extra",
+    "cat": "BEFORE_AFTER",
+    "trap": false
+   },
+   {
+    "item": "en-r01",
+    "run": 2,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r01",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r01",
+    "run": 2,
+    "type": "extra",
+    "cat": "BEFORE_AFTER",
+    "trap": false
+   },
+   {
+    "item": "en-r01",
+    "run": 2,
+    "type": "extra",
+    "cat": "DISPARAGE",
+    "trap": false
+   },
+   {
+    "item": "en-r29",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "en-r29",
+    "run": 2,
+    "type": "extra",
+    "cat": "ALCOHOL",
+    "trap": true
+   },
+   {
+    "item": "en-r01",
+    "run": 1,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r01",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r01",
+    "run": 1,
+    "type": "extra",
+    "cat": "DISPARAGE",
+    "trap": false
+   },
+   {
+    "item": "en-r04",
+    "run": 2,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r04",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r04",
+    "run": 2,
+    "type": "extra",
+    "cat": "BEFORE_AFTER",
+    "trap": false
+   },
+   {
+    "item": "en-r05",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r05",
+    "run": 2,
+    "type": "extra",
+    "cat": "BEFORE_AFTER",
+    "trap": false
+   },
+   {
+    "item": "en-r12",
+    "run": 2,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r12",
+    "run": 2,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-r12",
+    "run": 2,
+    "type": "extra",
+    "cat": "MEDICAL",
+    "trap": false
+   },
+   {
+    "item": "en-r03",
+    "run": 1,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-r03",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   }
+  ],
+  "quote_fail": [],
+  "agree": {
+   "items": 30,
+   "same_decision": 29,
+   "same_categories": 20
+  }
+ },
+ "wordlist": {
+  "counts": {
+   "items": 30,
+   "fn": 17,
+   "labels_span": 27,
+   "tp": 6,
+   "found_span": 4,
+   "located": 0,
+   "exact_categories": 8,
+   "tn": 7,
+   "traps": 7,
+   "traps_approved": 7,
+   "cost_total": 0.0
+  },
+  "per_cat": {
+   "ABSOLUTE": {
+    "fn": 2
+   },
+   "MEDICAL": {
+    "fn": 5,
+    "tp": 1
+   },
+   "GUARANTEE": {
+    "fp": 1,
+    "fn": 3,
+    "tp": 1
+   },
+   "DISPARAGE": {
+    "fn": 3
+   },
+   "DATA": {
+    "fn": 4
+   },
+   "ALCOHOL": {
+    "fn": 4
+   },
+   "WEIGHT": {
+    "tp": 2,
+    "fn": 1
+   },
+   "BEFORE_AFTER": {
+    "fn": 1
+   },
+   "FLAG": {}
+  },
+  "per_lang": {
+   "zh": {},
+   "en": {
+    "items": 30,
+    "correct": 13
+   }
+  },
+  "cost_per_item": 0.0,
+  "latency_median": 0.0025,
+  "calls_mean": 0.0,
+  "errors": [
+   {
+    "item": "en-r01",
+    "run": 1,
+    "type": "missed",
+    "cat": "MEDICAL",
+    "kind": "span"
+   },
+   {
+    "item": "en-r02",
+    "run": 1,
+    "type": "missed",
+    "cat": "MEDICAL",
+    "kind": "span"
+   },
+   {
+    "item": "en-r03",
+    "run": 1,
+    "type": "missed",
+    "cat": "MEDICAL",
+    "kind": "span"
+   },
+   {
+    "item": "en-r04",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-r05",
+    "run": 1,
+    "type": "missed",
+    "cat": "MEDICAL",
+    "kind": "span"
+   },
+   {
+    "item": "en-r06",
+    "run": 1,
+    "type": "missed",
+    "cat": "BEFORE_AFTER",
+    "kind": "span"
+   },
+   {
+    "item": "en-r07",
+    "run": 1,
+    "type": "missed",
+    "cat": "MEDICAL",
+    "kind": "span"
+   },
+   {
+    "item": "en-r07",
+    "run": 1,
+    "type": "missed",
+    "cat": "WEIGHT",
+    "kind": "span"
+   },
+   {
+    "item": "en-r08",
+    "run": 1,
+    "type": "missed",
+    "cat": "GUARANTEE",
+    "kind": "span"
+   },
+   {
+    "item": "en-r09",
+    "run": 1,
+    "type": "missed",
+    "cat": "GUARANTEE",
+    "kind": "span"
+   },
+   {
+    "item": "en-r10",
+    "run": 1,
+    "type": "missed",
+    "cat": "GUARANTEE",
+    "kind": "span"
+   },
+   {
+    "item": "en-r12",
+    "run": 1,
+    "type": "missed",
+    "cat": "DISPARAGE",
+    "kind": "span"
+   },
+   {
+    "item": "en-r13",
+    "run": 1,
+    "type": "missed",
+    "cat": "ABSOLUTE",
+    "kind": "span"
+   },
+   {
+    "item": "en-r14",
+    "run": 1,
+    "type": "missed",
+    "cat": "DISPARAGE",
+    "kind": "span"
+   },
+   {
+    "item": "en-r15",
+    "run": 1,
+    "type": "missed",
+    "cat": "DISPARAGE",
+    "kind": "span"
+   },
+   {
+    "item": "en-r16",
+    "run": 1,
+    "type": "missed",
+    "cat": "DATA",
+    "kind": "span"
+   },
+   {
+    "item": "en-r17",
+    "run": 1,
+    "type": "missed",
+    "cat": "DATA",
+    "kind": "span"
+   },
+   {
+    "item": "en-r17",
+    "run": 1,
+    "type": "missed",
+    "cat": "ABSOLUTE",
+    "kind": "span"
+   },
+   {
+    "item": "en-r18",
+    "run": 1,
+    "type": "missed",
+    "cat": "DATA",
+    "kind": "span"
+   },
+   {
+    "item": "en-r19",
+    "run": 1,
+    "type": "missed",
+    "cat": "DATA",
+    "kind": "span"
+   },
+   {
+    "item": "en-r20",
+    "run": 1,
+    "type": "missed",
+    "cat": "ALCOHOL",
+    "kind": "span"
+   },
+   {
+    "item": "en-r21",
+    "run": 1,
+    "type": "missed",
+    "cat": "ALCOHOL",
+    "kind": "span"
+   },
+   {
+    "item": "en-r22",
+    "run": 1,
+    "type": "missed",
+    "cat": "ALCOHOL",
+    "kind": "span"
+   },
+   {
+    "item": "en-r23",
+    "run": 1,
+    "type": "missed",
+    "cat": "ALCOHOL",
+    "kind": "span"
+   }
+  ],
+  "quote_fail": [],
+  "agree": {}
+ }
+}

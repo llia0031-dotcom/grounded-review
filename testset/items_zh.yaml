@@ -1,0 +1,452 @@
+# Chinese ads. Brands are fictional. Answers fixed when the items were written.
+# kind: text = caption only; image = caption + a rendered image (image.lines are the words in the image).
+# labels: one per violation. span = the exact words in the ad that break the rule;
+#   visual = the violation is in the picture, not in words.
+# trap: why an item that looks like a violation is compliant, with the clause that says so (basis).
+# revision: a later version the advertiser submits (multi-turn task), with its own labels.
+# must_keep: facts an edited version has to keep.
+
+- id: zh-d01
+  split: dev
+  kind: text
+  copy: 知更护眼台灯，护眼效果全国第一，孩子写作业不再眼累。
+  labels:
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 护眼效果全国第一}
+- id: zh-d02
+  split: dev
+  kind: text
+  copy: 云栖安神花草茶，每晚一杯喝出好睡眠，根治失眠多梦。
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-17], span: 根治失眠多梦}
+- id: zh-d03
+  split: dev
+  kind: text
+  copy: 澄心少儿编程，学完保证考进重点中学，名额有限。
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-24], span: 学完保证考进重点中学}
+- id: zh-d04
+  split: dev
+  kind: text
+  copy: 青禾鲜牛奶，开封后请冷藏，最好在 3 天内饮用完。
+  labels: []
+  trap: “最好在 3 天内饮用完”是保存期限的消费提示，不是对商品的绝对化宣传。
+  basis: [CN-SAMR-6]
+- id: zh-d05
+  split: dev
+  kind: text
+  copy: 云栖睡眠调研：62% 的受访者每周至少一晚睡不好（数据来源：云栖研究院 2025 年 3 月问卷调查，样本 1200 人）。
+  labels: []
+  trap: 引用的数据写明了出处、时间和样本量。
+  basis: [CN-AL-11-2]
+- id: zh-d06
+  split: dev
+  kind: text
+  copy: 山屿财富：月收益 2%，本金保障，躺着就能赚钱。
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-25], span: 本金保障}
+- id: zh-d07
+  split: dev
+  kind: image
+  copy: 青禾高速吹风机，新品上市。
+  image: {layout: poster, shape: dryer, palette: purple, brand: 青禾, lines: [最强风力 3 分钟速干, 青禾高速吹风机, 新品价 ¥399]}
+  labels:
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 最强风力}
+- id: zh-d08
+  split: dev
+  kind: image
+  copy: 木朴手机壳，防摔又轻薄。
+  image: {layout: banner, shape: phone, palette: gray, brand: 木朴, lines: [某宝便宜货一摔就碎, 木朴军工级防摔手机壳, ¥49 两件 ¥89]}
+  labels:
+    - {cat: DISPARAGE, clauses: [CN-AL-13], span: 某宝便宜货一摔就碎}
+- id: zh-d09
+  split: dev
+  kind: image
+  copy: 山屿高山绿茶，春茶上新。
+  image: {layout: poster, shape: tea, palette: green, brand: 山屿, lines: [山屿高山绿茶, 春茶上新 礼盒装, ¥268], extra: flag}
+  labels:
+    - {cat: FLAG, clauses: [CN-AL-9-1], visual: 画面左上角有五星红旗}
+- id: zh-d10
+  split: dev
+  kind: image
+  copy: 醉山河白酒，朋友相聚就喝它。
+  image: {layout: poster, shape: liquor, palette: red, brand: 醉山河, lines: [喝了这杯 烦恼全无, 醉山河 浓香型白酒, 52%vol 500ml]}
+  labels:
+    - {cat: ALCOHOL, clauses: [CN-AL-23], span: 喝了这杯 烦恼全无}
+- id: zh-d11
+  split: dev
+  kind: image
+  copy: 云栖羽绒服，冬季新款。
+  image: {layout: poster, shape: jacket, palette: blue, brand: 云栖, lines: [2025 年双 11 天猫羽绒服类目销量第一, 数据来源：天猫，统计期 2025.11.1–11.11, 云栖轻暖羽绒服 ¥699]}
+  labels: []
+  trap: 销量第一限定了平台、品类和时间，并写明了数据来源。
+  basis: [CN-SAMR-6, CN-AL-11-2]
+- id: zh-d12
+  split: dev
+  kind: image
+  copy: 云栖棉拖，冬天在家穿。
+  image: {layout: banner, shape: slipper, palette: orange, brand: 云栖, lines: [云栖加厚棉拖, 冬季保暖 防滑底, ¥39 包邮]}
+  labels: []
+
+# ------------------------------------------------------------------ test
+- id: zh-t01
+  split: test
+  kind: text
+  copy: 「云栖」乳胶枕：全网最舒服的枕头，睡过就回不去。限时 ¥199。
+  labels:
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 全网最舒服的枕头}
+  must_keep: [云栖, ¥199]
+  revision:
+    copy: 「云栖」乳胶枕：贴合颈部曲线，回弹不塌陷。限时 ¥199。
+    labels: []
+- id: zh-t02
+  split: test
+  kind: text
+  copy: 木朴艾草足浴包，每晚泡脚 20 分钟，改善风湿关节痛。
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-17], span: 改善风湿关节痛}
+- id: zh-t03
+  split: test
+  kind: text
+  copy: 知更考研集训营：签约保过，不过全额退费！名师 1 对 1 带教。
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-24], span: 签约保过，不过全额退费}
+  must_keep: [知更, 1 对 1]
+  revision:
+    copy: 知更考研集训营：名师 1 对 1 带教，全网最强师资阵容。
+    labels:
+      - {cat: ABSOLUTE, clauses: [CN-AL-9-3, CN-SAMR-11], span: 全网最强师资阵容}
+- id: zh-t04
+  split: test
+  kind: text
+  copy: 澄心农场加盟：投资 5 万，年回报 30%，稳赚不赔！
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-25], span: 年回报 30%，稳赚不赔}
+  must_keep: [澄心]
+  revision:
+    copy: 澄心农场加盟：总部提供选址、培训与供货支持。投资有风险，加盟需谨慎。
+    labels: []
+- id: zh-t05
+  split: test
+  kind: text
+  copy: 还在用易净扫地机？又吵又笨，买它等于交智商税。青禾扫地机，安静又聪明。
+  labels:
+    - {cat: DISPARAGE, clauses: [CN-AL-13], span: 又吵又笨，买它等于交智商税}
+- id: zh-t06
+  split: test
+  kind: text
+  copy: 青禾美白牙膏，98% 的用户使用一周后牙齿明显变白。
+  labels:
+    - {cat: DATA, clauses: [CN-AL-11-2], span: 98% 的用户使用一周后牙齿明显变白}
+  must_keep: [青禾]
+  revision:
+    copy: 青禾美白牙膏，使用 4 周后牙渍减少 28%（数据来源：青禾实验室 2025 年 4 月测试，样本 50 人，效果因人而异）。
+    labels: []
+- id: zh-t07
+  split: test
+  kind: text
+  copy: 山屿登山鞋，国内销量第一，89% 的驴友首选。
+  labels:
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 国内销量第一}
+    - {cat: DATA, clauses: [CN-AL-11-2], span: 89% 的驴友首选}
+- id: zh-t08
+  split: test
+  kind: text
+  copy: 澄心深海鱼油软胶囊（保健食品），降血脂、预防心脑血管疾病，中老年人每天必备。
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-18, CN-AL-17], span: 降血脂、预防心脑血管疾病}
+- id: zh-t09
+  split: test
+  kind: text
+  copy: 醉山河白酒，一杯下肚，压力全消，干活更有劲！
+  labels:
+    - {cat: ALCOHOL, clauses: [CN-AL-23], span: 一杯下肚，压力全消，干活更有劲}
+- id: zh-t10
+  split: test
+  kind: text
+  copy: 云栖冷萃咖啡，最佳饮用温度 4–8℃，冷藏后风味更好。
+  labels: []
+  trap: “最佳饮用温度”是使用方法的消费提示。
+  basis: [CN-SAMR-6]
+- id: zh-t11
+  split: test
+  kind: text
+  copy: 知更书店：顾客第一，用心服务每一位读者。本周新书 8 折。
+  labels: []
+  trap: “顾客第一”表明服务态度，没有指向所推销的商品。
+  basis: [CN-SAMR-5]
+- id: zh-t12
+  split: test
+  kind: text
+  copy: 青禾牙膏，使用 4 周牙渍减少 32%（数据来源：青禾实验室 2025 年 6 月测试，样本 60 人，效果因人而异）。
+  labels: []
+  trap: 数据写明了出处、时间、样本量和适用范围。
+  basis: [CN-AL-11-2]
+- id: zh-t13
+  split: test
+  kind: text
+  copy: 知更英语：外教小班课，课程覆盖四六级全部题型，试听不满意 7 天无理由退款。
+  labels: []
+  trap: 退款是服务承诺，没有对通过考试或培训效果作保证。
+  basis: [CN-AL-24]
+- id: zh-t14
+  split: test
+  kind: text
+  copy: 山屿保温杯，2025 年 9 月京东平台保温杯品类销量第一（数据来源：京东商智，统计期 2025 年 9 月 1–30 日）。
+  labels: []
+  trap: 销量第一限定了时间、平台和品类，并写明了数据来源。
+  basis: [CN-SAMR-6, CN-AL-11-2]
+- id: zh-t15
+  split: test
+  kind: text
+  copy: 澄心手工皂，橄榄油冷制，温和清洁，留香淡雅。三块装 ¥59。
+  labels: []
+- id: zh-t16
+  split: test
+  kind: text
+  copy: 木朴颈枕：别再被那些几十块的网红枕头骗了，全是劣质海绵。
+  labels:
+    - {cat: DISPARAGE, clauses: [CN-AL-13], span: 别再被那些几十块的网红枕头骗了，全是劣质海绵}
+- id: zh-t17
+  split: test
+  kind: image
+  copy: 山屿保温杯，冬天出门必备。
+  image: {layout: poster, shape: tumbler, palette: blue, brand: 山屿, lines: [史上最强保温, 24 小时不凉 山屿保温杯, ¥129 包邮]}
+  labels:
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 史上最强保温}
+- id: zh-t18
+  split: test
+  kind: image
+  copy: 青禾防晒霜，夏天出门涂一涂。
+  image: {layout: banner, shape: tube, palette: orange, brand: 青禾, lines: [顶级防晒 全网第一, 青禾清透防晒霜 SPF50+, ¥89]}
+  labels:
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 顶级防晒 全网第一}
+- id: zh-t19
+  split: test
+  kind: image
+  copy: 青禾 Pods 3 真无线耳机，新品首发。
+  image: {layout: poster, shape: earbuds, palette: gray, brand: 青禾, lines: [青禾 Pods 3, 本品牌史上最轻的一代 单耳 3.9g, 首发价 ¥299]}
+  labels: []
+  trap: “史上最轻”只用于同一品牌产品的自我比较。
+  basis: [CN-SAMR-6]
+- id: zh-t20
+  split: test
+  kind: image
+  copy: 澄心橄榄油，厨房必备。
+  image: {layout: poster, shape: oil, palette: green, brand: 澄心, lines: [特级初榨橄榄油, 符合 GB/T 23347 特级标准, 澄心 750ml ¥118]}
+  labels: []
+  trap: “特级”是依据国家标准的商品分级用语，并说明了依据。
+  basis: [CN-SAMR-6]
+- id: zh-t21
+  split: test
+  kind: image
+  copy: 木朴青瓷茶具，手工烧制。
+  image: {layout: poster, shape: teaware, palette: teal, brand: 木朴, lines: [龙泉青瓷烧制技艺, 国家级非物质文化遗产代表性项目, 木朴手作茶具 ¥580]}
+  labels: []
+  trap: “国家级”出现在依据国家规定评定的称号里。
+  basis: [CN-SAMR-6]
+- id: zh-t22
+  split: test
+  kind: image
+  copy: 云栖草本足贴，睡前贴一贴。
+  image: {layout: poster, shape: box, palette: purple, brand: 云栖, lines: [一贴改善失眠 降血压, 云栖草本足贴, 30 贴 ¥69]}
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-17], span: 一贴改善失眠 降血压}
+  must_keep: [云栖, ¥69]
+  revision:
+    image_lines: [一贴好睡眠 告别失眠, 云栖草本足贴, 30 贴 ¥69]
+    labels:
+      - {cat: MEDICAL, clauses: [CN-AL-17], span: 告别失眠}
+- id: zh-t23
+  split: test
+  kind: image
+  copy: 青禾护手霜，冬天手干就用它。
+  image: {layout: banner, shape: tube, palette: pink, brand: 青禾, lines: [治疗湿疹 三天见效, 青禾修护护手霜, 50g ¥45]}
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-17], span: 治疗湿疹 三天见效}
+- id: zh-t24
+  split: test
+  kind: image
+  copy: 山屿灵芝孢子粉（保健食品），送长辈的好礼。
+  image: {layout: poster, shape: jar, palette: red, brand: 山屿, lines: [增强免疫力 抗癌防癌, 山屿灵芝孢子粉, 保健食品 60 粒]}
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-18], span: 抗癌防癌}
+- id: zh-t25
+  split: test
+  kind: image
+  copy: 澄心洁面乳，早晚洗脸用。
+  image: {layout: poster, shape: tube, palette: teal, brand: 澄心, lines: [温和氨基酸配方, 敏感肌可用 澄心洁面乳, 120g ¥59]}
+  labels: []
+  trap: 只说配方温和、适用肤质，没有涉及疾病或治疗。
+  basis: [CN-AL-17]
+- id: zh-t26
+  split: test
+  kind: image
+  copy: 知更留学雅思冲刺班，报名中。
+  image: {layout: banner, shape: book, palette: blue, brand: 知更, lines: [雅思 7 分保过 不过退款, 知更雅思冲刺班 8 周, 咨询 400-000-0000]}
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-24], span: 雅思 7 分保过 不过退款}
+- id: zh-t27
+  split: test
+  kind: image
+  copy: 山屿财富稳盈计划，现在开放申购。
+  image: {layout: poster, shape: card, palette: gold, brand: 山屿, lines: [年化 12% 保本保息 无风险, 山屿财富稳盈计划, 起投 1 万元]}
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-25], span: 年化 12% 保本保息 无风险}
+  must_keep: [山屿, 1 万元]
+  revision:
+    image_lines: [稳健理财 长期陪伴, 山屿财富稳盈计划, 理财非存款 产品有风险 投资须谨慎]
+    labels: []
+- id: zh-t28
+  split: test
+  kind: image
+  copy: 山屿财富稳健理财，长期陪伴。
+  image: {layout: poster, shape: card, palette: navy, brand: 山屿, lines: [稳健理财 长期陪伴, 山屿财富, 理财非存款 产品有风险 投资须谨慎]}
+  labels: []
+  trap: 没有收益承诺，并有风险提示。
+  basis: [CN-AL-25]
+- id: zh-t29
+  split: test
+  kind: image
+  copy: 青禾浓缩洗衣液，一瓶顶三瓶。
+  image: {layout: banner, shape: bottle, palette: blue, brand: 青禾, lines: [别家洗衣液都是兑水的, 青禾浓缩度是它们的 3 倍, 2kg ¥39.9]}
+  labels:
+    - {cat: DISPARAGE, clauses: [CN-AL-13], span: 别家洗衣液都是兑水的}
+    - {cat: DATA, clauses: [CN-AL-11-2], span: 青禾浓缩度是它们的 3 倍}
+- id: zh-t30
+  split: test
+  kind: image
+  copy: 青禾充电宝 2 代，续航升级。
+  image: {layout: poster, shape: powerbank, palette: gray, brand: 青禾, lines: [续航比上一代提升 20%, 数据来源：青禾实验室 2025 年 5 月测试, 青禾充电宝 2 代 ¥159]}
+  labels: []
+  trap: 与本品牌上一代比较，并写明了数据来源。
+  basis: [CN-SAMR-6, CN-AL-11-2]
+- id: zh-t31
+  split: test
+  kind: image
+  copy: 云栖抗皱面霜，熬夜党必备。
+  image: {layout: poster, shape: jar, palette: pink, brand: 云栖, lines: [97% 的用户说皱纹变少了, 云栖紧致面霜, 50ml ¥239]}
+  labels:
+    - {cat: DATA, clauses: [CN-AL-11-2], span: 97% 的用户说皱纹变少了}
+- id: zh-t32
+  split: test
+  kind: image
+  copy: 木朴竞速跑鞋，轻快回弹。
+  image: {layout: banner, shape: shoe, palette: orange, brand: 木朴, lines: [中底回弹率 72%, 国家体育用品质量检验检测中心 2025 年检测报告, 木朴竞速跑鞋 ¥599]}
+  labels: []
+  trap: 数据写明了检测机构和时间。
+  basis: [CN-AL-11-2]
+- id: zh-t33
+  split: test
+  kind: image
+  copy: 醉山河酱香白酒，好友相聚。
+  image: {layout: scene, scene: toast-baijiu, palette: red, brand: 醉山河, lines: [醉山河 酱香型白酒, 53%vol 500ml]}
+  labels:
+    - {cat: ALCOHOL, clauses: [CN-AL-23], visual: 画面中有人举杯饮酒}
+- id: zh-t34
+  split: test
+  kind: image
+  copy: 麦岭精酿啤酒，夏日新品。
+  image: {layout: scene, scene: drink-beer, palette: amber, brand: 麦岭, lines: [麦岭精酿啤酒, 500ml 4.8%vol]}
+  labels:
+    - {cat: ALCOHOL, clauses: [CN-AL-23], visual: 画面中有人正在喝啤酒}
+- id: zh-t35
+  split: test
+  kind: image
+  copy: 麦岭精酿酒馆，周末夜场。
+  image: {layout: banner, shape: beer, palette: amber, brand: 麦岭, lines: [今晚不醉不归, 第二瓶半价 麦岭精酿酒馆, 周五周六 20:00 后]}
+  labels:
+    - {cat: ALCOHOL, clauses: [CN-AL-23], span: 今晚不醉不归}
+- id: zh-t36
+  split: test
+  kind: image
+  copy: 醉山河酱香白酒，礼盒装。
+  image: {layout: poster, shape: liquor, palette: red, brand: 醉山河, lines: [醉山河 酱香型白酒, 53%vol 500ml 礼盒装, 理性饮酒 禁止酒驾]}
+  labels: []
+  trap: 只展示酒瓶和酒精度，没有饮酒动作、劝酒或功效宣传。
+  basis: [CN-AL-23]
+- id: zh-t37
+  split: test
+  kind: image
+  copy: 青禾手机 X5，新品发布。
+  image: {layout: poster, shape: phone, palette: red, brand: 青禾, lines: [国货新旗舰 青禾 X5, 6000mAh 大电池, ¥2999 起], extra: flag}
+  labels:
+    - {cat: FLAG, clauses: [CN-AL-9-1], visual: 画面左上角有五星红旗}
+- id: zh-t38
+  split: test
+  kind: image
+  copy: 木朴家居国庆大促。
+  image: {layout: banner, shape: sofa, palette: red, brand: 木朴, lines: [国庆大促 全场 5 折, 木朴家居, 10 月 1 日—7 日], extra: flag}
+  labels:
+    - {cat: FLAG, clauses: [CN-AL-9-1], visual: 画面左上角有五星红旗}
+- id: zh-t39
+  split: test
+  kind: image
+  copy: 云栖家纺国庆大促。
+  image: {layout: banner, shape: bedding, palette: red, brand: 云栖, lines: [国庆大促 全场 5 折, 云栖家纺, 10 月 1 日—7 日], extra: lanterns}
+  labels: []
+  trap: 画面是节日灯笼，没有国旗、国徽等。
+  basis: [CN-AL-9-1]
+- id: zh-t40
+  split: test
+  kind: image
+  copy: 木朴帆布包，通勤上课都能装。
+  image: {layout: poster, shape: bag, palette: beige, brand: 木朴, lines: [木朴帆布托特包, 容量 20L 可放 14 寸电脑, ¥89]}
+  labels: []
+
+# ---- harder items, added 2026-11-13 after the dev run showed both model arms at 24/24; written before any model saw the test split
+- id: zh-t41
+  split: test
+  kind: image
+  copy: 青禾声波电动牙刷，换新季。
+  image: {layout: poster, shape: tube, palette: blue, brand: 青禾, lines: [全网销量 N0.1, 青禾声波电动牙刷, ¥199]}
+  labels:
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 全网销量 N0.1}
+- id: zh-t42
+  split: test
+  kind: text
+  copy: 王阿姨喝了三个月澄心苦瓜茶，复查时医生说血糖指标正常了。一盒 ¥88。
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-17], span: 复查时医生说血糖指标正常了}
+- id: zh-t43
+  split: test
+  kind: text
+  copy: 知更公考：往届学员 100% 上岸，今年轮到你！
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-24], span: 往届学员 100% 上岸，今年轮到你}
+    - {cat: DATA, clauses: [CN-AL-11-2], span: 往届学员 100% 上岸}
+- id: zh-t44
+  split: test
+  kind: image
+  copy: 云栖草本代茶饮，春季焕新。
+  image: {layout: poster, shape: tea, palette: green, brand: 云栖, lines: [春季焕新, 云栖草本代茶饮, 20 袋 ¥59], small: [本品可替代降压药，长期饮用效果更佳]}
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-17], span: 本品可替代降压药}
+- id: zh-t45
+  split: test
+  kind: image
+  copy: 山屿财富安盈系列，年化收益——
+  image: {layout: banner, shape: card, palette: gold, brand: 山屿, lines: [8% 起, 到期本息全额兑付, 山屿财富安盈系列]}
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-25], span: 到期本息全额兑付}
+- id: zh-t46
+  split: test
+  kind: text
+  copy: 木朴床垫：我们不说“最好”，只说更适合你的腰。试睡 100 晚，不满意可退。
+  labels: []
+  trap: “最好”出现在否定句里，广告并没有宣称商品最好。
+  basis: [CN-AL-9-3]
+- id: zh-t47
+  split: test
+  kind: image
+  copy: 知更治愈系插画手账本，新年款。
+  image: {layout: poster, shape: book, palette: pink, brand: 知更, lines: [治愈系插画手账本, 知更 2026 新年款, ¥36]}
+  labels: []
+  trap: “治愈系”是插画风格，不涉及疾病治疗。
+  basis: [CN-AL-17]
+- id: zh-t48
+  split: test
+  kind: image
+  copy: 山屿运动水壶，户外新品。
+  image: {layout: poster, shape: tumbler, palette: orange, brand: 山屿, lines: [山屿运动水壶, 750ml 单手开盖, ¥79], extra: flag_small}
+  labels:
+    - {cat: FLAG, clauses: [CN-AL-9-1], visual: 画面右下角有一面小的五星红旗}

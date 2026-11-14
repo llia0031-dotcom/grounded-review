@@ -1,0 +1,146 @@
+# Multi-turn set 4 (v1.3 check), written 2026-11-13 after the v1.2 run and before any model saw these items.
+# Text ads only. Same fields as items_mt2.yaml. Brands are fictional.
+# Five ads break two rules. Two need a fixed statement the advertiser has not written
+# (本品不能代替药物 for a health food; a risk statement for a fund).
+# 9 advertiser versions fix everything, 3 still break a rule.
+
+- id: zh-p01
+  lang: zh
+  split: mt4
+  kind: text
+  copy: 云栖牌褪黑素软糖（保健食品），一粒倒头就睡，九成用户三天见效。
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-18], span: 一粒倒头就睡}
+    - {cat: DATA, clauses: [CN-AL-11-2], span: 九成用户三天见效}
+  must_keep: [云栖, 褪黑素]
+  revision:
+    copy: 云栖牌褪黑素软糖（保健食品），每瓶 60 粒。本品不能代替药物。
+    labels: []
+- id: zh-p02
+  lang: zh
+  split: mt4
+  kind: text
+  copy: 启明少儿编程：全国最好的编程课，学完保证拿奖。
+  labels:
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 全国最好的编程课}
+    - {cat: GUARANTEE, clauses: [CN-AL-24], span: 学完保证拿奖}
+  must_keep: [启明, 编程]
+  revision:
+    copy: 启明少儿编程：每周两次直播课，可免费试听一节。
+    labels: []
+- id: zh-p03
+  lang: zh
+  split: mt4
+  kind: text
+  copy: 山屿财富优选：保本保息，年化 8%，100 元起投。
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-25], span: 保本保息，年化 8%}
+  must_keep: [山屿, 100 元]
+  revision:
+    copy: 山屿财富优选：年化 8% 稳稳到手，100 元起投。
+    labels:
+      - {cat: GUARANTEE, clauses: [CN-AL-25], span: 年化 8% 稳稳到手}
+- id: zh-p04
+  lang: zh
+  split: mt4
+  kind: text
+  copy: 青禾洗碗机，不像某些品牌洗不干净还费水，¥2999。
+  labels:
+    - {cat: DISPARAGE, clauses: [CN-AL-13], span: 不像某些品牌洗不干净还费水}
+  must_keep: [青禾, ¥2999]
+  revision:
+    copy: 青禾洗碗机，六套容量，热风烘干，¥2999。
+    labels: []
+- id: zh-p05
+  lang: zh
+  split: mt4
+  kind: text
+  copy: 醉山河黄酒，冬天喝一杯驱寒暖身，国内第一黄酒品牌。
+  labels:
+    - {cat: ALCOHOL, clauses: [CN-AL-23], span: 冬天喝一杯驱寒暖身}
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 国内第一黄酒品牌}
+  must_keep: [醉山河, 黄酒]
+  revision:
+    copy: 醉山河黄酒，传统工艺酿造，500 毫升装。
+    labels: []
+- id: zh-p06
+  lang: zh
+  split: mt4
+  kind: text
+  copy: 澄心护眼台灯，每天照两小时，近视度数降下来。¥199
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-17], span: 每天照两小时，近视度数降下来}
+  must_keep: [澄心, ¥199]
+  revision:
+    copy: 澄心护眼台灯，用它学习，近视不再加深。¥199
+    labels:
+      - {cat: MEDICAL, clauses: [CN-AL-17], span: 用它学习，近视不再加深}
+- id: en-p01
+  lang: en
+  split: mt4
+  kind: text
+  copy: "Slimora Shake: drop two dress sizes in 14 days."
+  labels:
+    - {cat: WEIGHT, clauses: [TT-WM-WEIGHT], span: "drop two dress sizes in 14 days"}
+  must_keep: [Slimora]
+  revision:
+    copy: "Slimora Shake: 20 g protein per serving. Use as part of a balanced diet and regular exercise."
+    labels: []
+- id: en-p02
+  lang: en
+  split: mt4
+  kind: text
+  copy: "Kestrel Bond Fund: the safest investment ever, 30% returns guaranteed."
+  labels:
+    - {cat: ABSOLUTE, clauses: [TT-MIS-CLAIMS], span: "the safest investment ever"}
+    - {cat: GUARANTEE, clauses: [TT-DEC-FINREP, TT-FIN, TT-MIS-CLAIMS], span: "30% returns guaranteed"}
+  must_keep: [Kestrel]
+  revision:
+    copy: "Kestrel Bond Fund: invest from $50. Capital at risk; past performance does not guarantee future returns."
+    labels: []
+- id: en-p03
+  lang: en
+  split: mt4
+  kind: text
+  copy: "Harbor Cider: three cans and you're the life of the party. 5% ABV."
+  labels:
+    - {cat: ALCOHOL, clauses: [TT-ALC], span: "three cans and you're the life of the party"}
+  must_keep: [Harbor Cider, 5% ABV]
+  revision:
+    copy: "Harbor Cider, 5% ABV: crisp apple taste. Please drink responsibly."
+    labels: []
+- id: en-p04
+  lang: en
+  split: mt4
+  kind: text
+  copy: "Lumeo Calm Tea treats anxiety naturally in just one cup. $9."
+  labels:
+    - {cat: MEDICAL, clauses: [TT-MIS-CLAIMS], span: "treats anxiety naturally in just one cup"}
+  must_keep: [Lumeo, $9]
+  revision:
+    copy: "Lumeo Calm Tea: one cup and your anxiety melts away. $9."
+    labels:
+      - {cat: MEDICAL, clauses: [TT-MIS-CLAIMS], span: "one cup and your anxiety melts away"}
+- id: en-p05
+  lang: en
+  split: mt4
+  kind: text
+  copy: "Oakline Vacuum: the most powerful vacuum on the market. Dysar vacuums break within a year."
+  labels:
+    - {cat: ABSOLUTE, clauses: [TT-MIS-CLAIMS], span: "the most powerful vacuum on the market"}
+    - {cat: DISPARAGE, clauses: [TT-MIS-COMPARE], span: "Dysar vacuums break within a year"}
+  must_keep: [Oakline]
+  revision:
+    copy: "Oakline Vacuum: 60-minute battery, washable filter."
+    labels: []
+- id: en-p06
+  lang: en
+  split: mt4
+  kind: text
+  copy: "Brightfold IELTS Prep: score 8.0 guaranteed in 30 days. $199."
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-MIS-CLAIMS], span: "score 8.0 guaranteed in 30 days"}
+  must_keep: [Brightfold, $199]
+  revision:
+    copy: "Brightfold IELTS Prep: 30-day course with four full mock tests. $199."
+    labels: []

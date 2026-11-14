@@ -1,0 +1,501 @@
+{
+ "ads": [
+  {
+   "id": "en-t21",
+   "name": "Nuvola Skin Balm",
+   "kind": "image",
+   "caption": "Nuvola Skin Balm.",
+   "words": [
+    "Clears psoriasis for good",
+    "Nuvola Skin Balm",
+    "$24",
+    "Nuvola"
+   ],
+   "image": "ads/en-t21.png",
+   "size": [
+    800,
+    800
+   ],
+   "decision": "reject",
+   "violations": [
+    {
+     "cat": "MEDICAL",
+     "catName": "Medical claim",
+     "clauseRef": "Misleading and false content · Misleading claims",
+     "clauseText": "",
+     "clauseUrl": "https://ads.tiktok.com/help/article/tiktok-ads-policy-misleading-and-false-content?lang=en",
+     "policySpan": null,
+     "adQuote": "Clears psoriasis for good",
+     "visual": "",
+     "why": "The ad claims a non-medical skin balm clears psoriasis, a chronic skin disease, and does so permanently. This is a disease-cure claim for a product that is not a medical treatment and is not allowed.",
+     "verified": true,
+     "marks": [
+      {
+       "line": 1,
+       "span": [
+        0,
+        25
+       ]
+      }
+     ]
+    },
+    {
+     "cat": "ABSOLUTE",
+     "catName": "Absolute claim",
+     "clauseRef": "Misleading and false content · Misleading claims",
+     "clauseText": "",
+     "clauseUrl": "https://ads.tiktok.com/help/article/tiktok-ads-policy-misleading-and-false-content?lang=en",
+     "policySpan": null,
+     "adQuote": "Clears psoriasis for good",
+     "visual": "",
+     "why": "The phrase \"for good\" is an absolute term about the product's effect over time, implying a permanent result that cannot be substantiated.",
+     "verified": true,
+     "marks": [
+      {
+       "line": 1,
+       "span": [
+        0,
+        25
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": "The headline is the only problem. The product name, price and jar image are acceptable on their own. The advertiser could run a revised ad that describes the balm as a moisturizing skin care product without any disease or permanence claim."
+  },
+  {
+   "id": "en-t30",
+   "name": "Lumeo Spot Serum",
+   "kind": "image",
+   "caption": "Lumeo Spot Serum. See the difference.",
+   "words": [
+    "BEFORE",
+    "AFTER",
+    "Lumeo Spot Serum"
+   ],
+   "image": "ads/en-t30.png",
+   "size": [
+    1000,
+    560
+   ],
+   "decision": "reject",
+   "violations": [
+    {
+     "cat": "BEFORE_AFTER",
+     "catName": "Before-and-after comparison",
+     "clauseRef": "Misleading and false content · Malicious, Subjective and Before-and-after Comparisons",
+     "clauseText": "",
+     "clauseUrl": "https://ads.tiktok.com/help/article/tiktok-ads-policy-misleading-and-false-content?lang=en",
+     "policySpan": null,
+     "adQuote": "BEFORE",
+     "visual": "",
+     "why": "The ad uses a before-and-after comparison to show the product's effect on spots, which can give viewers a false or distorted impression of the real results. Before-and-after product effect comparisons are not allowed.",
+     "verified": true,
+     "marks": [
+      {
+       "line": 1,
+       "span": [
+        0,
+        6
+       ]
+      }
+     ]
+    },
+    {
+     "cat": "GUARANTEE",
+     "catName": "Guaranteed outcome",
+     "clauseRef": "Misleading and false content · Misleading claims",
+     "clauseText": "",
+     "clauseUrl": "https://ads.tiktok.com/help/article/tiktok-ads-policy-misleading-and-false-content?lang=en",
+     "policySpan": null,
+     "adQuote": "See the difference.",
+     "visual": "",
+     "why": "The caption and images promise that the serum removes spots entirely, which exaggerates the product's effect. Such results claims are not allowed.",
+     "verified": true,
+     "marks": [
+      {
+       "line": 0,
+       "span": [
+        18,
+        37
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": "The caption 'Lumeo Spot Serum. See the difference.' is not itself an absolute claim, but combined with the image it promises a visible, complete result. The ad was rejected for the before-and-after comparison, which is the core violation. No alcohol, weight, flag or data issues were found."
+  },
+  {
+   "id": "en-t35",
+   "name": "Harbor Lager",
+   "kind": "image",
+   "caption": "Harbor Lager party pack.",
+   "words": [
+    "Harbor Lager Party Pack",
+    "4.5% ABV"
+   ],
+   "image": "ads/en-t35.png",
+   "size": [
+    800,
+    800
+   ],
+   "decision": "reject",
+   "violations": [
+    {
+     "cat": "ALCOHOL",
+     "catName": "Alcohol rules",
+     "clauseRef": "Alcohol",
+     "clauseText": "",
+     "clauseUrl": "https://ads.tiktok.com/help/article/tiktok-ads-policy-alcohol?lang=en",
+     "policySpan": null,
+     "adQuote": "Harbor Lager party pack.",
+     "visual": "",
+     "why": "The ad shows excessive drinking and intoxication: a person lies unconscious among empty bottles, and the dizzy swirls signal drunkenness. This breaks the alcohol policy's ban on portraying intoxication and reckless drinking.",
+     "verified": true,
+     "marks": [
+      {
+       "line": 0,
+       "span": [
+        0,
+        24
+       ]
+      }
+     ]
+    },
+    {
+     "cat": "ALCOHOL",
+     "catName": "Alcohol rules",
+     "clauseRef": "Alcohol",
+     "clauseText": "",
+     "clauseUrl": "https://ads.tiktok.com/help/article/tiktok-ads-policy-alcohol?lang=en",
+     "policySpan": null,
+     "adQuote": "",
+     "visual": "The ad contains no responsible drinking disclaimer anywhere in the image or caption; the only alcohol information is '4.5% ABV'.",
+     "why": "Alcohol ads must carry a responsible drinking disclaimer, and this ad has none. This is a missing required statement, so the ad cannot run even after the intoxication imagery is removed.",
+     "verified": true,
+     "marks": []
+    }
+   ],
+   "notes": "The strength statement ('4.5% ABV') is present, so the alcohol content requirement is met. The caption 'Harbor Lager party pack' is not a violation by itself; the problems are the intoxication imagery and the missing disclaimer. No age-related issue is visible, though the figures' ages are not clear."
+  },
+  {
+   "id": "en-t41",
+   "name": "Lumeo sunscreen",
+   "kind": "text",
+   "caption": "The 𝗯𝗲𝘀𝘁 sunscreen in the world ☀️ Lumeo SPF 50, $19.",
+   "words": [],
+   "image": null,
+   "size": null,
+   "decision": "reject",
+   "violations": [
+    {
+     "cat": "ABSOLUTE",
+     "catName": "Absolute claim",
+     "clauseRef": "Misleading and false content · Misleading claims",
+     "clauseText": "",
+     "clauseUrl": "https://ads.tiktok.com/help/article/tiktok-ads-policy-misleading-and-false-content?lang=en",
+     "policySpan": null,
+     "adQuote": "The 𝗯𝗲𝘀𝘁 sunscreen in the world",
+     "visual": "",
+     "why": "The ad calls Lumeo SPF 50 \"the best sunscreen in the world\", an absolute superlative claim about the product tied to region. The bold Unicode styling of \"best\" does not change the claim and does not make it allowed.",
+     "verified": true,
+     "marks": [
+      {
+       "line": 0,
+       "span": [
+        0,
+        35
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": "The price ($19) and product name are not a policy problem on their own. The bold formatting of \"best\" does not avoid the rule, since the wording is still an absolute superlative claim."
+  },
+  {
+   "id": "en-t12",
+   "name": "Nuvola headphones",
+   "kind": "text",
+   "caption": "Nuvola noise-cancelling headphones: the cure for boring commutes.",
+   "words": [],
+   "image": null,
+   "size": null,
+   "decision": "approve",
+   "violations": [],
+   "notes": "\"The cure for boring commutes\" uses \"cure\" figuratively for a lifestyle inconvenience, not a disease, so the medical-cure example in Misleading and false content · Misleading claims (cures for incurable diseases) does not apply. It is obvious puffery rather than a measurable product result, and it contains no absolute term about time, region, or brand, no superlative, no data, and no guaranteed outcome. Approved, though the advertiser should avoid moving toward health-related or guaranteed-result wording in future versions."
+  },
+  {
+   "id": "en-t32",
+   "name": "Brightfold Kids Club",
+   "kind": "image",
+   "caption": "Brightfold Kids Club.",
+   "words": [
+    "Before & After School Club",
+    "Ages 5–11",
+    "Brightfold Kids Club"
+   ],
+   "image": "ads/en-t32.png",
+   "size": [
+    1000,
+    560
+   ],
+   "decision": "approve",
+   "violations": [],
+   "notes": "The ad promotes a before and after school club for ages 5–11 (Brightfold Kids Club). The text is descriptive only: it makes no absolute or superlative claims, no medical, weight, or alcohol content, no guaranteed outcomes, no data or statistics, no comparisons with other businesses, no before-and-after results, and no flag or emblem. The house graphic is a plain illustration with no misleading elements. Nothing in the ad breaks the policy library."
+  }
+ ],
+ "conversations": [
+  {
+   "id": "en-t07",
+   "name": "Lumeo cream",
+   "first": {
+    "caption": "GlowMax cream is overpriced junk. Switch to Lumeo and see real results.",
+    "words": [],
+    "image": null,
+    "size": null,
+    "decision": "reject",
+    "violations": [
+     {
+      "cat": "DISPARAGE",
+      "catName": "Running down a competitor",
+      "clauseRef": "Misleading and false content · Malicious, Subjective and Before-and-after Comparisons",
+      "clauseText": "",
+      "clauseUrl": "https://ads.tiktok.com/help/article/tiktok-ads-policy-misleading-and-false-content?lang=en",
+      "policySpan": null,
+      "adQuote": "GlowMax cream is overpriced junk.",
+      "visual": "",
+      "why": "The ad names a competitor's product (GlowMax) and makes a subjective negative judgement about its price and quality (\"overpriced junk\"). This is a disparaging value-based comparison, which is not allowed.",
+      "verified": true,
+      "marks": [
+       {
+        "line": 0,
+        "span": [
+         0,
+         33
+        ]
+       }
+      ]
+     }
+    ],
+    "notes": "The line \"see real results\" also implies Lumeo produces effects, but it is vague and makes no specific outcome promise, so I did not flag it as a separate violation. Advertiser should remove the negative comparison of GlowMax; a neutral statement about Lumeo alone would not be a disparagement issue, though any effect claims for Lumeo must be substantiated."
+   },
+   "answer": "Your ad was rejected because the caption says \"GlowMax cream is overpriced junk.\" This breaks the Misleading and false content rule on malicious, subjective and comparative claims. Calling a named competitor's product overpriced and junk is a negative value judgement about its price and quality, and comparative claims of that kind are not allowed. To fix it, remove every negative statement about GlowMax, including its name if you want, and talk only about Lumeo. The phrase \"see real results\" also suggests a product effect, so keep the wording neutral and avoid implying that Lumeo guarantees any outcome unless you can back it up. Revised caption below. The ad has no image, so there are no image lines to change.",
+   "fixCaption": "Discover Lumeo cream. Learn more about what it offers and try it for yourself.",
+   "fixWords": [],
+   "second": {
+    "caption": "Lumeo cream: real results, unlike GlowMax's watered-down formula.",
+    "words": [],
+    "image": null,
+    "size": null,
+    "decision": "reject",
+    "violations": [
+     {
+      "cat": "DISPARAGE",
+      "catName": "Running down a competitor",
+      "clauseRef": "Misleading and false content · Malicious, Subjective and Before-and-after Comparisons",
+      "clauseText": "",
+      "clauseUrl": "https://ads.tiktok.com/help/article/tiktok-ads-policy-misleading-and-false-content?lang=en",
+      "policySpan": null,
+      "adQuote": "unlike GlowMax's watered-down formula",
+      "visual": "",
+      "why": "The ad still names GlowMax and makes a negative judgement about its formula quality (\"watered-down\"), which is a subjective comparison of a competitor's product attributes. This is not allowed, even though the previous wording was changed.",
+      "verified": true,
+      "marks": [
+       {
+        "line": 0,
+        "span": [
+         27,
+         64
+        ]
+       }
+      ]
+     }
+    ],
+    "notes": "\"Real results\" is a vague effect claim with no specific promise, so I did not flag it separately. The ad is rejected only for the comparison with GlowMax. A version that mentions only Lumeo, with no reference to GlowMax, would not hit this rule."
+   }
+  },
+  {
+   "id": "en-t05",
+   "name": "Slimora drops",
+   "first": {
+    "caption": "Lose 10 kg in 7 days with Slimora drops. No diet, no gym.",
+    "words": [],
+    "image": null,
+    "size": null,
+    "decision": "reject",
+    "violations": [
+     {
+      "cat": "WEIGHT",
+      "catName": "Weight and body image",
+      "clauseRef": "Weight Management",
+      "clauseText": "",
+      "clauseUrl": "https://ads.tiktok.com/help/article/tiktok-ads-policy-weight-management?lang=en",
+      "policySpan": null,
+      "adQuote": "Lose 10 kg in 7 days with Slimora drops. No diet, no gym.",
+      "visual": "",
+      "why": "The ad claims the drops alone make you lose 10 kg in 7 days with no diet or gym, which is an exaggerated weight-loss claim that presents weight loss as effortless and product-only.",
+      "verified": true,
+      "marks": [
+       {
+        "line": 0,
+        "span": [
+         0,
+         57
+        ]
+       }
+      ]
+     },
+     {
+      "cat": "GUARANTEE",
+      "catName": "Guaranteed outcome",
+      "clauseRef": "Misleading and false content · Misleading claims",
+      "clauseText": "",
+      "clauseUrl": "https://ads.tiktok.com/help/article/tiktok-ads-policy-misleading-and-false-content?lang=en",
+      "policySpan": null,
+      "adQuote": "Lose 10 kg in 7 days with Slimora drops.",
+      "visual": "",
+      "why": "The specific promise of a 10 kg loss in 7 days is an exaggerated, absolute claim about the product's effect in relation to time, and it is not allowed.",
+      "verified": true,
+      "marks": [
+       {
+        "line": 0,
+        "span": [
+         0,
+         40
+        ]
+       }
+      ]
+     }
+    ],
+    "notes": "The ad is text only, so no image check was needed. Rejected for the product-alone weight-loss claim and the exaggerated 10 kg in 7 days promise. The ad also has no weight-loss-supplement or healthy-lifestyle context, and the \"easy\" framing (\"No diet, no gym\") suggests weight loss is effortless."
+   },
+   "answer": "Your ad is rejected because it breaks two rules. (1) Weight management: \"Lose 10 kg in 7 days with Slimora drops. No diet, no gym.\" claims the product alone, without diet or exercise, causes major weight loss, and it suggests weight loss is easy. (2) Misleading claims: \"10 kg in 7 days\" is an exaggerated, time-bound promise of product results. To fix it, remove the specific result and the \"No diet, no gym\" wording, and do not present the product as a standalone weight-loss solution. If it is a weight-loss supplement, describe it in general terms and link it to a healthy lifestyle. Check that the product is allowed in your market, since the rules differ by country.",
+   "fixCaption": "Slimora drops: a supplement to support your healthy lifestyle. Pair with a balanced diet and regular exercise. Results vary.",
+   "fixWords": [],
+   "second": {
+    "caption": "Slimora meal shakes: a convenient option alongside a balanced diet and regular exercise. For adults 18+.",
+    "words": [],
+    "image": null,
+    "size": null,
+    "decision": "approve",
+    "violations": [],
+    "notes": "The revised caption no longer makes a weight-loss result claim, and it frames the product as an option alongside a balanced diet and regular exercise. It also states \"For adults 18+.\" Meal replacement products are a category the weight management policy lists as permitted in several markets, subject to age restrictions, local licensing, and full policy compliance. The market for this ad is not stated in the review request, so confirm the target market allows meal replacement advertising and that any required licences are in place before it runs. The ad is text only, so no image review was needed."
+   }
+  }
+ ],
+ "results": {
+  "ads": 96,
+  "zh": 48,
+  "en": 48,
+  "images": 57,
+  "runs": 2,
+  "violRejected": {
+   "agent": [
+    124,
+    124
+   ],
+   "oneshot": [
+    124,
+    124
+   ]
+  },
+  "clauseRight": {
+   "agent": [
+    129,
+    129
+   ],
+   "oneshot": [
+    129,
+    129
+   ]
+  },
+  "trapsOk": {
+   "agent": [
+    55,
+    60
+   ],
+   "oneshot": [
+    59,
+    60
+   ]
+  },
+  "cost": {
+   "agent": 0.0023,
+   "oneshot": 0.001
+  },
+  "latency": {
+   "agent": 14.2,
+   "oneshot": 7.9
+  },
+  "chart": [
+   {
+    "arm": "agent",
+    "name": "Review agent (tools)",
+    "right": 111,
+    "n": 114,
+    "violRejected": 74,
+    "viol": 74,
+    "trapsOk": 33,
+    "traps": 36
+   },
+   {
+    "arm": "oneshot",
+    "name": "One prompt",
+    "right": 113,
+    "n": 114,
+    "violRejected": 74,
+    "viol": 74,
+    "trapsOk": 35,
+    "traps": 36
+   },
+   {
+    "arm": "safeguard-vl",
+    "name": "SafeGuard-VL",
+    "right": 49,
+    "n": 57,
+    "violRejected": 32,
+    "viol": 37,
+    "trapsOk": 15,
+    "traps": 18
+   },
+   {
+    "arm": "clip",
+    "name": "CLIP",
+    "right": 36,
+    "n": 57,
+    "violRejected": 23,
+    "viol": 37,
+    "trapsOk": 11,
+    "traps": 18
+   },
+   {
+    "arm": "siglip2",
+    "name": "SigLIP 2",
+    "right": 35,
+    "n": 57,
+    "violRejected": 26,
+    "viol": 37,
+    "trapsOk": 7,
+    "traps": 18
+   },
+   {
+    "arm": "wordlist",
+    "name": "Banned-word list",
+    "right": 27,
+    "n": 57,
+    "violRejected": 9,
+    "viol": 37,
+    "trapsOk": 16,
+    "traps": 18
+   }
+  ],
+  "alwaysReject": [
+   37,
+   57
+  ],
+  "fixPassed": [
+   19,
+   24
+  ]
+ }
+}

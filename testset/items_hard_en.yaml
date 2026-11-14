@@ -1,0 +1,84 @@
+# Harder English ads (split: hard). Written 2026-11-14 after the test run, before any model saw them.
+# Longer captions with the violation in the middle, three-frame short-video screenshots (subtitles in the frames),
+# implied claims, and traps whose risky words are allowed. Brands are fictional. Answers fixed at writing.
+- id: en-h01
+  split: hard
+  kind: text
+  copy: "Meet the new Oakline Trail Pack 2. We rebuilt the hip belt after 1,200 customer reviews, moved the bottle pocket within reach and added a rain cover that packs into the lid. It's simply the most comfortable hiking pack ever made. 28 L, 1.1 kg, five colours. $139, free returns within 30 days."
+  labels:
+    - {cat: ABSOLUTE, clauses: [TT-MIS-CLAIMS], span: "It's simply the most comfortable hiking pack ever made."}
+- id: en-h02
+  split: hard
+  kind: text
+  copy: "Nuvola Calm Tea is our evening blend of chamomile, lemon balm and lavender. Steep for five minutes and add honey if you like. From our inbox this week: \"I was diagnosed with an anxiety disorder two years ago. Since switching to Nuvola Calm Tea I've come off my medication.\" 20 bags, $12."
+  labels:
+    - {cat: MEDICAL, clauses: [TT-MIS-CLAIMS], span: "Since switching to Nuvola Calm Tea I've come off my medication."}
+- id: en-h03
+  split: hard
+  kind: text
+  copy: "Kestrel Invest stocks and shares ISA: invest from £25 a month across 2,000 funds, and change or pause any time. Nothing here is guaranteed: the value of investments can go down as well as up, and you may get back less than you put in. Past performance is not a reliable indicator of future results. Capital at risk."
+  labels: []
+  trap: "\"Guaranteed\" appears only to say nothing is guaranteed; risks are stated and no return is promised."
+  basis: [TT-FIN, TT-DEC-FINREP]
+- id: en-h04
+  split: hard
+  kind: text
+  copy: "Brightfold Academy summer bootcamp: six weeks of live coding classes, a portfolio project every week and one-to-one mentor reviews. Classes run Monday to Thursday, 7 to 9 pm. Finish the bootcamp and land a developer job within 90 days, or we refund every cent. Early bird price $1,490 until June 30."
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-MIS-CLAIMS], span: "Finish the bootcamp and land a developer job within 90 days, or we refund every cent."}
+- id: en-h05
+  split: hard
+  kind: text
+  copy: "New season, new you. The Slimora 21-day reset is a plan, not a diet: three shakes, one real meal and a daily walk. Members say they finally feel confident in a swimsuit again, no more hiding at the back of photos. Starter box $59, cancel any time."
+  labels:
+    - {cat: WEIGHT, clauses: [TT-WM-BODY], span: "no more hiding at the back of photos"}
+- id: en-h06
+  split: hard
+  kind: image
+  copy: "Slimora drops. My 30 days."
+  image: {layout: frames, palette: orange, frames: [{body: wide}, {shape: pills}, {body: slim}], lines: [Day 1, Slimora drops every morning, Day 30]}
+  labels:
+    - {cat: BEFORE_AFTER, clauses: [TT-MIS-COMPARE, TT-WM-WEIGHT], visual: "body shapes in the first and last frames, day 1 against day 30"}
+- id: en-h07
+  split: hard
+  kind: image
+  copy: "Harbor Lager. Game day."
+  image: {layout: frames, palette: amber, frames: [{shape: beer}, {scene: drunk-party}, {shape: beer}], lines: [Harbor Lager 4.6% ABV, Match day., Please drink responsibly.]}
+  labels:
+    - {cat: ALCOHOL, clauses: [TT-ALC], visual: "the second frame shows people drunk, one lying on the floor"}
+- id: en-h08
+  split: hard
+  kind: image
+  copy: "Lumeo evening routine in three steps."
+  image: {layout: frames, palette: pink, frames: [{shape: tube}, {shape: jar}, {shape: bottle}], lines: ["Step 1: cleanse", "Step 2: Lumeo Barrier Cream", "Best before 12/2027"]}
+  labels: []
+  trap: "\"Step 1\" numbers a routine and \"Best before\" is a date label; neither ranks the product."
+  basis: [TT-MIS-CLAIMS]
+- id: en-h09
+  split: hard
+  kind: image
+  copy: "Kestrel app. Copy the pros."
+  image: {layout: frames, palette: navy, frames: [{shape: phone}, {shape: phone}, {shape: card}], lines: [I started with $200, Copy my trades in the Kestrel app, "$5,000 a month, zero risk"]}
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-DEC-FINREP, TT-FIN], span: "$5,000 a month, zero risk"}
+- id: en-h10
+  split: hard
+  kind: image
+  copy: "Oakline Armor 2 phone case."
+  image: {layout: banner, shape: phone, palette: gray, brand: Oakline, lines: [Other cases crack., Ours don't., Oakline Armor 2 $34]}
+  labels:
+    - {cat: DISPARAGE, clauses: [TT-MIS-COMPARE], span: "Other cases crack."}
+- id: en-h11
+  split: hard
+  kind: image
+  copy: "Lumeo Clear Gel for oily skin."
+  image: {layout: poster, shape: tube, palette: teal, brand: Lumeo, lines: [Lumeo Clear Gel, Gentle on sensitive skin, $18], small: ["Clinically shown to cure acne in 7 days*", "*Internal study of 12 people"]}
+  labels:
+    - {cat: MEDICAL, clauses: [TT-MIS-CLAIMS], span: "Clinically shown to cure acne in 7 days*"}
+- id: en-h12
+  split: hard
+  kind: text
+  copy: "Harbor Session IPA: citrus hops, a light body and 4.2% ABV. Pairs with grilled fish and spicy noodles. Available in six-packs at selected stores. Must be 21+ to purchase. Please drink responsibly."
+  labels: []
+  trap: "An alcohol ad with strength stated and a responsible drinking line; no drinking shown, no benefits, no appeal to minors."
+  basis: [TT-ALC]

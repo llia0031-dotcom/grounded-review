@@ -1,0 +1,470 @@
+{
+ "oneshot": {
+  "counts": {
+   "items": 48,
+   "tn": 14,
+   "traps": 14,
+   "traps_approved": 14,
+   "exact_categories": 43,
+   "tp": 34,
+   "labels_span": 32,
+   "found_span": 31,
+   "clause_checked": 37,
+   "clause_right": 37,
+   "located": 31,
+   "ad_quotes": 47,
+   "ad_quotes_ok": 45,
+   "policy_quotes": 53,
+   "policy_quotes_ok": 53,
+   "labels_visual": 6,
+   "found_visual": 6,
+   "cost_total": 0.0278
+  },
+  "per_cat": {
+   "ABSOLUTE": {
+    "tp": 6,
+    "fp": 1
+   },
+   "MEDICAL": {
+    "tp": 7,
+    "fn": 1
+   },
+   "GUARANTEE": {
+    "tp": 8,
+    "fp": 4
+   },
+   "DISPARAGE": {
+    "tp": 4
+   },
+   "DATA": {
+    "tp": 4
+   },
+   "ALCOHOL": {
+    "tp": 4
+   },
+   "WEIGHT": {
+    "tp": 2,
+    "fp": 2
+   },
+   "BEFORE_AFTER": {
+    "tp": 2
+   },
+   "FLAG": {}
+  },
+  "per_lang": {
+   "zh": {
+    "items": 24,
+    "correct": 24
+   },
+   "en": {
+    "items": 24,
+    "correct": 24
+   }
+  },
+  "cost_per_item": 0.0005783333333333334,
+  "latency_median": null,
+  "calls_mean": 1.0,
+  "errors": [
+   {
+    "item": "en-h10",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-h10",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-h11",
+    "run": 2,
+    "type": "missed",
+    "cat": "MEDICAL",
+    "kind": "span"
+   },
+   {
+    "item": "en-h11",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-h06",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-h06",
+    "run": 2,
+    "type": "extra",
+    "cat": "WEIGHT",
+    "trap": false
+   },
+   {
+    "item": "en-h06",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-h06",
+    "run": 1,
+    "type": "extra",
+    "cat": "WEIGHT",
+    "trap": false
+   }
+  ],
+  "quote_fail": [
+   {
+    "item": "en-h06",
+    "run": 2,
+    "side": "ad",
+    "status": "quote_not_found",
+    "quote": "Day 1 / Day 30"
+   },
+   {
+    "item": "en-h06",
+    "run": 1,
+    "side": "ad",
+    "status": "quote_too_short",
+    "quote": "Day 1"
+   }
+  ],
+  "agree": {
+   "items": 24,
+   "same_decision": 24,
+   "same_categories": 22
+  }
+ },
+ "agent": {
+  "counts": {
+   "items": 48,
+   "tn": 14,
+   "traps": 14,
+   "traps_approved": 14,
+   "exact_categories": 42,
+   "tp": 34,
+   "labels_span": 32,
+   "found_span": 32,
+   "clause_checked": 38,
+   "clause_right": 37,
+   "located": 32,
+   "ad_quotes": 47,
+   "ad_quotes_ok": 46,
+   "policy_quotes": 51,
+   "policy_quotes_ok": 51,
+   "labels_visual": 6,
+   "found_visual": 6,
+   "cost_total": 0.064
+  },
+  "per_cat": {
+   "ABSOLUTE": {
+    "fp": 1,
+    "tp": 6
+   },
+   "MEDICAL": {
+    "tp": 8
+   },
+   "GUARANTEE": {
+    "tp": 8,
+    "fp": 2
+   },
+   "DISPARAGE": {
+    "tp": 4
+   },
+   "DATA": {
+    "tp": 4,
+    "fp": 1
+   },
+   "ALCOHOL": {
+    "tp": 4
+   },
+   "WEIGHT": {
+    "fp": 2,
+    "tp": 2
+   },
+   "BEFORE_AFTER": {
+    "tp": 2
+   },
+   "FLAG": {}
+  },
+  "per_lang": {
+   "zh": {
+    "items": 24,
+    "correct": 24
+   },
+   "en": {
+    "items": 24,
+    "correct": 24
+   }
+  },
+  "cost_per_item": 0.0013328333333333334,
+  "latency_median": null,
+  "calls_mean": 3.1875,
+  "errors": [
+   {
+    "item": "en-h10",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": false
+   },
+   {
+    "item": "en-h06",
+    "run": 1,
+    "type": "extra",
+    "cat": "WEIGHT",
+    "trap": false
+   },
+   {
+    "item": "en-h09",
+    "run": 2,
+    "type": "extra",
+    "cat": "DATA",
+    "trap": false
+   },
+   {
+    "item": "en-h10",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "zh-h02",
+    "run": 2,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": false
+   },
+   {
+    "item": "en-h06",
+    "run": 2,
+    "type": "extra",
+    "cat": "WEIGHT",
+    "trap": false
+   }
+  ],
+  "quote_fail": [
+   {
+    "item": "en-h06",
+    "run": 1,
+    "side": "ad",
+    "status": "quote_too_short",
+    "quote": "Day 1"
+   }
+  ],
+  "agree": {
+   "items": 24,
+   "same_decision": 24,
+   "same_categories": 21
+  }
+ },
+ "wordlist": {
+  "counts": {
+   "items": 24,
+   "tp": 5,
+   "exact_categories": 7,
+   "labels_span": 16,
+   "found_span": 4,
+   "located": 3,
+   "fp": 4,
+   "traps": 7,
+   "traps_approved": 3,
+   "fn": 12,
+   "labels_visual": 3,
+   "tn": 3,
+   "cost_total": 0.0
+  },
+  "per_cat": {
+   "ABSOLUTE": {
+    "tp": 1,
+    "fp": 2,
+    "fn": 2
+   },
+   "MEDICAL": {
+    "tp": 2,
+    "fn": 2
+   },
+   "GUARANTEE": {
+    "tp": 1,
+    "fp": 2,
+    "fn": 3
+   },
+   "DISPARAGE": {
+    "fn": 2
+   },
+   "DATA": {
+    "fn": 2
+   },
+   "ALCOHOL": {
+    "fn": 2
+   },
+   "WEIGHT": {
+    "fn": 1
+   },
+   "BEFORE_AFTER": {
+    "fn": 1
+   },
+   "FLAG": {}
+  },
+  "per_lang": {
+   "zh": {
+    "items": 12,
+    "correct": 4
+   },
+   "en": {
+    "items": 12,
+    "correct": 4
+   }
+  },
+  "cost_per_item": 0.0,
+  "latency_median": 1.8809999999999998,
+  "calls_mean": 0.0,
+  "errors": [
+   {
+    "item": "zh-h02",
+    "run": 1,
+    "type": "missed",
+    "cat": "DATA",
+    "kind": "span"
+   },
+   {
+    "item": "zh-h03",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "zh-h05",
+    "run": 1,
+    "type": "missed",
+    "cat": "DISPARAGE",
+    "kind": "span"
+   },
+   {
+    "item": "zh-h06",
+    "run": 1,
+    "type": "missed",
+    "cat": "MEDICAL",
+    "kind": "span"
+   },
+   {
+    "item": "zh-h07",
+    "run": 1,
+    "type": "missed",
+    "cat": "ALCOHOL",
+    "kind": "visual"
+   },
+   {
+    "item": "zh-h08",
+    "run": 1,
+    "type": "extra",
+    "cat": "ABSOLUTE",
+    "trap": true
+   },
+   {
+    "item": "zh-h08",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": true
+   },
+   {
+    "item": "zh-h09",
+    "run": 1,
+    "type": "missed",
+    "cat": "DATA",
+    "kind": "span"
+   },
+   {
+    "item": "zh-h09",
+    "run": 1,
+    "type": "missed",
+    "cat": "ABSOLUTE",
+    "kind": "span"
+   },
+   {
+    "item": "zh-h11",
+    "run": 1,
+    "type": "missed",
+    "cat": "GUARANTEE",
+    "kind": "span"
+   },
+   {
+    "item": "en-h01",
+    "run": 1,
+    "type": "missed",
+    "cat": "ABSOLUTE",
+    "kind": "span"
+   },
+   {
+    "item": "en-h02",
+    "run": 1,
+    "type": "missed",
+    "cat": "MEDICAL",
+    "kind": "span"
+   },
+   {
+    "item": "en-h03",
+    "run": 1,
+    "type": "extra",
+    "cat": "GUARANTEE",
+    "trap": true
+   },
+   {
+    "item": "en-h04",
+    "run": 1,
+    "type": "missed",
+    "cat": "GUARANTEE",
+    "kind": "span"
+   },
+   {
+    "item": "en-h05",
+    "run": 1,
+    "type": "missed",
+    "cat": "WEIGHT",
+    "kind": "span"
+   },
+   {
+    "item": "en-h06",
+    "run": 1,
+    "type": "missed",
+    "cat": "BEFORE_AFTER",
+    "kind": "visual"
+   },
+   {
+    "item": "en-h07",
+    "run": 1,
+    "type": "missed",
+    "cat": "ALCOHOL",
+    "kind": "visual"
+   },
+   {
+    "item": "en-h09",
+    "run": 1,
+    "type": "missed",
+    "cat": "GUARANTEE",
+    "kind": "span"
+   },
+   {
+    "item": "en-h10",
+    "run": 1,
+    "type": "missed",
+    "cat": "DISPARAGE",
+    "kind": "span"
+   }
+  ],
+  "quote_fail": [],
+  "agree": {}
+ }
+}

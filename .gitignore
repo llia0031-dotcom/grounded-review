@@ -1,0 +1,11 @@
+# local copies that are not redistributed
+policies/raw/tt-*
+policies/sources/tiktok-*
+third_party/*
+!third_party/README.md
+# keys, caches, build output
+.env
+__pycache__/
+demo/node_modules/
+demo/dist/
+.made-by-make-public

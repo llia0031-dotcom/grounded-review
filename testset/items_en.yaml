@@ -1,0 +1,442 @@
+# English ads, reviewed against the TikTok Advertising Policies (global sections).
+# Brands are fictional. Same fields as items_zh.yaml. absence = the violation is something the ad
+# leaves out (no words to quote).
+
+- id: en-d01
+  split: dev
+  kind: text
+  copy: "Brightfold Cloud mattress: the world's best mattress, period. Free delivery."
+  labels:
+    - {cat: ABSOLUTE, clauses: [TT-MIS-CLAIMS], span: "the world's best mattress"}
+- id: en-d02
+  split: dev
+  kind: text
+  copy: "Kestrel CBD gummies cure anxiety and depression. Feel like yourself again."
+  labels:
+    - {cat: MEDICAL, clauses: [TT-MIS-CLAIMS], span: "cure anxiety and depression"}
+- id: en-d03
+  split: dev
+  kind: text
+  copy: "Burn fat without exercise: just two Slimora capsules a day."
+  labels:
+    - {cat: WEIGHT, clauses: [TT-WM-WEIGHT], span: "Burn fat without exercise"}
+- id: en-d04
+  split: dev
+  kind: text
+  copy: "Lumeo Sunscreen SPF 50. Reapply every 2 hours for best results."
+  labels: []
+  trap: "\"best results\" is usage advice, not an absolute claim about the product against others."
+  basis: [TT-MIS-CLAIMS]
+- id: en-d05
+  split: dev
+  kind: text
+  copy: "Get cash in 10 seconds with QuickLoan. No credit checks."
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-MIS-CLAIMS, TT-FIN, TT-DEC-FINREP], span: "Get cash in 10 seconds"}
+- id: en-d06
+  split: dev
+  kind: text
+  copy: "Happy hour at Verdi Bar: buy 3 cocktails, get 3 free. The more you drink, the more you save!"
+  labels:
+    - {cat: ALCOHOL, clauses: [TT-ALC], span: "The more you drink, the more you save!"}
+- id: en-d07
+  split: dev
+  kind: image
+  copy: "Lumeo Clear Serum. Visible results."
+  image: {layout: split, panel: skin, palette: pink, brand: Lumeo, lines: [BEFORE, AFTER, Lumeo Clear Serum]}
+  labels:
+    - {cat: BEFORE_AFTER, clauses: [TT-MIS-COMPARE, TT-MIS-CLAIMS], visual: "before-and-after panels of the skin"}
+- id: en-d08
+  split: dev
+  kind: image
+  copy: "Oakline robot vacuum. Quiet and smart."
+  image: {layout: banner, shape: vacuum, palette: gray, brand: Oakline, lines: ["Still using NovaClean?", "Enjoy your dirty floors.", "Oakline S2 $299"]}
+  labels:
+    - {cat: DISPARAGE, clauses: [TT-MIS-COMPARE], span: "Enjoy your dirty floors."}
+- id: en-d09
+  split: dev
+  kind: image
+  copy: "Verdi Rosé, new vintage."
+  image: {layout: poster, shape: wine, palette: pink, brand: Verdi, lines: [Verdi Rosé 2025, 12.5% ABV, Please drink responsibly.]}
+  labels: []
+  trap: "Bottle only, alcohol strength stated and a responsible drinking line."
+  basis: [TT-ALC]
+- id: en-d10
+  split: dev
+  kind: image
+  copy: "Nuvola Blend Pro. Smoothies in seconds."
+  image: {layout: poster, shape: blender, palette: green, brand: Nuvola, lines: [Unbeatable., The fastest blender on Earth, Nuvola Blend Pro $129]}
+  labels:
+    - {cat: ABSOLUTE, clauses: [TT-MIS-CLAIMS], span: "The fastest blender on Earth"}
+- id: en-d11
+  split: dev
+  kind: image
+  copy: "Verdi autumn collection is here."
+  image: {layout: poster, shape: jacket, palette: beige, brand: Verdi, lines: [Collection 01, Verdi Autumn Wool Coat, $189]}
+  labels: []
+- id: en-d12
+  split: dev
+  kind: image
+  copy: "Brightfold Driving School. Book your lessons."
+  image: {layout: banner, shape: car, palette: blue, brand: Brightfold, lines: ["100% pass rate", "Guaranteed driving test pass", Brightfold Driving School]}
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-MIS-CLAIMS], span: "Guaranteed driving test pass"}
+
+# ------------------------------------------------------------------ test
+- id: en-t01
+  split: test
+  kind: text
+  copy: "Lumeo Glow Serum: the No. 1 serum in the world. Shop now for $34."
+  labels:
+    - {cat: ABSOLUTE, clauses: [TT-MIS-CLAIMS], span: "the No. 1 serum in the world"}
+  must_keep: [Lumeo, $34]
+  revision:
+    copy: "Lumeo Glow Serum: lightweight hydration with 2% niacinamide. Shop now for $34."
+    labels: []
+- id: en-t02
+  split: test
+  kind: text
+  copy: "Nuvola Herbal Tea naturally cures type 2 diabetes. No more insulin!"
+  labels:
+    - {cat: MEDICAL, clauses: [TT-MIS-CLAIMS], span: "naturally cures type 2 diabetes"}
+- id: en-t03
+  split: test
+  kind: text
+  copy: "Kestrel Invest: guaranteed 20% monthly returns. Zero risk, withdraw anytime."
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-DEC-FINREP, TT-FIN, TT-MIS-CLAIMS], span: "guaranteed 20% monthly returns"}
+  must_keep: [Kestrel Invest]
+  revision:
+    copy: "Kestrel Invest: steady 20% monthly returns, risk-free. Withdraw anytime."
+    labels:
+      - {cat: GUARANTEE, clauses: [TT-DEC-FINREP, TT-FIN, TT-MIS-CLAIMS], span: "steady 20% monthly returns, risk-free"}
+- id: en-t04
+  split: test
+  kind: text
+  copy: "Turn $100 into $10,000 in one week with the Kestrel trading bot."
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-DEC-FINREP, TT-FIN, TT-MIS-CLAIMS], span: "Turn $100 into $10,000 in one week"}
+- id: en-t05
+  split: test
+  kind: text
+  copy: "Lose 10 kg in 7 days with Slimora drops. No diet, no gym."
+  labels:
+    - {cat: WEIGHT, clauses: [TT-WM-WEIGHT], span: "Lose 10 kg in 7 days"}
+  must_keep: [Slimora]
+  revision:
+    copy: "Slimora meal shakes: a convenient option alongside a balanced diet and regular exercise. For adults 18+."
+    labels: []
+- id: en-t06
+  split: test
+  kind: text
+  copy: "Tired of being the fat friend? Oakline Shake gets you beach-body ready."
+  labels:
+    - {cat: WEIGHT, clauses: [TT-WM-BODY, TT-WM-WEIGHT], span: "Tired of being the fat friend?"}
+- id: en-t07
+  split: test
+  kind: text
+  copy: "GlowMax cream is overpriced junk. Switch to Lumeo and see real results."
+  labels:
+    - {cat: DISPARAGE, clauses: [TT-MIS-COMPARE], span: "GlowMax cream is overpriced junk"}
+  must_keep: [Lumeo]
+  revision:
+    copy: "Lumeo cream: real results, unlike GlowMax's watered-down formula."
+    labels:
+      - {cat: DISPARAGE, clauses: [TT-MIS-COMPARE], span: "unlike GlowMax's watered-down formula"}
+- id: en-t08
+  split: test
+  kind: text
+  copy: "Bottomless shots all night at Verdi Bar. Drink till you drop!"
+  labels:
+    - {cat: ALCOHOL, clauses: [TT-ALC], span: "Drink till you drop!"}
+- id: en-t09
+  split: test
+  kind: text
+  copy: "Comment below for a chance to win a free case of Harbor Lager!"
+  labels:
+    - {cat: ALCOHOL, clauses: [TT-ALC], span: "win a free case of Harbor Lager"}
+- id: en-t10
+  split: test
+  kind: text
+  copy: "Brightfold Prep: score 7.5+ on IELTS, guaranteed, or your money back."
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-MIS-CLAIMS], span: "score 7.5+ on IELTS, guaranteed"}
+- id: en-t11
+  split: test
+  kind: text
+  copy: "Kestrel Cold Brew: best served over ice."
+  labels: []
+  trap: "\"best served over ice\" is serving advice, not a superiority claim."
+  basis: [TT-MIS-CLAIMS]
+- id: en-t12
+  split: test
+  kind: text
+  copy: "Nuvola noise-cancelling headphones: the cure for boring commutes."
+  labels: []
+  trap: "\"cure\" is figurative; no disease or medical claim."
+  basis: [TT-MIS-CLAIMS]
+- id: en-t13
+  split: test
+  kind: text
+  copy: "Guaranteed delivery by Friday on all Verdi orders over $30."
+  labels: []
+  trap: "A delivery-time guarantee is a service term, not a promised product effect or return."
+  basis: [TT-MIS-CLAIMS]
+- id: en-t14
+  split: test
+  kind: text
+  copy: "Oakline Protein: fuel your workouts as part of a balanced diet and regular exercise."
+  labels: []
+  trap: "Promotes a healthy lifestyle; no weight-loss or muscle-gain claim."
+  basis: [TT-WM-WEIGHT]
+- id: en-t15
+  split: test
+  kind: text
+  copy: "Kestrel Invest stocks and shares ISA. Capital at risk. Past performance is not a guide to future returns."
+  labels: []
+  trap: "No promised return, and the risk is stated."
+  basis: [TT-DEC-FINREP]
+- id: en-t16
+  split: test
+  kind: text
+  copy: "Verdi linen shirts: breathable and easy to iron. New colours this week."
+  labels: []
+- id: en-t17
+  split: test
+  kind: image
+  copy: "Oakline Armor case. Drop-tested."
+  image: {layout: poster, shape: phone, palette: navy, brand: Oakline, lines: [The strongest phone case ever made, Oakline Armor, "$29"]}
+  labels:
+    - {cat: ABSOLUTE, clauses: [TT-MIS-CLAIMS], span: "The strongest phone case ever made"}
+- id: en-t18
+  split: test
+  kind: image
+  copy: "Brightfold Stride running shoes."
+  image: {layout: banner, shape: shoe, palette: orange, brand: Brightfold, lines: ["#1 running shoe in America", Brightfold Stride, "$119"]}
+  labels:
+    - {cat: ABSOLUTE, clauses: [TT-MIS-CLAIMS], span: "#1 running shoe in America"}
+- id: en-t19
+  split: test
+  kind: image
+  copy: "Lumeo three-step routine."
+  image: {layout: poster, shape: tube, palette: teal, brand: Lumeo, lines: ["Step 1: Cleanse", "Step 2: Tone  Step 3: Glow", Lumeo Daily Set $42]}
+  labels: []
+  trap: "Numbers are steps of a routine, not a ranking."
+  basis: [TT-MIS-CLAIMS]
+- id: en-t20
+  split: test
+  kind: image
+  copy: "Verdi weekend sale."
+  image: {layout: banner, shape: bag, palette: red, brand: Verdi, lines: [Killer deals this weekend, 30% off all bags, Verdi]}
+  labels: []
+  trap: "\"Killer deals\" is slang for a discount; no policy in scope applies."
+  basis: [TT-MIS-CLAIMS]
+- id: en-t21
+  split: test
+  kind: image
+  copy: "Nuvola Skin Balm."
+  image: {layout: poster, shape: jar, palette: green, brand: Nuvola, lines: [Clears psoriasis for good, Nuvola Skin Balm, "$24"]}
+  labels:
+    - {cat: MEDICAL, clauses: [TT-MIS-CLAIMS], span: "Clears psoriasis for good"}
+- id: en-t22
+  split: test
+  kind: image
+  copy: "Kestrel Joint Support capsules."
+  image: {layout: poster, shape: pills, palette: blue, brand: Kestrel, lines: [Reverses arthritis in 30 days, Kestrel Joint Support, 60 capsules]}
+  labels:
+    - {cat: MEDICAL, clauses: [TT-MIS-CLAIMS], span: "Reverses arthritis in 30 days"}
+- id: en-t23
+  split: test
+  kind: image
+  copy: "Lumeo Calm Moisturiser."
+  image: {layout: poster, shape: jar, palette: pink, brand: Lumeo, lines: [Dermatologist-tested, Gentle on sensitive skin, Lumeo Calm Moisturiser $28]}
+  labels: []
+  trap: "States testing and skin type; no treatment or cure claim."
+  basis: [TT-MIS-CLAIMS]
+- id: en-t24
+  split: test
+  kind: image
+  copy: "Work from home with Kestrel."
+  image: {layout: banner, shape: laptop, palette: gold, brand: Kestrel, lines: [Earn $500 a day from home., Guaranteed., Join Kestrel today]}
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-DEC-FINREP, TT-FIN, TT-MIS-CLAIMS], span: "Earn $500 a day from home."}
+- id: en-t25
+  split: test
+  kind: image
+  copy: "Brightfold Tips: football picks every Saturday."
+  image: {layout: poster, shape: ball, palette: green, brand: Brightfold, lines: [Win every bet, Guaranteed picks every Saturday, Brightfold Tips]}
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-DEC-FINREP, TT-MIS-CLAIMS], span: "Win every bet"}
+- id: en-t26
+  split: test
+  kind: image
+  copy: "Lumeo Night Cream."
+  image: {layout: poster, shape: jar, palette: purple, brand: Lumeo, lines: [Wrinkles gone in 3 days. Guaranteed., Lumeo Night Cream, "$39"]}
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-MIS-CLAIMS], span: "Wrinkles gone in 3 days. Guaranteed."}
+- id: en-t27
+  split: test
+  kind: image
+  copy: "Slimora Night Burn."
+  image: {layout: poster, shape: pills, palette: purple, brand: Slimora, lines: [Melt belly fat while you sleep, Slimora Night Burn, 30 capsules]}
+  labels:
+    - {cat: WEIGHT, clauses: [TT-WM-WEIGHT], span: "Melt belly fat while you sleep"}
+  must_keep: [Slimora]
+  revision:
+    image_lines: [Fibre capsules to go with a balanced diet, Slimora Daily Fibre, 30 capsules]
+    labels: []
+- id: en-t28
+  split: test
+  kind: image
+  copy: "Slimora 14-day plan."
+  image: {layout: banner, shape: tape, palette: pink, brand: Slimora, lines: [Drop 3 dress sizes in 2 weeks, Slimora 14-day plan, Start today]}
+  labels:
+    - {cat: WEIGHT, clauses: [TT-WM-WEIGHT], span: "Drop 3 dress sizes in 2 weeks"}
+- id: en-t29
+  split: test
+  kind: image
+  copy: "Oakline Oats."
+  image: {layout: poster, shape: box, palette: beige, brand: Oakline, lines: [High-fibre breakfast oats, Enjoy as part of a balanced diet, Oakline Oats $5]}
+  labels: []
+  trap: "Nutrition fact and healthy-lifestyle framing; no weight claim."
+  basis: [TT-WM-WEIGHT]
+- id: en-t30
+  split: test
+  kind: image
+  copy: "Lumeo Spot Serum. See the difference."
+  image: {layout: split, panel: skin, palette: teal, brand: Lumeo, lines: [BEFORE, AFTER, Lumeo Spot Serum]}
+  labels:
+    - {cat: BEFORE_AFTER, clauses: [TT-MIS-COMPARE, TT-MIS-CLAIMS], visual: "before-and-after panels of the skin"}
+- id: en-t31
+  split: test
+  kind: image
+  copy: "Slimora 30-day plan."
+  image: {layout: split, panel: body, palette: orange, brand: Slimora, lines: [DAY 1, DAY 30, Slimora 30-day plan]}
+  labels:
+    - {cat: BEFORE_AFTER, clauses: [TT-MIS-COMPARE, TT-WM-WEIGHT], visual: "before-and-after body shapes, day 1 against day 30"}
+- id: en-t32
+  split: test
+  kind: image
+  copy: "Brightfold Kids Club."
+  image: {layout: banner, shape: school, palette: blue, brand: Brightfold, lines: [Before & After School Club, Ages 5–11, Brightfold Kids Club]}
+  labels: []
+  trap: "\"Before & After School\" names the hours of a childcare service; there is no comparison."
+  basis: [TT-MIS-COMPARE]
+- id: en-t33
+  split: test
+  kind: image
+  copy: "Oakline Buds wireless earbuds."
+  image: {layout: poster, shape: earbuds, palette: gray, brand: Oakline, lines: [PeakPods break in a month., Ours don't., Oakline Buds $59]}
+  labels:
+    - {cat: DISPARAGE, clauses: [TT-MIS-COMPARE], span: "PeakPods break in a month."}
+- id: en-t34
+  split: test
+  kind: image
+  copy: "Oakline Power Bank 2."
+  image: {layout: poster, shape: powerbank, palette: gray, brand: Oakline, lines: [2x the battery of our previous model, "Internal lab test, May 2025", Oakline Power Bank 2]}
+  labels: []
+  trap: "Compares with the brand's own earlier model and names the test."
+  basis: [TT-MIS-COMPARE]
+- id: en-t35
+  split: test
+  kind: image
+  copy: "Harbor Lager party pack."
+  image: {layout: scene, scene: drunk-party, palette: amber, brand: Harbor, lines: [Harbor Lager Party Pack, 4.5% ABV]}
+  labels:
+    - {cat: ALCOHOL, clauses: [TT-ALC], visual: "people shown drunk, spilling drinks"}
+- id: en-t36
+  split: test
+  kind: image
+  copy: "Harbor Lager. Order now."
+  image: {layout: poster, shape: beer, palette: amber, brand: Harbor, lines: [Harbor Lager, Crisp. Cold. Yours., Order now]}
+  labels:
+    - {cat: ALCOHOL, clauses: [TT-ALC], absence: "no alcohol strength and no responsible drinking disclaimer"}
+- id: en-t37
+  split: test
+  kind: image
+  copy: "Harbor Lager."
+  image: {layout: poster, shape: beer, palette: blue, brand: Harbor, lines: [Harbor Lager, 4.5% ABV, Please drink responsibly.]}
+  labels: []
+  trap: "Bottle only, alcohol strength and responsible drinking line present."
+  basis: [TT-ALC]
+- id: en-t38
+  split: test
+  kind: image
+  copy: "Verdi Gin giveaway."
+  image: {layout: banner, shape: liquor, palette: green, brand: Verdi, lines: ["Win a year's supply of Verdi Gin", 40% ABV. Drink responsibly., Enter by 30 Nov]}
+  labels:
+    - {cat: ALCOHOL, clauses: [TT-ALC], span: "Win a year's supply of Verdi Gin"}
+  must_keep: [Verdi]
+  revision:
+    image_lines: [Win a Verdi Gin tasting set, 40% ABV. Drink responsibly., Enter by 30 Nov]
+    labels:
+      - {cat: ALCOHOL, clauses: [TT-ALC], span: "Win a Verdi Gin tasting set"}
+- id: en-t39
+  split: test
+  kind: image
+  copy: "Oakline Daypack."
+  image: {layout: poster, shape: bag, palette: navy, brand: Oakline, lines: [The best backpack on the planet, Oakline Daypack 22L, "$59"]}
+  labels:
+    - {cat: ABSOLUTE, clauses: [TT-MIS-CLAIMS], span: "The best backpack on the planet"}
+- id: en-t40
+  split: test
+  kind: image
+  copy: "Brightfold candles."
+  image: {layout: poster, shape: candle, palette: beige, brand: Brightfold, lines: [Cedar & Fig, Hand-poured soy candle, Brightfold $22]}
+  labels: []
+
+# ---- harder items, added 2026-11-13 after the dev run showed both model arms at 24/24; written before any model saw the test split
+- id: en-t41
+  split: test
+  kind: text
+  copy: "The 𝗯𝗲𝘀𝘁 sunscreen in the world ☀️ Lumeo SPF 50, $19."
+  labels:
+    - {cat: ABSOLUTE, clauses: [TT-MIS-CLAIMS], span: "𝗯𝗲𝘀𝘁 sunscreen in the world"}
+- id: en-t42
+  split: test
+  kind: text
+  copy: "\"My doctor took me off my blood pressure meds after 3 months of Nuvola tea!\" – Linda, 58"
+  labels:
+    - {cat: MEDICAL, clauses: [TT-MIS-CLAIMS], span: "My doctor took me off my blood pressure meds after 3 months of Nuvola tea!"}
+- id: en-t43
+  split: test
+  kind: image
+  copy: "No gym. No diet. Just results. #SlimoraSquad"
+  image: {layout: banner, shape: tape, palette: purple, brand: Slimora, lines: [Slimora Drops, Results in weeks, Shop now]}
+  labels:
+    - {cat: WEIGHT, clauses: [TT-WM-WEIGHT], span: "No gym. No diet. Just results."}
+- id: en-t44
+  split: test
+  kind: image
+  copy: "Lumeo Barrier Cream."
+  image: {layout: poster, shape: jar, palette: teal, brand: Lumeo, lines: [Smooth skin season, Lumeo Barrier Cream, "$26"], small: [Clinically shown to cure eczema in 2 weeks.]}
+  labels:
+    - {cat: MEDICAL, clauses: [TT-MIS-CLAIMS], span: "Clinically shown to cure eczema in 2 weeks."}
+- id: en-t45
+  split: test
+  kind: image
+  copy: "Kestrel Yield savings."
+  image: {layout: banner, shape: card, palette: navy, brand: Kestrel, lines: [12% APY, Principal protected. No risk., Kestrel Yield]}
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-DEC-FINREP, TT-FIN, TT-MIS-CLAIMS], span: "Principal protected. No risk."}
+- id: en-t46
+  split: test
+  kind: text
+  copy: "We'll never promise you'll lose weight overnight. Just honest protein from Oakline."
+  labels: []
+  trap: "Weight words appear only in a refusal to make the claim; no weight-loss claim is made."
+  basis: [TT-WM-WEIGHT]
+- id: en-t47
+  split: test
+  kind: image
+  copy: "Harbor FC official store."
+  image: {layout: poster, shape: bag, palette: red, brand: Harbor, lines: ["Number 1 fan?", Get the official Harbor FC scarf, "$25"]}
+  labels: []
+  trap: "\"Number 1 fan\" addresses the supporter; it ranks no product."
+  basis: [TT-MIS-CLAIMS]
+- id: en-t48
+  split: test
+  kind: text
+  copy: "Pre-game like a pro: 6 Harbor shots before kickoff 🍻"
+  labels:
+    - {cat: ALCOHOL, clauses: [TT-ALC], span: "6 Harbor shots before kickoff"}

@@ -1,0 +1,140 @@
+# Multi-turn set 2 (v1.1 check), written 2026-11-13 after the v1 run and before any model saw these items.
+# Text ads only. Same fields as items_zh.yaml / items_en.yaml, plus lang. Brands are fictional.
+# Several ads need a fact the advertiser has not given (alcohol strength, a data source, a licence) for a full fix:
+# a corrected version should leave such a statement out or ask, not leave a blank to fill in.
+
+- id: zh-m01
+  lang: zh
+  split: mt2
+  kind: text
+  copy: 山屿牌维生素C咀嚼片（保健食品），增强免疫力，三天不感冒！
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-18], span: 增强免疫力，三天不感冒}
+  must_keep: [山屿, 维生素C]
+  revision:
+    copy: 山屿牌维生素C咀嚼片（保健食品），补充维生素C。本品不能代替药物。
+    labels: []
+- id: zh-m02
+  lang: zh
+  split: mt2
+  kind: text
+  copy: 青禾补水面膜，95% 的用户说敷一次就能看到效果。¥99/10 片
+  labels:
+    - {cat: DATA, clauses: [CN-AL-11-2], span: 95% 的用户说敷一次就能看到效果}
+  must_keep: [青禾, ¥99]
+  revision:
+    copy: 青禾补水面膜，敷后肌肤更水润。¥99/10 片
+    labels: []
+- id: zh-m03
+  lang: zh
+  split: mt2
+  kind: text
+  copy: 知更理财稳享计划：年化 6%，到期保本，安心之选。
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-25], span: 到期保本}
+  must_keep: [知更]
+  revision:
+    copy: 知更理财稳享计划：业绩比较基准年化 3%–4%，不代表实际收益。理财非存款，产品有风险，投资须谨慎。
+    labels: []
+- id: zh-m04
+  lang: zh
+  split: mt2
+  kind: text
+  copy: 澄心驾校：包过！学车就选澄心，周末也能约课。
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-24], span: 包过}
+  must_keep: [澄心]
+  revision:
+    copy: 澄心驾校：小班教学，周末也能约课。
+    labels: []
+- id: zh-m05
+  lang: zh
+  split: mt2
+  kind: text
+  copy: 醉山河白酒，越喝越有劲，干了这杯！
+  labels:
+    - {cat: ALCOHOL, clauses: [CN-AL-23], span: 越喝越有劲，干了这杯}
+  must_keep: [醉山河]
+  revision:
+    copy: 醉山河白酒，干了这杯，朋友更亲。
+    labels:
+      - {cat: ALCOHOL, clauses: [CN-AL-23], span: 干了这杯}
+- id: zh-m06
+  lang: zh
+  split: mt2
+  kind: text
+  copy: 木朴实木茶几，顶尖工艺，¥899 包邮。
+  labels:
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 顶尖工艺}
+  must_keep: [木朴, ¥899]
+  revision:
+    copy: 木朴实木茶几，榫卯工艺，¥899 包邮。
+    labels: []
+- id: en-m01
+  lang: en
+  split: mt2
+  kind: text
+  copy: "Kestrel Save: 9% a year, guaranteed. Open an account in minutes."
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-DEC-FINREP, TT-FIN, TT-MIS-CLAIMS], span: "9% a year, guaranteed"}
+  must_keep: [Kestrel]
+  revision:
+    copy: "Kestrel Invest Fund: past returns averaged 7% a year. Returns are not guaranteed and you may lose money."
+    labels: []
+- id: en-m02
+  lang: en
+  split: mt2
+  kind: text
+  copy: "Harbor Lager: cold, crisp, ready for your weekend."
+  labels:
+    - {cat: ALCOHOL, clauses: [TT-ALC], absence: "no alcohol strength and no responsible drinking disclaimer"}
+  must_keep: [Harbor Lager]
+  revision:
+    copy: "Harbor Lager: cold, crisp, ready for your weekend. 4.6% ABV. Please drink responsibly."
+    labels: []
+- id: en-m03
+  lang: en
+  split: mt2
+  kind: text
+  copy: "Slimora Tea flushes out 5 kg of fat in 10 days."
+  labels:
+    - {cat: WEIGHT, clauses: [TT-WM-WEIGHT], span: "flushes out 5 kg of fat in 10 days"}
+  must_keep: [Slimora]
+  revision:
+    copy: "Slimora Tea: a caffeine-free herbal tea to enjoy as part of a balanced diet."
+    labels: []
+- id: en-m04
+  lang: en
+  split: mt2
+  kind: text
+  copy: "Nuvola Sleep Drops cure insomnia for good."
+  labels:
+    - {cat: MEDICAL, clauses: [TT-MIS-CLAIMS], span: "cure insomnia for good"}
+  must_keep: [Nuvola]
+  revision:
+    copy: "Nuvola Sleep Drops: say goodbye to insomnia."
+    labels:
+      - {cat: MEDICAL, clauses: [TT-MIS-CLAIMS], span: "say goodbye to insomnia"}
+- id: en-m05
+  lang: en
+  split: mt2
+  kind: text
+  copy: "Brightfold Desk Lamp: the best lamp money can buy. $49."
+  labels:
+    - {cat: ABSOLUTE, clauses: [TT-MIS-CLAIMS], span: "the best lamp money can buy"}
+  must_keep: [Brightfold, $49]
+  revision:
+    copy: "Brightfold Desk Lamp: flicker-free LED with three brightness levels. $49."
+    labels: []
+- id: en-m06
+  lang: en
+  split: mt2
+  kind: text
+  copy: "Tired of GlowMax's greasy cream? Lumeo absorbs in seconds."
+  labels:
+    - {cat: DISPARAGE, clauses: [TT-MIS-COMPARE], span: "Tired of GlowMax's greasy cream?"}
+  must_keep: [Lumeo]
+  revision:
+    copy: "Lumeo absorbs in seconds, unlike greasy GlowMax."
+    labels:
+      - {cat: DISPARAGE, clauses: [TT-MIS-COMPARE], span: "unlike greasy GlowMax"}
