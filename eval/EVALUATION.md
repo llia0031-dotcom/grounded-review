@@ -265,32 +265,32 @@ The requests were sent through the Message Batches API, as for the harder set.
 
 **30 English ads (ASA)**, two runs each; the local arms ran once. Always rejecting would get 77% right.
 
-| | one prompt | agent | word list | Qwen3Guard |
-|---|---|---|---|---|
-| Decision right | 49/60 (82%) | 51/60 (85%) | 13/30 (43%) | 18/30 (60%) |
-| Upheld ads rejected | 43/46 | 46/46 | 6/23 | 11/23 |
-| Not upheld ads approved | 6/14 | 5/14 | 7/7 | 7/7 |
-| Decision right, without the 8 evidence-dependent ads | 37/44 (84%) | 38/44 (86%) | | |
-| Exactly the labelled categories | 23/60 (38%) | 26/60 (43%) | 8/30 | |
-| Ad quotes passing the checker | 168/173 | 200/200 | | |
-| Clause quotes passing the checker | 205/206 | 210/210 | | |
-| Cost per ad, batch price | US$0.00097 | US$0.00301 | 0 | 0 |
-| API calls per ad | 1.0 | 4.0 | 0 | 0 |
-| Same decision in both runs | 29/30 | 29/30 | | |
+| | one prompt | agent | word list | Qwen3Guard | Granite Guardian |
+|---|---|---|---|---|---|
+| Decision right | 49/60 (82%) | 51/60 (85%) | 13/30 (43%) | 18/30 (60%) | 14/30 (47%) |
+| Upheld ads rejected | 43/46 | 46/46 | 6/23 | 11/23 | 9/23 |
+| Not upheld ads approved | 6/14 | 5/14 | 7/7 | 7/7 | 5/7 |
+| Decision right, without the 8 evidence-dependent ads | 37/44 (84%) | 38/44 (86%) | | | |
+| Exactly the labelled categories | 23/60 (38%) | 26/60 (43%) | 8/30 | | |
+| Ad quotes passing the checker | 168/173 | 200/200 | | | |
+| Clause quotes passing the checker | 205/206 | 210/210 | | | |
+| Cost per ad, batch price | US$0.00097 | US$0.00301 | 0 | 0 | 0 |
+| API calls per ad | 1.0 | 4.0 | 0 | 0 | 0 |
+| Same decision in both runs | 29/30 | 29/30 | | | |
 
 **16 Chinese ads**, two runs each. Always rejecting would get 75% right.
 
-| | one prompt | agent | word list |
-|---|---|---|---|
-| Decision right | 27/32 (84%) | 26/32 (81%) | 11/16 (69%) |
-| Penalised ads rejected | 24/24 | 24/24 | 10/12 |
-| Lawful ads approved | 3/8 | 2/8 | 1/4 |
-| Exactly the labelled categories | 20/32 (62%) | 14/32 (44%) | |
-| Ad quotes passing the checker | 65/65 | 74/74 | |
-| Clause quotes passing the checker | 68/68 | 76/76 | |
-| Cost per ad, batch price | US$0.00068 | US$0.00163 | 0 |
-| API calls per ad | 1.0 | 3.4 | 0 |
-| Same decision in both runs | 15/16 | 16/16 | |
+| | one prompt | agent | word list | Qwen3Guard | Granite Guardian |
+|---|---|---|---|---|---|
+| Decision right | 27/32 (84%) | 26/32 (81%) | 11/16 (69%) | 11/16 (69%) | 13/16 (81%) |
+| Penalised ads rejected | 24/24 | 24/24 | 10/12 | 7/12 | 10/12 |
+| Lawful ads approved | 3/8 | 2/8 | 1/4 | 4/4 | 3/4 |
+| Exactly the labelled categories | 20/32 (62%) | 14/32 (44%) | | | |
+| Ad quotes passing the checker | 65/65 | 74/74 | | | |
+| Clause quotes passing the checker | 68/68 | 76/76 | | | |
+| Cost per ad, batch price | US$0.00068 | US$0.00163 | 0 | 0 | 0 |
+| API calls per ad | 1.0 | 3.4 | 0 | 0 | 0 |
+| Same decision in both runs | 15/16 | 16/16 | | | |
 
 The full results are in `results/real-2026-11-14.summary.md` and `results/real-zh-2026-11-14.summary.md`. The per-ad tables, which tie each item to its ruling or case, are not published; `testset/real-sources.md` gives the selection rules and source pages.
 
@@ -308,7 +308,8 @@ The full results are in `results/real-2026-11-14.summary.md` and `results/real-z
 6. **On these ads the agent costs 3.1 times as much in English and 2.4 times as much in Chinese.** It made 4.0 calls per English ad, against 3.2 on the harder set. Both runs together cost US$0.31 at the batch price.
 7. **Arms without an API.**
    - **The word list** rejected 6 of 23 Upheld English ads. In Chinese, the disease words caught 10 of 12 penalised ads, but the list also rejected 3 of the 4 lawful ones.
-   - **Qwen3Guard** rejected 11 of 23 Upheld English ads: 6 of the 7 medical and body-image ads, 2 of the 4 alcohol ads, but only 1 of 4 investment ads and 1 of 5 rating ads. It approved all 7 Not upheld ones.
+   - **Qwen3Guard** rejected 11 of 23 Upheld English ads: 6 of the 7 medical and body-image ads, 2 of the 4 alcohol ads, but only 1 of 4 investment ads and 1 of 5 rating ads. It approved all 7 Not upheld ones. In Chinese it rejected 7 of the 12 penalised ads and approved all 4 lawful ones.
+   - **Granite Guardian**, given the nine categories as its criteria, rejected 9 of 23 Upheld English ads and 2 of the 7 Not upheld ones: 47% right, below always rejecting and below its 72% on the held-out text ads. It missed the lung-cleansing supplement, the therapy app and every comparison and rating ad. In Chinese it got 13 of 16, level with the agent, because the penalised items are only the phrases the regulator quoted; it approved 3 of the 4 lawful ones.
 8. **Expectations: 7 of 7 held for the English ads and 3 of 4 for the Chinese ads.** The one that failed: the arms disagreed on only 1 of the 32 Chinese pairs, against at least 2 expected.
 
 ## Expectations written before the run

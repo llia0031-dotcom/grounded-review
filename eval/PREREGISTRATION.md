@@ -350,7 +350,7 @@ PY eval/real_report.py
 **Results** (English run 14 November 2026, started 23:18 MYT). Checked against the table above after the run: no frozen file changed.
 
 - **Model arms.** 7 batches of 120, 60, 58, 40, 19, 3 and 1 requests. Each took about 2 minutes, and every request succeeded. Cost: US$0.2388 at the batch price. This is above the estimate (US$0.14, at most about US$0.20) and below the US$0.25 stop: the agent made 4.0 calls per ad (3.2 on the harder set) and cost US$0.0030 per ad. Outputs: `results/real-2026-11-14.jsonl`. Summary: `results/real-2026-11-14.summary.md`. Per-ad table: `results/real-2026-11-14.ads.md` (private: it links the rulings next to the arms' answers).
-- **Local arms.** The word list and Qwen3Guard ran once with no errors. Granite Guardian runs on the CPU at about two minutes per ad; its run had not finished when these results were written up, so it is not reported here.
+- **Local arms.** The word list, Qwen3Guard and Granite Guardian each ran once with no errors (Granite on the CPU at about two minutes per ad, finished on 15 November). No expectation was written for Granite Guardian. It rejected 9 of 23 Upheld ads and approved 5 of 7 Not upheld ones (14 of 30 right).
 
 Outcomes of the expectations:
 
@@ -418,3 +418,5 @@ Outcomes of the expectations:
 2. Held: one prompt wrongly rejected 5 of the 8 lawful runs, the agent 6.
 3. Held: the agent approved 2 of 8 lawful runs, one prompt 3.
 4. Did not hold: the arms differ on 1 of 32 pairs (`zh-r13` run 1, the award name, which one prompt approved once).
+
+The two text guardrails ran afterwards, once each, with no errors; no expectation was written for them. Qwen3Guard rejected 7 of 12 penalised ads and approved all 4 lawful ones (11 of 16 right); Granite Guardian rejected 10 of 12 and approved 3 of 4 (13 of 16).
