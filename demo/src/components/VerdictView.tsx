@@ -4,6 +4,7 @@ import type { Verdict, Violation } from '../data'
 import Chip from './Chip'
 import { Marked } from './AdView'
 import { Prose } from '../typography'
+import Phrase from './Phrase'
 
 function ViolationCard({ v, t }: { v: Violation; t: Copy }) {
   return (
@@ -12,7 +13,7 @@ function ViolationCard({ v, t }: { v: Violation; t: Copy }) {
       <div className="viol-pair">
         <div>
           <p className="label">{v.adQuote ? t.demo.adQuote : t.demo.inPicture}</p>
-          {v.adQuote ? <blockquote className="viol-quote">“{v.adQuote}”</blockquote> : <p className="viol-visual"><Prose text={v.visual} /></p>}
+          {v.adQuote ? <blockquote className="viol-quote">“<Phrase text={v.adQuote} lang={t.lang} />”</blockquote> : <p className="viol-visual"><Prose text={v.visual} /></p>}
         </div>
         <div>
           {v.clauseText ? (

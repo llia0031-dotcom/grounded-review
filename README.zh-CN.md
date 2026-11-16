@@ -10,7 +10,7 @@
 |---|---|---|
 | ![被拒的广告，附违规原话和条款](docs/images/review.jpg) | ![广告主问怎么改](docs/images/fix-and-resubmit.jpg) | ![留出集上的结果](docs/images/results.jpg) |
 
-截图是演示页的英文版。
+**[在线演示](https://jason-d-e.github.io/grounded-review/)** · [English demo](https://jason-d-e.github.io/grounded-review/en.html)。页面展示的是存下的结果，不调用模型。截图是演示页的英文版。
 
 ## 在整套项目里的位置
 
@@ -24,6 +24,7 @@
 
 - **审核。** 读广告文案和图片（OCR），在政策库里查条款，给出放行或拒绝。每处违规都附上类别、条款、违规的原话和条款原文。
 - **给建议、再复审。** 广告主问哪里违规、怎么改时，它解释原因、写出修改后的版本，再审广告主自己改的版本。
+- **记住以前的判定。** 确认过的判定会存下来。新广告来了，Agent 会看到最像的几条旧判定，和同一个广告主最近的判定，同样的说法就判得一样；广告有不同时，仍然照条款判。模型只读不写。
 - **两套规则。**
   - 中文广告按《广告法》（2021 修正）和市场监管总局 2023 年的《广告绝对化用语执法指南》审。
   - 英文广告按 TikTok 五个广告政策页面里的全球通用部分审。
@@ -31,7 +32,7 @@
 
 ## 怎么评测的
 
-两组模型用同一个模型、同一套类别、同一种输出格式：一组是把所有材料一次交给模型的单个提示词，一组是带工具的 Agent。每次跑之前，都先把计划、预期和文件哈希冻结（[`eval/PREREGISTRATION.md`](eval/PREREGISTRATION.md)）。完整报告见 [`eval/EVALUATION.md`](eval/EVALUATION.md)（英文）。
+两组模型用同一个模型、同一套类别、同一种输出格式：一组是把所有材料一次交给模型的单个提示词，一组是带工具的 Agent。每次跑之前，都先把计划、预期和文件哈希冻结（[`eval/PREREGISTRATION.md`](eval/PREREGISTRATION.md)）。完整报告见 [`eval/EVALUATION.md`](eval/EVALUATION.md)（英文）。产品方案（给谁用、指标、怎么上线、风险）见 [`product/PRD.zh-CN.md`](product/PRD.zh-CN.md)。
 
 | 题目 | 是什么 | 单个提示词 | Agent |
 |---|---|---|---|
@@ -47,6 +48,7 @@
 - **引文站得住。** 留出集上，98% 的广告引文和 425 段条款引文里的 424 段通过了核对。没通过的广告引文都是原文，只是短于脚本接受的长度。
 - **Agent 更贵。** 留出集上是单个提示词的 2.2 倍，真实广告上是 2.4 到 3.1 倍。
 - **更简单的做法都不够。** 违禁词表、零样本 CLIP 和 SigLIP 2、开源审核模型（SafeGuard-VL-RL、Qwen3Guard、Granite Guardian）也都跑了，它们都不给条款和原话。留出集上，只有 SafeGuard-VL-RL（图片）和 Granite Guardian（文字）比“全部拒绝”好。
+- **记忆定下了一个灰色地带，一次都没带错。** 24 条新广告各跑三遍：不带记忆判对 69/72，带记忆 72/72。差别只在一条广告上，是一个“保证次日送达”的说法，Agent 自己每次都拒。在 12 条“旧判定不该套用”的广告上，36 次里照搬旧判定 0 次。带记忆的一次审核，费用是不带记忆的 0.89 倍。
 - **改写建议一版一版测过。** v1.1 去掉了改写里留下的模板占位符：24 段里从 3 段降到 0。v1.3 修好了“修改后的文案”写错位置：36 段里从 6 段降到 0。v1.2 没用，没有采用。
 
 ## 怎么运行
@@ -59,6 +61,8 @@ python -m unittest discover -s tests -v                      # 离线自检，�
 python testset/load.py                                       # 校验测试集
 AD_REVIEW_ENV_FILE=path/to/.env python eval/run.py --split test --repeat 2 --out my-run --batch
 python eval/score.py eval/results/my-run.jsonl --split test --out eval/results/my-run.summary.md
+AD_REVIEW_ENV_FILE=path/to/.env python eval/run.py --split memory --arms agent,agent_memory --version v1.3 --repeat 3 --out my-memory-run --batch
+python eval/memory_report.py eval/results/my-memory-run.jsonl               # Agent 不带记忆和带记忆的对比
 ```
 
 - **密钥**：只从 `AD_REVIEW_ENV_FILE` 指定的文件读。`--batch` 走批量接口（Message Batches API），价格减半。
@@ -76,4 +80,4 @@ python eval/score.py eval/results/my-run.jsonl --split test --out eval/results/m
 
 ## 为公开改过的文件
 
-`eval/PREREGISTRATION.md` 里的文件哈希，对应的是当时实际运行的文件。这份公开版里，`agent/common.py`、`policies/library.py`、`policies/build_sources.py`、`testset/load.py`、`eval/run.py`、`eval/multiturn.py`、`tests/test_offline.py` 和 `baselines/` 下的 5 个文件，只改了默认路径和一行注释，并在缺少 TikTok 政策页时跳过相关内容。结果文件里的 TikTok 政策原文，换成了条款编号和页面链接。
+`eval/PREREGISTRATION.md` 里的文件哈希，对应的是当时实际运行的文件。这份公开版里，`agent/common.py`、`policies/library.py`、`policies/build_sources.py`、`testset/load.py`、`eval/run.py`、`eval/multiturn.py`、`agent/memory.py`、`tests/test_offline.py` 和 `baselines/` 下的 5 个文件，只改了默认路径和一行注释，并在缺少 TikTok 政策页时跳过相关内容。结果文件里的 TikTok 政策原文，换成了条款编号和页面链接。

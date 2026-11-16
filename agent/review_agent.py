@@ -24,6 +24,7 @@ import time
 import library
 from common import (REVIEW_SCHEMA, Usage, ad_image, advice_problems, category_list, check_quotes, clean_advice,
                     create, image_block, jurisdiction, placeholders)
+from load import ad_text
 from ocr import cached as ocr_cached
 
 MAX_ROUNDS = 10
@@ -41,6 +42,10 @@ Categories:
 
 Clause index (call get_clause or search_policy for the text):
 {index}"""
+
+# With memory (memory.py): the review request may list earlier confirmed decisions; this step is added to the system prompt.
+MEMORY_RULE = """
+5. The request may list earlier confirmed decisions on similar ads. Use them for consistency: if the new ad makes the same claim in the same way, decide the same way and cite the same clause. They do not override the clauses: if the wording, a qualifier, a source or the product differs, decide from the clauses, and say in notes which earlier decision you did not follow and why."""
 
 ADVICE_SCHEMA = {
     "type": "object",
@@ -92,14 +97,19 @@ def tools_for(has_image: bool, version: str = "v1") -> list[dict]:
 class Session:
     """One conversation with the agent about one ad (and its later versions)."""
 
-    def __init__(self, item: dict, version: str = "v1"):
+    def __init__(self, item: dict, version: str = "v1", memory: bool = False):
         self.item = item
         self.version = version
+        self.memory = memory
+        self.recalled: list[str] = []  # ids of the earlier decisions shown (memory only)
         self.last_quotes: list[str] = []
         self.jur = jurisdiction(item)
         clauses = [c for c in library.load() if c.jurisdiction == self.jur]
         index = "\n".join(f"- {c.id}: {c.title} ({c.kind})" for c in clauses)
         self.system = SYSTEM.format(jurisdiction=self.jur, categories=category_list(item["lang"]), index=index)
+        if memory:
+            head, sep, tail = self.system.partition("\n\nCategories:")
+            self.system = head + MEMORY_RULE + sep + tail
         self.messages: list[dict] = []
         self.usage = Usage()
         self.trace: list[dict] = []
@@ -220,8 +230,16 @@ class Session:
         if path is not None:
             content.append(image_block(path))
         lang = "Chinese" if item["lang"] == "zh" else "English"
-        content.append({"type": "text", "text": f"{lead} The ad is in {lang}; write explanations in {lang}.\nCaption: {caption}"
+        # The memory test gives each ad an advertiser account; both arms are told it, only the memory arm gets records.
+        account = f"\nAdvertiser account: {item['advertiser']}" if item.get("advertiser") else ""
+        content.append({"type": "text", "text": f"{lead} The ad is in {lang}; write explanations in {lang}.{account}\nCaption: {caption}"
                         + ("\n(The ad has an image, attached above.)" if path is not None else "\n(Text ad, no image.)")})
+        if self.memory and first:
+            import memory
+            found = memory.lookup(ad_text(item, revised), item["lang"], item.get("advertiser"))
+            self.recalled = [r["id"] for r in found]
+            if found:
+                content.append({"type": "text", "text": memory.render(found, item["lang"], item.get("advertiser"))})
         return self._turn(content, "submit_review")
 
     def advise(self) -> dict:
@@ -231,12 +249,17 @@ class Session:
         return self._turn([{"type": "text", "text": q}], "submit_advice", ADVICE_RULES_V11 if self.version in ("v1.1", "v1.2", "v1.3") else None)
 
     def result(self, extra: dict) -> dict:
-        return {"arm": "agent", **extra, "usage": self.usage.as_dict(), "trace": self.trace}
+        out = {"arm": "agent_memory" if self.memory else "agent", **extra, "usage": self.usage.as_dict(), "trace": self.trace}
+        if self.version != "v1":
+            out["version"] = self.version
+        if self.memory:
+            out["recalled"] = self.recalled
+        return out
 
 
-def review(item: dict) -> dict:
+def review(item: dict, version: str = "v1", memory: bool = False) -> dict:
     t0 = time.perf_counter()
-    s = Session(item)
+    s = Session(item, version, memory)
     r = s.review()
     out = s.result({"output": r["output"] or {"decision": "error", "violations": [], "notes": ""}, "error": r["error"]})
     out["latency_s"] = round(time.perf_counter() - t0 + s.ocr_seconds, 2)

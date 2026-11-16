@@ -4,6 +4,7 @@ import { useData } from '../data'
 import Chip from './Chip'
 import Light from './Light'
 import Phrase from './Phrase'
+import Words, { wordCount } from './Words'
 
 /** The hero's figure: the real stored review of the first workspace ad, lying in the water light. */
 function Sample({ t }: { t: Copy }) {
@@ -33,7 +34,7 @@ export default function Hero({ t, still, onToggleStill }: { t: Copy; still: bool
       </button>
       <div className="container hero-grid">
         <div className="hero-text">
-          <h1 id="hero-h">{t.hero.head.map((line) => <span key={line} className="h-line"><Phrase text={line} lang={t.lang} /></span>)}</h1>
+          <h1 id="hero-h">{t.hero.head.map((line, i) => <span key={line} className="h-line"><Words text={line} lang={t.lang} from={t.hero.head.slice(0, i).reduce((sum, l) => sum + wordCount(l, t.lang), 0)} />{t.lang === 'en' && i < t.hero.head.length - 1 ? ' ' : ''}</span>)}</h1>
           <p className="lead"><Phrase text={t.hero.lead} lang={t.lang} /></p>
           <a className="btn btn--accent" href="#demo">{t.hero.cta}</a>
           <p className="proof"><Phrase text={t.hero.proof(data.results.ads)} lang={t.lang} /></p>

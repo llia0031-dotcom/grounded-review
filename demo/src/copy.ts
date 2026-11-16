@@ -167,7 +167,7 @@ export const COPY_EN: Copy = {
       detail: (v: string, t: string) => `violations rejected ${v}, traps approved ${t}`,
       aria: (name: string, p: string, right: number, n: number, detail: string) => `${name}: ${p} (${right} / ${n}); ${detail}.`,
     },
-    cost: (agent: string, oneshot: string, la: string, lo: string) => `Cost per ad: US$${agent} for the review agent, US$${oneshot} for one prompt. Median time ${la} s and ${lo} s, including reading the image.`,
+    cost: (agent: string, oneshot: string, la: string, lo: string) => `Cost per ad: US$${agent} for the review agent, US$${oneshot} for one prompt. Median time ${la} s and ${lo} s, including reading the image.`,
   },
   faq: {
     head: 'Questions',

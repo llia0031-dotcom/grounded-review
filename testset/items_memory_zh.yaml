@@ -1,0 +1,136 @@
+# Memory test, Chinese (split: memory). Written 2026-11-16 together with precedents.yaml, before any model saw them.
+# Answers fixed at writing. Brands are fictional. Text ads only.
+# precedent: the earlier decision this ad was written against (precedents.yaml). relation: follow = the right call
+# matches that precedent; distinguish = it does not (the precedent should not be applied).
+# type: follow-reject, follow-approve (a grey case the earlier decision settles), fixed (the advertiser fixed the
+# problem), qualified (similar words, now with the qualifiers that make them lawful), history (a clean ad from an
+# advertiser with rejected ads), dropped (the qualifiers that made an approved ad lawful are gone), new-violation
+# (an approved ad with a violation added).
+- id: zh-m01
+  split: memory
+  kind: text
+  advertiser: 青禾家电
+  precedent: p-zh-01
+  relation: follow
+  type: follow-reject
+  copy: 青禾除螨仪上新：吸力 12kPa，噪音 62 分贝，是全网最好用的除螨仪。到手价 ¥399。
+  labels:
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 是全网最好用的除螨仪}
+- id: zh-m02
+  split: memory
+  kind: text
+  advertiser: 澄心健康
+  precedent: p-zh-02
+  relation: follow
+  type: follow-reject
+  copy: 澄心益生菌新口味上市。有宝妈留言：坚持喝了 6 周，宝宝的过敏性皮炎再没复发。早晚各一条，40℃ 以下温水冲泡。
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-17], span: 宝宝的过敏性皮炎再没复发}
+- id: zh-m03
+  split: memory
+  kind: text
+  advertiser: 知更教育
+  precedent: p-zh-03
+  relation: follow
+  type: follow-reject
+  copy: 知更四六级冲刺营 12 月 1 日开课，每周三次直播，回放可看到考前。本营承诺：六级不过 500 分，学费全退。
+  labels:
+    - {cat: GUARANTEE, clauses: [CN-AL-24], span: 六级不过 500 分，学费全退}
+- id: zh-m04
+  split: memory
+  kind: text
+  advertiser: 森野户外
+  precedent: p-zh-04
+  relation: follow
+  type: follow-approve
+  copy: 森野 至尊® 系列睡袋上新：800 蓬白鹅绒，舒适温标 -10℃，整袋重 1.2kg。
+  labels: []
+  trap: “至尊”是这一系列的注册商标，用来指代商品。
+  basis: [CN-SAMR-6]
+- id: zh-m05
+  split: memory
+  kind: text
+  advertiser: 轻羽运动
+  precedent: p-zh-05
+  relation: follow
+  type: follow-approve
+  copy: 轻羽 Trail 2 越野跑鞋上新：轻羽越野系列里最轻的一双，单只 245g（42 码），大底换成了更耐磨的橡胶。
+  labels: []
+  trap: “最轻”只和轻羽自己的越野系列比，是自我比较。
+  basis: [CN-SAMR-6]
+- id: zh-m06
+  split: memory
+  kind: text
+  advertiser: 拾光数码
+  precedent: p-zh-06
+  relation: follow
+  type: follow-approve
+  copy: 拾光 G2 手机云台 11 月 20 日 10:00 全网首发，前 500 名下单送收纳包。三轴防抖，续航 12 小时。
+  labels: []
+  trap: “首发”说的是限定了具体时间的发售先后。
+  basis: [CN-SAMR-6]
+- id: zh-m07
+  split: memory
+  kind: text
+  advertiser: 云栖草本
+  precedent: p-zh-07
+  relation: distinguish
+  type: fixed
+  copy: 云栖草本足浴包：艾草生姜配方，下班回家泡一泡，脚底暖洋洋。30 包装 ¥59。
+  labels: []
+  trap: 改过的版本只讲配方和泡脚的感受，没有疾病和疗效的说法。
+  basis: [CN-AL-17]
+- id: zh-m08
+  split: memory
+  kind: text
+  advertiser: 野径户外
+  precedent: p-zh-08
+  relation: distinguish
+  type: fixed
+  copy: 野径碳纤维登山杖：单支 198g，三节快锁，承重 100kg（第三方检测报告编号 YJ-2026-1102）。¥259 一对。
+  labels: []
+  trap: 改过的版本只讲自己的参数，写明了检测报告，没有提别家的商品。
+  basis: [CN-AL-13, CN-AL-11-2]
+- id: zh-m09
+  split: memory
+  kind: text
+  advertiser: 禾田家具
+  precedent: p-zh-09
+  relation: distinguish
+  type: qualified
+  copy: 禾田实木床：2026 年 10 月京东实木床类目销量第一（数据来源：京东商智，2026 年 10 月）。北美白橡木，1.8 米款 ¥3280。
+  labels: []
+  trap: “销量第一”这次限定了平台、类目和月份，并写明了数据来源。
+  basis: [CN-SAMR-6, CN-AL-11-2]
+- id: zh-m10
+  split: memory
+  kind: text
+  advertiser: 澄心健康
+  precedent: p-zh-10
+  relation: distinguish
+  type: history
+  copy: 澄心益生菌固体饮料，原味和蓝莓两种口味，每条 2g，独立小包装，出差带着方便。30 条装 ¥168。
+  labels: []
+  trap: 这条广告只讲口味、规格和价格；这个广告主以前的广告被拒过，但和这一条无关。
+  basis: [CN-AL-17]
+- id: zh-m11
+  split: memory
+  kind: text
+  advertiser: 晨屿咖啡
+  precedent: p-zh-11
+  relation: distinguish
+  type: dropped
+  copy: 晨屿挂耳咖啡，销量第一，老顾客回购率 92%。10 包装 ¥39。
+  labels:
+    - {cat: ABSOLUTE, clauses: [CN-AL-9-3], span: 销量第一}
+    - {cat: DATA, clauses: [CN-AL-11-2], span: 老顾客回购率 92%}
+- id: zh-m12
+  split: memory
+  kind: text
+  advertiser: 青禾家电
+  precedent: p-zh-12
+  relation: distinguish
+  type: new-violation
+  copy: 青禾 3L 电饭煲：24 小时预约，陶瓷釉内胆，一键煮粥，糖友吃了血糖也稳。到手价 ¥299。
+  labels:
+    - {cat: MEDICAL, clauses: [CN-AL-17], span: 糖友吃了血糖也稳}

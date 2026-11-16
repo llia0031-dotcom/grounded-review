@@ -2,6 +2,7 @@ import type { Copy } from '../copy'
 import { frac, pct, useData } from '../data'
 import { useReveal } from '../hooks'
 import Phrase from './Phrase'
+import Roll from './Roll'
 
 /** Results: three figures, then one bar chart (share of image ads judged right per method) with the always-reject line. */
 export default function Results({ t }: { t: Copy }) {
@@ -24,7 +25,7 @@ export default function Results({ t }: { t: Copy }) {
         <ul className="figures">
           {items.map((it) => (
             <li key={it.label} className="figure">
-              <p className="fig num">{it.fig}</p>
+              <p className="fig num"><Roll text={it.fig} run={shown} /></p>
               <h3><Phrase text={it.label} lang={t.lang} /></h3>
               <p className="fig-note"><Phrase text={it.note} lang={t.lang} /></p>
             </li>

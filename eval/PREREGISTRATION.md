@@ -420,3 +420,89 @@ Outcomes of the expectations:
 4. Did not hold: the arms differ on 1 of 32 pairs (`zh-r13` run 1, the award name, which one prompt approved once).
 
 The two text guardrails ran afterwards, once each, with no errors; no expectation was written for them. Qwen3Guard rejected 7 of 12 penalised ads and approved all 4 lawful ones (11 of 16 right); Granite Guardian rejected 10 of 12 and approved 3 of 4 (13 of 16).
+
+## Memory: earlier decisions shown to the agent (written 16 November 2026, 20:34 MYT, before any model saw these ads)
+
+**Why.** A platform reviews the same advertiser's ads again and again, and many ads repeat a claim that was already decided. Without memory, each review starts from the clauses alone, so a grey case can be decided one way today and another way tomorrow. The question: when the agent is shown earlier confirmed decisions on similar ads, does it decide more consistently, and how often does an earlier decision mislead it?
+
+**Memory.** `agent/memory.py`. A store of confirmed decisions (the ad's words, the decision, each violation's category, clause and quoted words, a one-line reason, the advertiser, the date). For a new ad, BM25 over the stored ads of the same language returns the 3 most similar records, and up to 2 more of the same advertiser's most recent records are added. The records are appended to the review request, and one step is added to the system prompt: decide the same way when the ad makes the same claim in the same way; the clauses decide when anything differs. The model only reads the store; nothing in a review writes to it. No embedding model and no extra model call. Why this design and what existing memory libraries were considered: `product/PRD.md`, section 6.4.
+
+**Set.** Split `memory`: `testset/items_memory_zh.yaml` and `items_memory_en.yaml`, 24 fictional text ads (12 Chinese, 12 English), and `testset/precedents.yaml`, a store of 36 earlier decisions (18 per language). Ads, store records, answers and reasons were written together, before any model saw them; answers were fixed at writing. Each ad was written against one store record from the same advertiser.
+
+| Type | Ads | The earlier decision | Right call |
+|---|---|---|---|
+| follow-reject | 6 | rejected a claim; the new ad makes the same kind of claim in other words or for another product | reject, same clause |
+| follow-approve | 6 | approved a grey case (a registered trademark with a superlative in it, a comparison with the advertiser's own products, a dated first release, a delivery guarantee, a refund trial) | approve |
+| fixed | 4 | rejected; the advertiser has removed the problem | approve |
+| qualified | 2 | rejected an unqualified claim; the new ad adds the qualifiers and the source that make it lawful | approve |
+| history | 2 | rejected another ad of this advertiser; the new ad is clean | approve |
+| dropped | 2 | approved because of a qualifier or a required statement; the new ad leaves it out | reject |
+| new-violation | 2 | approved; the new ad repeats it and adds a violating claim | reject |
+
+The first two types (12 ads) are "follow": the earlier decision applies. The other five (12 ads) are "distinguish": applying the earlier decision gives the wrong call. Answers: 10 reject, 14 approve.
+
+**Arms.** The agent (v1.3) without memory and with memory. Same model (`claude-haiku-5-5`), same tools, same output format. Both arms are told the advertiser account; only the memory arm gets the records and the added step. Three runs each, Message Batches API. The store is fixed for the whole run, so every run of an ad sees the same records.
+
+**Checked before the run, with no model.** `memory.lookup` returns the paired record for 24 of 24 ads (rank 1 for 20, rank 2 for 3, rank 4 for 1). So this test measures what the agent does with a relevant earlier decision in front of it, not how well lookup works on a large store. One practice ad (`en-d01`, split dev) was reviewed once by each arm to check the code path (US$0.0041, standard price); no ad of the memory split was sent to a model.
+
+**What is measured** (`eval/memory_report.py`).
+- Decisions right, per arm, for follow and distinguish ads and for each type.
+- Consistency: the number of ads on which all three runs reach the same decision.
+- Follow-reject ads: how often the clause and the category of the earlier decision are cited.
+- Memory misleading the agent: on distinguish ads, how often the arm repeats the earlier decision.
+- Cost per review at the batch price, and model calls per review.
+
+**Expectations.**
+1. Follow-approve (18 runs per arm): without memory the agent wrongly rejects at least 3 runs; with memory at most 1.
+2. Follow-reject (18 runs per arm): both arms reject at least 17. With memory the earlier clause is cited in at least 17 runs, and at least as often as without.
+3. Distinguish (36 runs per arm): with memory at least 34 are right, and no more than 1 fewer than without memory; the memory arm repeats the earlier decision in at most 2 runs.
+4. All three runs agree on at least as many ads with memory as without.
+5. Over all 72 runs per arm, the memory arm has at least 3 more decisions right.
+6. A review with memory costs between 1.1 and 1.6 times a review without.
+
+**Not tested.** A wrong record in the store (the agent would probably follow it); retrieval from a large store; image ads; records the agent wrote itself. NOT RUN.
+
+**Budget.** On the practice ad a review cost US$0.0018 without memory and US$0.0023 with, at the standard price. At the batch price, 24 ads and 3 runs of both arms come to about US$0.15; allowing 1.5 times that, US$0.22. The run stops at US$0.30 (`--budget 0.30`). The project has spent US$2.8678; this run takes it past the earlier US$3.00 line, within the US$0.50 allowed for this test.
+
+**Run.**
+```
+AD_REVIEW_ENV_FILE=../launchpad-tracedesk/app/.env PY eval/run.py --split memory --arms agent,agent_memory --version v1.3 --repeat 3 --out memory-2026-11-16 --budget 0.30 --batch
+PY eval/memory_report.py eval/results/memory-2026-11-16.jsonl
+PY eval/score.py eval/results/memory-2026-11-16.jsonl --split memory --out eval/results/memory-2026-11-16.summary.md
+```
+
+**Frozen files (sha256 of LF-normalised contents, first 12 characters).**
+
+| File | sha256 |
+|---|---|
+| `testset/items_memory_zh.yaml` | `76259b18ed3c` |
+| `testset/items_memory_en.yaml` | `01b7507d3c35` |
+| `testset/precedents.yaml` | `3048fd65b24d` |
+| `testset/load.py` | `ade9618eb203` |
+| `agent/common.py` | `806c01d705da` |
+| `agent/review_agent.py` | `6b89f97dd307` |
+| `agent/memory.py` | `855260842ef4` |
+| `eval/run.py` | `1ba63284f017` |
+| `eval/score.py` | `284941b328a8` |
+| `eval/memory_report.py` | `accf9f67aeb3` |
+| `policies/clauses.yaml` | `27cd8a53cea1` |
+| `policies/library.py` | `27bb9ac4d470` |
+
+**Results** (run 16 November 2026, started 20:35 MYT). Checked against the table above after the run: no frozen file changed.
+
+- 6 batches of 144, 144, 88, 29, 5 and 1 requests; the second took 16.9 minutes, the others about 2 minutes each; every request succeeded. Cost: US$0.1575 at the batch price, against about US$0.15 estimated. With the practice ad (US$0.0041) the project has spent US$3.0253. Outputs: `results/memory-2026-11-16.jsonl`. Report: `results/memory-2026-11-16.report.md`. Standard scores: `results/memory-2026-11-16.summary.md`.
+- Decisions right: 69 of 72 without memory, 72 of 72 with. The whole difference is one ad, `en-m04` (a next-day delivery guarantee): without memory the agent rejected it in all three runs, with memory it approved it in all three.
+- Distinguish ads: 36 of 36 right in both arms; the memory arm repeated the earlier decision in 0 of 36 runs.
+- All three runs agreed on 24 of 24 ads in both arms.
+- A review cost US$0.00116 without memory (3.0 calls, 17,852 input tokens) and US$0.00103 with (2.7 calls, 15,409 input tokens): with the earlier decisions in front of it the agent searched the policy library less (2.0 searches per review against 2.6).
+
+Outcomes of the expectations:
+
+1. Held: on follow-approve ads the agent without memory wrongly rejected 3 of 18 runs (all `en-m04`); with memory 0.
+2. Held: both arms rejected 18 of 18 follow-reject runs, and both cited the earlier decision's clause in 18 of 18.
+3. Held: with memory 36 of 36 distinguish runs were right, the same as without; the earlier decision was repeated in 0 runs.
+4. Held, with nothing between the arms: 24 of 24 ads in both.
+5. Held, at the threshold: 3 more decisions right with memory (72 against 69).
+6. Did not hold: a review with memory cost 0.89 times a review without, not 1.1 to 1.6 times.
+
+**Timestamp corrected after the run.** The heading of this section first gave the time of writing as 12:35 MYT; that was the UTC clock. The section was saved at 20:34 MYT, one minute before the run started, and nothing else in it was changed.

@@ -34,7 +34,7 @@ export default function App({ lang }: { lang: Lang }) {
           <Followup t={t} />
           <Results t={t} />
           <Faq t={t} />
-          <Close t={t} still={still} />
+          <Close t={t} />
         </main>
         <Footer t={t} />
       </div>

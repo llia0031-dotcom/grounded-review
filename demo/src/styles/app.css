@@ -1,8 +1,7 @@
-/* Hallmark · shape: Workbench · genre: atmospheric · theme: Refract · job: try
- * hero: Counter, the head and one action beside a real stored review lying in the water light · nav: a bar on paper · footer: one row of links
- * imagery: the product (real outputs) · signature: an ad's words beside the clause they break, both checked word for word · refract: water/pool
- * Built on the screening demo's Refract implementation (Cairn's tokens and light). Structure from landing-page-design Part A;
- * where it and Refract disagree, Refract wins. */
+/* Hallmark · shape: Workbench · genre: atmospheric · theme: the portfolio site's (warm paper, near-black ink, one green signal; serif display, grotesk body) on the Refract structure · job: try
+ * hero: Counter, the head and one action beside a real stored review lying in a soft light · nav: a bar on paper · footer: one row of links
+ * imagery: the product (real outputs) · signature: an ad's words beside the clause they break, both checked word for word
+ * A project page, so it is quiet: one moving ground (the hero's light), the head's words coming in once, three figures counting up once, sections fading in. */
 
 :root {
   --ease-base: cubic-bezier(0.22, 1, 0.36, 1);
@@ -31,7 +30,7 @@ a, button, label, summary { touch-action: manipulation; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .num { font-variant-numeric: tabular-nums; }
 .lead { font-size: var(--text-lead); line-height: 1.5; max-width: 46ch; color: var(--color-muted); }
-.label { font-size: var(--text-sm); font-weight: 500; color: var(--color-muted); }
+.label, h3.label { font-family: var(--font-body); font-size: var(--text-sm); font-weight: 500; letter-spacing: 0; color: var(--color-muted); }
 /* Chinese: never tracked tighter, a step smaller at display size, more leading, heads that break between phrases. */
 :lang(zh) body, :lang(zh) .pg { line-height: 1.75; }
 :lang(zh) h1, :lang(zh) h2, :lang(zh) h3 { letter-spacing: 0; line-break: strict; }
@@ -45,10 +44,10 @@ a, button, label, summary { touch-action: manipulation; }
 
 /* ---------- Controls: pills (Refract), pressed on click ---------- */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-xs); min-height: 48px; padding: 0 var(--space-lg); border: 0; border-radius: var(--radius-pill); font-weight: 500; text-decoration: none; white-space: nowrap; cursor: pointer; transition: transform var(--dur-micro) var(--ease-out), background-color var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out); }
-.btn--accent { background: var(--color-accent); color: var(--color-accent-ink); box-shadow: var(--edge-accent), var(--shadow-card); }
+.btn--accent { background: var(--color-ink); color: var(--color-paper); }
 .btn--clear { background: color-mix(in oklab, var(--color-light) 80%, transparent); color: var(--color-ink); box-shadow: var(--edge-light), 0 0 0 1px var(--color-rule), var(--shadow-card); }
 .btn--s { min-height: 40px; padding-inline: var(--space-md); font-size: var(--text-sm); }
-@media (hover: hover) and (pointer: fine) { .btn--accent:hover { background: var(--color-accent-hi); } .btn--clear:hover { background: var(--color-light); } }
+@media (hover: hover) and (pointer: fine) { .btn--accent:hover { background: var(--color-ink-2); } .btn--clear:hover { background: var(--color-light); } }
 .btn:active { transform: scale(0.97); }
 .btn:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
 .btn:disabled { background: var(--color-paper-3); color: var(--color-muted); box-shadow: none; cursor: not-allowed; }
@@ -96,7 +95,7 @@ a, button, label, summary { touch-action: manipulation; }
 
 /* ---------- Tagline: words turn from muted to ink as they cross a line ---------- */
 .tagline { padding-block: var(--section-gap) var(--section-gap-s); }
-.tagline-text { max-width: none; font-family: var(--font-display); font-weight: 300; font-size: var(--text-section); line-height: 1.15; letter-spacing: var(--tracking-display); color: var(--color-ink); text-wrap: balance; }
+.tagline-text { max-width: none; font-family: var(--font-display); font-weight: 400; font-size: var(--text-section); line-height: 1.15; letter-spacing: var(--tracking-display); color: var(--color-ink); text-wrap: balance; }
 :lang(zh) .tagline-text { max-width: none; letter-spacing: 0; line-height: 1.45; font-weight: 400; font-size: calc(var(--text-section) * 0.9); }
 .tl { display: block; }
 .tw { color: color-mix(in oklab, var(--color-ink) 30%, var(--color-paper)); transition: color 520ms var(--ease-base); }
@@ -111,7 +110,7 @@ a, button, label, summary { touch-action: manipulation; }
 /* Three steps as lanes on one rule, the number carrying the order and nothing else coloured */
 .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gap-columns); border-top: 1px solid var(--color-rule); }
 .step { display: grid; gap: var(--space-xs); align-content: start; padding-top: var(--space-lg); }
-.step-n { font-family: var(--font-display); font-weight: 300; font-size: var(--text-xl); line-height: 1; color: var(--color-muted); font-variant-numeric: tabular-nums; }
+.step-n { font-family: var(--font-display); font-weight: 400; font-size: var(--text-xl); line-height: 1; color: var(--color-muted); font-variant-numeric: tabular-nums; }
 .step h3 { font-family: var(--font-body); font-size: var(--text-lg); font-weight: 500; letter-spacing: 0; line-height: 1.35; }
 .step p { color: var(--color-ink-2); max-width: 45ch; }
 
@@ -172,7 +171,7 @@ div.sample-row { display: flex; align-items: center; gap: var(--space-sm); }
 .viol-pair { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--space-lg); }
 .viol-pair .label { margin-bottom: var(--space-2xs); }
 .viol-ref { margin-left: var(--space-xs); color: var(--color-ink); }
-.viol-quote { font-size: var(--text-lg); line-height: 1.6; color: var(--color-ink); }
+.viol-quote { font-size: var(--text-lg); line-height: 1.6; color: var(--color-ink); text-wrap: balance; }
 .viol-visual { color: var(--color-ink); line-height: 1.7; }
 .viol-law { padding: var(--space-sm) var(--space-md); border-radius: var(--radius-inner); background: var(--color-paper-2); font-size: var(--text-sm); line-height: 1.8; color: var(--color-ink-2); }
 .viol-why { color: var(--color-ink-2); line-height: 1.75; max-width: 62ch; }
@@ -238,7 +237,7 @@ div.sample-row { display: flex; align-items: center; gap: var(--space-sm); }
 /* ---------- Results: three figures in sun-weight display type, each with its label and its note ---------- */
 .figures { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gap-columns); border-top: 1px solid var(--color-rule); }
 .figure { display: grid; gap: var(--space-sm); align-content: start; padding-top: var(--space-lg); }
-.fig { font-family: var(--font-display); font-weight: 300; font-size: var(--text-display-s); line-height: 1; letter-spacing: var(--tracking-display); color: var(--color-ink); white-space: nowrap; }
+.fig { font-family: var(--font-display); font-weight: 400; font-size: var(--text-display-s); line-height: 1; letter-spacing: var(--tracking-display); color: var(--color-ink); white-space: nowrap; }
 .figure h3 { font-family: var(--font-body); font-size: var(--text-md); font-weight: 500; letter-spacing: 0; line-height: 1.45; max-width: 30ch; }
 .fig-note { font-size: var(--text-sm); color: var(--color-ink-2); max-width: 38ch; }
 
@@ -293,8 +292,8 @@ div.sample-row { display: flex; align-items: center; gap: var(--space-sm); }
   .js [data-shown='false'] > .container { opacity: 1; transform: none; }
 }
 
-/* Serif headings (pairing C): Noto Serif SC is loaded at 500 only, so every place that sets Chinese in the display face uses it. */
-h1, h2, h3, h4, .logo-name, .tagline-text, :lang(zh) .tagline-text, .sample-quote, .viol-h, .chart-h { font-weight: var(--weight-serif); }
+/* Serif headings: Noto Serif SC is loaded at 600 only and Redaction at 400 only, so every place set in the display face uses the one loaded weight. */
+h1, h2, h3, h4, .logo-name, .tagline-text, :lang(zh) .tagline-text, .sample-quote, .viol-h, .chart-h, .fig, .step-n { font-weight: var(--weight-serif); }
 
 /* ---------- Phrases and lines: Chinese display text breaks between words; the hero head breaks where the copy says ---------- */
 .ph { white-space: nowrap; }
@@ -304,8 +303,12 @@ h1, h2, h3, h4, .logo-name, .tagline-text, :lang(zh) .tagline-text, .sample-quot
 .hero-text h1 { max-width: none; }
 @media (max-width: 40em) { :lang(zh) .hero-text h1 { font-size: calc(var(--text-display-s) * 0.86); } }
 
-/* English pages: pairing C sets Inter for Latin letters and digits, so headings and text are all Inter there. */
-:root:lang(en) { --font-display: "Inter Variable", sans-serif; --font-body: "Inter Variable", sans-serif; }
+/* English pages: headings in Redaction 400, text in Geist (the portfolio site's Latin faces). */
+:root:lang(en) { --font-display: "Redaction", Georgia, serif; --font-body: "Geist Variable", system-ui, sans-serif; --weight-serif: 400; }
+
+/* The hero head: its words come in one after another, once (opacity and a short rise). */
+.js .hero-text h1 .hw { display: inline-block; animation: word 560ms var(--ease-base) backwards; animation-delay: calc(120ms + var(--i) * 70ms); }
+@keyframes word { from { opacity: 0; transform: translateY(0.3em); } }
 
 /* The link to the same page in the other language. */
 .lang-link { display: inline-flex; align-items: center; gap: var(--space-2xs); min-height: 40px; margin-left: auto; padding: 0 var(--space-sm); border-radius: var(--radius-pill); box-shadow: 0 0 0 1px var(--color-rule); color: var(--color-ink-2); font-size: var(--text-sm); font-weight: 500; text-decoration: none; transition: color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out); }

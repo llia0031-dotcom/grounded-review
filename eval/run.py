@@ -27,13 +27,15 @@ import oneshot  # noqa: E402
 import review_agent  # noqa: E402
 from load import load_items  # noqa: E402
 
-ARMS = {"oneshot": oneshot.review, "agent": review_agent.review}
+ARMS = {"oneshot": oneshot.review, "agent": review_agent.review,
+        "agent_memory": lambda it, version="v1": review_agent.review(it, version, memory=True)}  # with earlier decisions (agent/memory.py)
 LOCK = threading.Lock()
 
 
 def main(argv=None):
     ap = argparse.ArgumentParser()
-    ap.add_argument("--split", choices=["dev", "test", "hard", "real"], required=True)
+    ap.add_argument("--split", choices=["dev", "test", "hard", "real", "memory"], required=True)
+    ap.add_argument("--version", default="v1", help="agent version for the agent arms (v1, v1.1, v1.2, v1.3)")
     ap.add_argument("--arms", default="oneshot,agent")
     ap.add_argument("--repeat", type=int, default=1)
     ap.add_argument("--out", required=True)
@@ -73,7 +75,7 @@ def main(argv=None):
     def task(arm, it, run):
         t0 = time.time()
         try:
-            r = ARMS[arm](it)
+            r = ARMS[arm](it) if arm == "oneshot" else ARMS[arm](it, version=a.version)
         except Exception as e:  # keep going; the failure is stored and retried next time
             r = {"arm": arm, "output": None, "error": f"{type(e).__name__}: {e}", "usage": {"cost_usd": 0.0}, "latency_s": None}
         finally:

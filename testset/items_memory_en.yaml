@@ -1,0 +1,129 @@
+# Memory test, English (split: memory). Written 2026-11-16 together with precedents.yaml, before any model saw them.
+# Answers fixed at writing. Brands are fictional. Text ads only. Fields as in items_memory_zh.yaml.
+- id: en-m01
+  split: memory
+  kind: text
+  advertiser: LeanLab
+  precedent: p-en-01
+  relation: follow
+  type: follow-reject
+  copy: "LeanLab Night Tea: drop a dress size while you sleep. No diet, no workouts. 20 tea bags."
+  labels:
+    - {cat: WEIGHT, clauses: [TT-WM-WEIGHT], span: "drop a dress size while you sleep. No diet, no workouts."}
+- id: en-m02
+  split: memory
+  kind: text
+  advertiser: Brightpath Money
+  precedent: p-en-02
+  relation: follow
+  type: follow-reject
+  copy: "Brightpath Copy-Trade: our members never lose. 12% a month, every month, guaranteed."
+  labels:
+    - {cat: GUARANTEE, clauses: [TT-DEC-FINREP], span: "our members never lose. 12% a month, every month, guaranteed."}
+- id: en-m03
+  split: memory
+  kind: text
+  advertiser: Glowra
+  precedent: p-en-03
+  relation: follow
+  type: follow-reject
+  copy: "Glowra Barrier Balm: rosacea gone for good after one tube. Unscented, 50ml."
+  labels:
+    - {cat: MEDICAL, clauses: [TT-MIS-CLAIMS], span: "rosacea gone for good after one tube"}
+- id: en-m04
+  split: memory
+  kind: text
+  advertiser: Hearth & Oak
+  precedent: p-en-04
+  relation: follow
+  type: follow-approve
+  copy: "Hearth & Oak soy candles: order by 3pm for guaranteed next-day delivery, or the shipping is on us."
+  labels: []
+  trap: "The guarantee is about delivery, not an effect of the product."
+  basis: [TT-MIS-CLAIMS]
+- id: en-m05
+  split: memory
+  kind: text
+  advertiser: Nomad Sleep
+  precedent: p-en-05
+  relation: follow
+  type: follow-approve
+  copy: "Nomad Mattress: 100-night trial. If you don't sleep better, return it for a full refund."
+  labels: []
+  trap: "A trial and refund policy; it does not promise better sleep."
+  basis: [TT-MIS-CLAIMS]
+- id: en-m06
+  split: memory
+  kind: text
+  advertiser: Voltra
+  precedent: p-en-06
+  relation: follow
+  type: follow-approve
+  copy: "Voltra Pro Max charges 40% faster than our Voltra Pro (in-house lab test, 2026; method on the product page)."
+  labels: []
+  trap: "A comparison with the advertiser's own earlier model, with the evidence named."
+  basis: [TT-MIS-COMPARE]
+- id: en-m07
+  split: memory
+  kind: text
+  advertiser: FitFuel
+  precedent: p-en-07
+  relation: distinguish
+  type: fixed
+  copy: "FitFuel Whey: 24g protein per scoop to support muscle recovery after training. Pair with a balanced diet and regular exercise. 18+."
+  labels: []
+  trap: "Protein content and recovery support, tied to diet and exercise; no weight-loss or unrealistic muscle-gain claim."
+  basis: [TT-WM-WEIGHT]
+- id: en-m08
+  split: memory
+  kind: text
+  advertiser: Purely Skin
+  precedent: p-en-08
+  relation: distinguish
+  type: fixed
+  copy: "Purely Skin Night Cream with 0.3% retinol and ceramides. Start twice a week, and wear sunscreen by day."
+  labels: []
+  trap: "Ingredients and directions only; the before-and-after claim is gone."
+  basis: [TT-MIS-COMPARE, TT-MIS-CLAIMS]
+- id: en-m09
+  split: memory
+  kind: text
+  advertiser: Sprynt
+  precedent: p-en-09
+  relation: distinguish
+  type: qualified
+  copy: "Sprynt Trail 3 grips 30% better on wet rock than our Trail 2 (in-house slip test, 2026; method on sprynt.com)."
+  labels: []
+  trap: "Now a comparison with its own earlier shoe, with the evidence named; no other brand is judged."
+  basis: [TT-MIS-COMPARE]
+- id: en-m10
+  split: memory
+  kind: text
+  advertiser: Brightpath Money
+  precedent: p-en-10
+  relation: distinguish
+  type: history
+  copy: "Brightpath Easy Saver: 3.1% AER (variable) on balances up to $50,000. Deposits are FDIC-insured through our partner bank. 18+ only."
+  labels: []
+  trap: "A savings rate marked variable, with deposit protection stated and an age limit; earlier rejected ads were for another product."
+  basis: [TT-FIN, TT-DEC-FINREP]
+- id: en-m11
+  split: memory
+  kind: text
+  advertiser: Hopsmith
+  precedent: p-en-11
+  relation: distinguish
+  type: dropped
+  copy: "Hopsmith Pale Ale is back for summer. Citrus hops, light body. 18+ only."
+  labels:
+    - {cat: ALCOHOL, clauses: [TT-ALC], absence: "no alcohol strength and no responsible drinking disclaimer"}
+- id: en-m12
+  split: memory
+  kind: text
+  advertiser: Cedar & Salt
+  precedent: p-en-12
+  relation: distinguish
+  type: new-violation
+  copy: "Cedar & Salt cast-iron pan: pre-seasoned, oven-safe to 260°C. Cooking in iron cures anaemia, so ditch the pills. $79."
+  labels:
+    - {cat: MEDICAL, clauses: [TT-MIS-CLAIMS], span: "Cooking in iron cures anaemia, so ditch the pills."}

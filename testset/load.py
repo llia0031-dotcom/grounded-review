@@ -1,6 +1,7 @@
 """Load and validate the test set (items_zh.yaml, items_en.yaml; the harder set written later,
 split "hard", is in items_hard_zh.yaml and items_hard_en.yaml; the real ads from published regulator
-and court decisions, split "real", are not redistributed: see real-sources.md).
+and court decisions, split "real", are not redistributed: see real-sources.md; the memory test,
+split "memory", is in items_memory_<lang>.yaml, written against the earlier decisions in precedents.yaml).
 
 Checks: unique ids; every span is a verbatim part of the ad's words; every clause id exists and
 belongs to the ad's jurisdiction; categories are known; traps have no labels and name a basis.
@@ -69,7 +70,7 @@ def _check_labels(item, labels, text, problems, where):
 def load_items() -> list[dict]:
     items = []
     for lang in ("zh", "en"):
-        for name in (f"items_{lang}.yaml", f"items_hard_{lang}.yaml", f"items_real_{lang}.yaml"):
+        for name in (f"items_{lang}.yaml", f"items_hard_{lang}.yaml", f"items_real_{lang}.yaml", f"items_memory_{lang}.yaml"):
             if not (HERE / name).exists():
                 continue
             for it in yaml.safe_load((HERE / name).read_text(encoding="utf-8")):
@@ -99,7 +100,7 @@ def load_items() -> list[dict]:
 
 def summary(items: list[dict]) -> str:
     out = []
-    for split in ("dev", "test", "hard", "real"):
+    for split in ("dev", "test", "hard", "real", "memory"):
         sub = [i for i in items if i["split"] == split]
         c = collections.Counter((i["lang"], i["kind"]) for i in sub)
         viol = sum(1 for i in sub if i["labels"])

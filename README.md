@@ -10,6 +10,8 @@ An ad-review agent that says which rule an ad breaks and which words break it, a
 |---|---|---|
 | ![A rejected ad with the offending words and the clause](docs/images/review.jpg) | ![The advertiser asks how to fix the ad](docs/images/fix-and-resubmit.jpg) | ![Results on the held-out set](docs/images/results.jpg) |
 
+**[Live demo](https://jason-d-e.github.io/grounded-review/en.html)** · [中文演示](https://jason-d-e.github.io/grounded-review/). The page shows stored results and calls no model.
+
 ## Where this fits
 
 Grounded Review belongs to a set of projects built on one idea: an AI should show its evidence.
@@ -22,6 +24,7 @@ Grounded Review belongs to a set of projects built on one idea: an AI should sho
 
 - **Review.** It reads the ad's caption and image (OCR), looks up clauses in a policy library, and returns approve or reject. Each violation comes with a category, the clause, the offending words, and the clause text.
 - **Advise and re-review.** When the advertiser asks what is wrong and how to fix it, it explains, writes a corrected version, and reviews the advertiser's own revision.
+- **Remember.** Confirmed decisions are stored. For a new ad, the agent is shown the most similar earlier decisions and the same advertiser's recent ones, so the same claim gets the same call; the clauses still decide when the ad differs. The model only reads the store.
 - **Two jurisdictions.**
   - Chinese ads are reviewed against the PRC Advertising Law (2021) and the national regulator's 2023 enforcement guide on absolute terms.
   - English ads are reviewed against the global sections of five TikTok advertising policy pages.
@@ -29,7 +32,7 @@ Grounded Review belongs to a set of projects built on one idea: an AI should sho
 
 ## How it was evaluated
 
-Two model arms use the same model, the same categories and the same output format: one prompt that is given everything at once, and the agent with tools. The plan, expectations and file hashes were frozen before each run ([`eval/PREREGISTRATION.md`](eval/PREREGISTRATION.md)). The full report is [`eval/EVALUATION.md`](eval/EVALUATION.md).
+Two model arms use the same model, the same categories and the same output format: one prompt that is given everything at once, and the agent with tools. The plan, expectations and file hashes were frozen before each run ([`eval/PREREGISTRATION.md`](eval/PREREGISTRATION.md)). The full report is [`eval/EVALUATION.md`](eval/EVALUATION.md). The product plan, with who it is for, metrics, rollout and risks, is [`product/PRD.md`](product/PRD.md).
 
 | Set | What it is | One prompt | Agent |
 |---|---|---|---|
@@ -45,6 +48,7 @@ What the numbers say:
 - **Quotes hold up.** On the held-out set, 98% of ad quotes and all but one of 425 clause quotes passed the checker. The ad quotes that failed were real words too short for the checker.
 - **The agent costs more.** It is 2.2 times the price of one prompt on the held-out set, and 2.4 to 3.1 times on the real ads.
 - **Simpler methods fall short.** A banned-word list, zero-shot CLIP and SigLIP 2, and open guardrail models (SafeGuard-VL-RL, Qwen3Guard, Granite Guardian) were also run. None of them gives a clause or a quote. On the held-out set, only SafeGuard-VL-RL (images) and Granite Guardian (text) did better than always rejecting.
+- **Memory settled a grey case and never misled.** On 24 new ads, each run three times, the agent was right in 69 of 72 runs without memory and 72 of 72 with it. The difference is one ad, a next-day delivery guarantee that the agent alone rejects every time. On 12 ads where the earlier decision should not be applied, the earlier decision was repeated in 0 of 36 runs. A review with memory cost 0.89 times a review without.
 - **The advice step was tested version by version.** v1.1 removed template placeholders from rewrites: 3 of 24 had them, then 0. v1.3 fixed corrected copy written into the wrong field: 6 of 36, then 0. v1.2 did not help and was not adopted.
 
 ## Run it
@@ -57,6 +61,8 @@ python -m unittest discover -s tests -v                      # offline checks, n
 python testset/load.py                                       # validate the test set
 AD_REVIEW_ENV_FILE=path/to/.env python eval/run.py --split test --repeat 2 --out my-run --batch
 python eval/score.py eval/results/my-run.jsonl --split test --out eval/results/my-run.summary.md
+AD_REVIEW_ENV_FILE=path/to/.env python eval/run.py --split memory --arms agent,agent_memory --version v1.3 --repeat 3 --out my-memory-run --batch
+python eval/memory_report.py eval/results/my-memory-run.jsonl               # the agent without and with memory
 ```
 
 - **API key.** It is read only from the file named in `AD_REVIEW_ENV_FILE`. `--batch` sends requests through the Message Batches API at half price.
@@ -76,6 +82,6 @@ These are linked, not copied:
 
 The tables of file hashes in `eval/PREREGISTRATION.md` refer to the files as they were run. For this
 copy, `agent/common.py`, `policies/library.py`, `policies/build_sources.py`, `testset/load.py`,
-`eval/run.py`, `eval/multiturn.py`, `tests/test_offline.py` and five files in `baselines/` differ only
+`eval/run.py`, `eval/multiturn.py`, `agent/memory.py`, `tests/test_offline.py` and five files in `baselines/` differ only
 in default paths, a comment, and skipping the TikTok pages when they are absent. In the result files,
 TikTok policy text is replaced by the clause id and a link to the page.

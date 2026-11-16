@@ -1,0 +1,154 @@
+# The memory store for the memory test (split: memory): earlier decisions on ads, as a platform would keep them once a
+# decision is confirmed. Written 2026-11-16 together with items_memory_*.yaml, before any model saw them; decisions and
+# reasons fixed at writing. Brands are fictional.
+# The agent only reads this store (agent/memory.py); nothing in a review writes to it.
+# pair: the test item this record was written for (for scoring only, never shown to the model); records without a
+# pair are other decisions in the store.
+# Fields: id, lang, advertiser, date, copy, decision, violations [{cat, clause, quote}], reason.
+
+# ---------------------------------------------------------------- Chinese
+- {id: p-zh-01, pair: zh-m01, lang: zh, advertiser: 青禾家电, date: 2026-09-03, decision: reject,
+   copy: 青禾 2 号空气炸锅：5L 大容量，可视窗口，全网最好用的空气炸锅，没有之一。到手价 ¥269。,
+   violations: [{cat: ABSOLUTE, clause: CN-AL-9-3, quote: 全网最好用的空气炸锅，没有之一}],
+   reason: “全网最好用”“没有之一”是指向商品的绝对化用语，没有限定条件。}
+- {id: p-zh-02, pair: zh-m02, lang: zh, advertiser: 澄心健康, date: 2026-08-21, decision: reject,
+   copy: 澄心益生菌固体饮料：好多宝妈反馈，孩子喝了一个月，湿疹好了。30 条装 ¥168。,
+   violations: [{cat: MEDICAL, clause: CN-AL-17, quote: 孩子喝了一个月，湿疹好了}],
+   reason: 固体饮料是普通食品，借顾客反馈说治好湿疹，属于涉及疾病治疗功能。}
+- {id: p-zh-03, pair: zh-m03, lang: zh, advertiser: 知更教育, date: 2026-07-30, decision: reject,
+   copy: 知更考研数学暑期班 7 月开课，名师直播带练。考不到 100 分全额退款。,
+   violations: [{cat: GUARANTEE, clause: CN-AL-24, quote: 考不到 100 分全额退款}],
+   reason: 以退款的方式暗示保证考试分数，属于对培训效果的保证性承诺。}
+- {id: p-zh-04, pair: zh-m04, lang: zh, advertiser: 森野户外, date: 2026-09-15, decision: approve,
+   copy: 森野 至尊® 系列帐篷 2026 新款：双层防雨，3 分钟速开，适合 2 到 3 人露营。,
+   violations: [],
+   reason: “至尊”是这一系列的注册商标，广告里用它指代这一系列商品，属于执法指南第六条第四项，不适用绝对化用语的规定。}
+- {id: p-zh-05, pair: zh-m05, lang: zh, advertiser: 轻羽运动, date: 2026-10-08, decision: approve,
+   copy: 轻羽 Air 3 跑鞋：这是轻羽做过最轻的一双跑鞋，单只 198g（42 码）。,
+   violations: [],
+   reason: “最轻”只是和轻羽自己的鞋比，属于执法指南第六条第一项的自我比较。}
+- {id: p-zh-06, pair: zh-m06, lang: zh, advertiser: 拾光数码, date: 2026-09-01, decision: approve,
+   copy: 拾光 X5 相机 9 月 10 日 20:00 全网首发，首发当天下单赠原装电池一块。,
+   violations: [],
+   reason: “首发”说的是限定了具体时间的发售先后，属于执法指南第六条第六项的时空顺序客观情况。}
+- {id: p-zh-07, pair: zh-m07, lang: zh, advertiser: 云栖草本, date: 2026-09-22, decision: reject,
+   copy: 云栖草本足浴包：艾草生姜配方，泡了一个月，老寒腿再也没疼过。,
+   violations: [{cat: MEDICAL, clause: CN-AL-17, quote: 泡了一个月，老寒腿再也没疼过}],
+   reason: 足浴包不是医疗器械也不是药品，说泡好了腿病，属于涉及疾病治疗功能。}
+- {id: p-zh-08, pair: zh-m08, lang: zh, advertiser: 野径户外, date: 2026-08-12, decision: reject,
+   copy: 野径登山杖：别再买那些大牌了，一折就断的东西也好意思卖几百块。,
+   violations: [{cat: DISPARAGE, clause: CN-AL-13, quote: 别再买那些大牌了，一折就断的东西也好意思卖几百块}],
+   reason: 说别家的登山杖“一折就断”，贬低其他经营者的商品。}
+- {id: p-zh-09, pair: zh-m09, lang: zh, advertiser: 禾田家具, date: 2026-10-02, decision: reject,
+   copy: 禾田实木床，全网销量第一，睡过的都说好。1.8 米款 ¥3280。,
+   violations: [{cat: ABSOLUTE, clause: CN-AL-9-3, quote: 全网销量第一}],
+   reason: “全网销量第一”没有限定平台、类目和时间，也没有数据来源。}
+- {id: p-zh-10, pair: zh-m10, lang: zh, advertiser: 澄心健康, date: 2026-10-11, decision: reject,
+   copy: 澄心维生素 C 软糖：每天两颗，一冬天都不感冒。60 粒装 ¥89。,
+   violations: [{cat: MEDICAL, clause: CN-AL-17, quote: 每天两颗，一冬天都不感冒}],
+   reason: 软糖是普通食品，说吃了不感冒，属于涉及疾病预防功能。}
+- {id: p-zh-11, pair: zh-m11, lang: zh, advertiser: 晨屿咖啡, date: 2026-10-09, decision: approve,
+   copy: 晨屿挂耳咖啡：2026 年 9 月天猫挂耳咖啡类目销量第一（数据来源：天猫生意参谋，2026 年 9 月）。10 包装 ¥39。,
+   violations: [],
+   reason: “销量第一”限定了平台、类目和月份，并写明了数据来源，属于执法指南第六条第六项。}
+- {id: p-zh-12, pair: zh-m12, lang: zh, advertiser: 青禾家电, date: 2026-10-20, decision: approve,
+   copy: 青禾 3L 电饭煲：24 小时预约，陶瓷釉内胆，一键煮粥。到手价 ¥299。,
+   violations: [],
+   reason: 只讲容量、功能和价格，没有违规说法。}
+# other decisions in the store
+- {id: p-zh-21, lang: zh, advertiser: 暖巢家居, date: 2026-09-28, decision: approve,
+   copy: 暖巢电暖器 2026 款：能效等级 1 级（见中国能效标识），三档调温，倾倒自动断电。,
+   violations: [],
+   reason: “1 级”是依据国家标准评定的能效等级，并说明了依据，属于执法指南第六条第三项。}
+- {id: p-zh-22, lang: zh, advertiser: 乐途旅行, date: 2026-08-05, decision: reject,
+   copy: 乐途云南 6 日跟团游，史上最低价，错过再等一年。,
+   violations: [{cat: ABSOLUTE, clause: CN-AL-9-3, quote: 史上最低价}],
+   reason: “史上最低价”是指向商品价格的绝对化用语。}
+- {id: p-zh-23, lang: zh, advertiser: 白鹭茶业, date: 2026-09-09, decision: reject,
+   copy: 白鹭老白茶：常喝降血压，中老年人的好伙伴。,
+   violations: [{cat: MEDICAL, clause: CN-AL-17, quote: 常喝降血压}],
+   reason: 茶叶是普通食品，说降血压属于涉及疾病治疗功能。}
+- {id: p-zh-24, lang: zh, advertiser: 星河酒业, date: 2026-10-14, decision: reject,
+   copy: 星河大曲 52 度：喝一杯，烦恼全忘掉。理性饮酒。,
+   violations: [{cat: ALCOHOL, clause: CN-AL-23, quote: 喝一杯，烦恼全忘掉}],
+   reason: 暗示饮酒能消除烦恼，属于酒类广告禁止的内容。}
+- {id: p-zh-25, lang: zh, advertiser: 优学编程, date: 2026-09-17, decision: approve,
+   copy: 优学少儿编程秋季班：每周两节小班课，每班 6 人，课后有作业讲解。,
+   violations: [],
+   reason: 只讲课程安排和班级人数，没有对效果作承诺。}
+- {id: p-zh-26, lang: zh, advertiser: 鹿鸣数码, date: 2026-10-01, decision: reject,
+   copy: 鹿鸣降噪耳机：比某果耳机音质好十倍，买了某果的都后悔了。,
+   violations: [{cat: DISPARAGE, clause: CN-AL-13, quote: 买了某果的都后悔了}],
+   reason: 指向可识别的竞品并说它的用户都后悔，贬低其他经营者的商品。}
+
+# ---------------------------------------------------------------- English
+- {id: p-en-01, pair: en-m01, lang: en, advertiser: LeanLab, date: 2026-09-04, decision: reject,
+   copy: "LeanLab Burn Shake: lose 10 lbs in 7 days, no gym needed. Chocolate and vanilla.",
+   violations: [{cat: WEIGHT, clause: TT-WM-WEIGHT, quote: "lose 10 lbs in 7 days, no gym needed"}],
+   reason: "Unrealistic weight loss, and weight loss from the product alone without exercise."}
+- {id: p-en-02, pair: en-m02, lang: en, advertiser: Brightpath Money, date: 2026-08-18, decision: reject,
+   copy: "Brightpath Trader: guaranteed 15% monthly returns with zero risk. Start with $250.",
+   violations: [{cat: GUARANTEE, clause: TT-DEC-FINREP, quote: "guaranteed 15% monthly returns with zero risk"}],
+   reason: "A guaranteed return that hides the risk of trading."}
+- {id: p-en-03, pair: en-m03, lang: en, advertiser: Glowra, date: 2026-09-12, decision: reject,
+   copy: "Glowra Calm Serum cures eczema in 2 weeks. Fragrance-free, 30ml.",
+   violations: [{cat: MEDICAL, clause: TT-MIS-CLAIMS, quote: "cures eczema in 2 weeks"}],
+   reason: "A skincare product claimed to cure a skin disease."}
+- {id: p-en-04, pair: en-m04, lang: en, advertiser: Hearth & Oak, date: 2026-10-03, decision: approve,
+   copy: "Hearth & Oak: guaranteed delivery before Christmas on orders placed by December 18.",
+   violations: [],
+   reason: "The guarantee is about the delivery service, not a promised effect of the product, so TT-MIS-CLAIMS does not apply."}
+- {id: p-en-05, pair: en-m05, lang: en, advertiser: Nomad Sleep, date: 2026-09-25, decision: approve,
+   copy: "Try the Nomad Pillow for 30 nights. Not for you? Send it back for a full refund.",
+   violations: [],
+   reason: "A trial and refund policy; it does not promise an effect of the product."}
+- {id: p-en-06, pair: en-m06, lang: en, advertiser: Voltra, date: 2026-08-29, decision: approve,
+   copy: "Voltra Pro charges twice as fast as our Voltra 2 (in-house lab test, 2026; method on the product page).",
+   violations: [],
+   reason: "A comparison with the advertiser's own earlier model, with the evidence named; TT-MIS-COMPARE allows comparative claims with evidence."}
+- {id: p-en-07, pair: en-m07, lang: en, advertiser: FitFuel, date: 2026-09-19, decision: reject,
+   copy: "FitFuel Shred Caps melt belly fat without changing your diet. 60 capsules.",
+   violations: [{cat: WEIGHT, clause: TT-WM-WEIGHT, quote: "melt belly fat without changing your diet"}],
+   reason: "Weight loss from the product alone, without diet or exercise."}
+- {id: p-en-08, pair: en-m08, lang: en, advertiser: Purely Skin, date: 2026-10-06, decision: reject,
+   copy: "Purely Skin Night Cream. Before: deep wrinkles. After 7 days: gone.",
+   violations: [{cat: BEFORE_AFTER, clause: TT-MIS-COMPARE, quote: "Before: deep wrinkles. After 7 days: gone."}],
+   reason: "A before-and-after result that gives a distorted impression of what the cream does."}
+- {id: p-en-09, pair: en-m09, lang: en, advertiser: Sprynt, date: 2026-08-26, decision: reject,
+   copy: "Sprynt trail shoes grip twice as well as the big brands. Theirs slip, ours don't.",
+   violations: [{cat: DISPARAGE, clause: TT-MIS-COMPARE, quote: "Theirs slip, ours don't."}],
+   reason: "A negative judgement about other brands' products with no evidence."}
+- {id: p-en-10, pair: en-m10, lang: en, advertiser: Brightpath Money, date: 2026-10-15, decision: reject,
+   copy: "Brightpath Trader: turn $500 into $5,000 in a month. No experience needed.",
+   violations: [{cat: GUARANTEE, clause: TT-DEC-FINREP, quote: "turn $500 into $5,000 in a month"}],
+   reason: "An exaggerated financial gain with no information on risk."}
+- {id: p-en-11, pair: en-m11, lang: en, advertiser: Hopsmith, date: 2026-09-30, decision: approve,
+   copy: "Hopsmith Pale Ale, 4.2% ABV. Citrus hops, light body. Please drink responsibly. 18+ only.",
+   violations: [],
+   reason: "States the strength and carries a responsible drinking disclaimer, as TT-ALC requires; no drinking shown."}
+- {id: p-en-12, pair: en-m12, lang: en, advertiser: Cedar & Salt, date: 2026-10-17, decision: approve,
+   copy: "Cedar & Salt cast-iron pan: pre-seasoned, oven-safe to 260°C, 10-inch. $79.",
+   violations: [],
+   reason: "Product facts and price only."}
+# other decisions in the store
+- {id: p-en-21, lang: en, advertiser: Pawsome, date: 2026-09-08, decision: approve,
+   copy: "Pawsome grain-free kibble, made with salmon and sweet potato. 2kg bag, $24.",
+   violations: [], reason: "Product facts and price only."}
+- {id: p-en-22, lang: en, advertiser: Lumi Teeth, date: 2026-08-14, decision: reject,
+   copy: "Lumi Teeth strips: whiter teeth in one night, guaranteed.",
+   violations: [{cat: GUARANTEE, clause: TT-MIS-CLAIMS, quote: "whiter teeth in one night, guaranteed"}],
+   reason: "A guaranteed, exaggerated product effect."}
+- {id: p-en-23, lang: en, advertiser: Northwind Spirits, date: 2026-10-10, decision: approve,
+   copy: "Northwind Gin, 40% ABV. Juniper and sea buckthorn. Enjoy responsibly. 18+.",
+   violations: [], reason: "States the strength and carries a responsible drinking disclaimer."}
+- {id: p-en-24, lang: en, advertiser: ZenMind, date: 2026-09-02, decision: reject,
+   copy: "ZenMind: the app that cures anxiety in 7 days.",
+   violations: [{cat: MEDICAL, clause: TT-MIS-CLAIMS, quote: "the app that cures anxiety in 7 days"}],
+   reason: "An app claimed to cure a mental health condition."}
+- {id: p-en-25, lang: en, advertiser: Trailhead, date: 2026-08-31, decision: approve,
+   copy: "Trailhead Ridge boots: waterproof to 10,000mm, 2-year warranty. $139.",
+   violations: [], reason: "Product facts, a warranty and price."}
+- {id: p-en-26, lang: en, advertiser: Shapewell, date: 2026-10-12, decision: reject,
+   copy: "Shapewell plan: before 90kg, after 60kg in 8 weeks. Anyone can do it.",
+   violations: [{cat: WEIGHT, clause: TT-WM-WEIGHT, quote: "before 90kg, after 60kg in 8 weeks"}],
+   reason: "Unrealistic weight loss presented as easy."}

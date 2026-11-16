@@ -1,6 +1,6 @@
 # Ad review agent: evaluation brief (draft)
 
-*13 November 2026 · 96 held-out ads (48 Chinese, 48 English), and 24 harder ads on 14 November, with answers fixed when the ads were written (synthetic ads, fictional brands) · 46 real ads on 14 November, with answers from regulator and court decisions · this is not a measurement on live traffic*
+*13 November 2026 · 96 held-out ads (48 Chinese, 48 English), and 24 harder ads on 14 November, with answers fixed when the ads were written (synthetic ads, fictional brands) · 46 real ads on 14 November, with answers from regulator and court decisions · a memory test of 24 new ads on 16 November · this is not a measurement on live traffic*
 
 ## Question
 
@@ -312,6 +312,40 @@ The full results are in `results/real-2026-11-14.summary.md` and `results/real-z
    - **Granite Guardian**, given the nine categories as its criteria, rejected 9 of 23 Upheld English ads and 2 of the 7 Not upheld ones: 47% right, below always rejecting and below its 72% on the held-out text ads. It missed the lung-cleansing supplement, the therapy app and every comparison and rating ad. In Chinese it got 13 of 16, level with the agent, because the penalised items are only the phrases the regulator quoted; it approved 3 of the 4 lawful ones.
 8. **Expectations: 7 of 7 held for the English ads and 3 of 4 for the Chinese ads.** The one that failed: the arms disagreed on only 1 of the 32 Chinese pairs, against at least 2 expected.
 
+## Memory: earlier decisions shown to the agent
+
+A platform sees the same advertisers and the same claims again and again. Without memory each review starts from the clauses alone, so a grey case can be decided one way for one ad and another way for the next. This test asks two things: when the agent is shown earlier confirmed decisions on similar ads, does it decide grey cases the way they were decided before, and how often does an earlier decision mislead it?
+
+**Memory.** `agent/memory.py` keeps a store of confirmed decisions: the ad's words, the decision, each violation's category, clause and quoted words, a one-line reason, the advertiser and the date. For a new ad it returns the 3 most similar stored ads of the same language (BM25, the search already used for clauses) and up to 2 more of the same advertiser's most recent decisions. They are appended to the review request, and one step is added to the system prompt: decide the same way when the ad makes the same claim in the same way; the clauses decide when anything differs. Records are written by the program once a decision is confirmed. The model only reads the store, so an ad's words cannot become instructions for later reviews. There is no embedding model and no extra model call.
+
+**Set.** 24 new fictional text ads (12 Chinese, 12 English) and a store of 36 earlier decisions, written together before any model saw them, answers fixed at writing. Each ad was written against one stored decision from the same advertiser.
+
+- **Follow (12 ads): the earlier decision applies.** 6 repeat a rejected claim in other words or for another product. 6 are grey cases an earlier decision approved: a registered trademark with a superlative in it, a comparison with the advertiser's own products, a dated first release, a delivery guarantee, a refund trial.
+- **Distinguish (12 ads): applying the earlier decision gives the wrong call.** 4 where the advertiser has removed the problem; 2 where a rejected claim now carries the qualifiers and the source that make it lawful; 2 clean ads from an advertiser with rejected ads; 2 where the qualifier or the required statement behind an approval is gone; 2 where an approved ad returns with a violation added.
+
+**Arms.** The agent (v1.3) without and with memory: same model, tools and output format, three runs each through the Message Batches API. Both arms are told the advertiser account. The plan, six expectations and file hashes were fixed before the run (preregistration, "Memory").
+
+| | Agent, no memory | Agent with memory |
+|---|---|---|
+| Decisions right, 72 runs | 69 | 72 |
+| Follow: 6 rejected claims repeated (18 runs) | 18 | 18 |
+| Follow: 6 grey cases approved before (18 runs) | 15 | 18 |
+| Distinguish: 12 ads (36 runs) | 36 | 36 |
+| The earlier decision repeated when it should not be (36 runs) | 0 | 0 |
+| Ads on which all three runs agree | 24/24 | 24/24 |
+| Earlier clause cited on the repeated claims (18 runs) | 18 | 18 |
+| Cost per review, batch price | US$0.00116 | US$0.00103 |
+| Model calls per review | 3.0 | 2.7 |
+
+What it shows:
+
+1. **Memory settled the one grey case the agent gets wrong by itself.** "Order by 3pm for guaranteed next-day delivery" was rejected in all three runs without memory, each time under TT-MIS-CLAIMS and each time in a different category (guaranteed outcome, absolute claim, other). With the earlier approval of a delivery guarantee from the same advertiser in front of it, the agent approved it in all three and gave the earlier reason: the guarantee is about the delivery service, not an effect of the product. This is the same mistake the held-out set found ("Guaranteed delivery by Friday"). The other five grey cases were approved by both arms.
+2. **An earlier decision never misled it.** On the 12 ads where the earlier decision should not be applied, the memory arm was right in 36 of 36 runs and repeated the earlier decision in none. In 26 of those 36 runs its notes or explanations refer to an earlier decision, usually to say why it does not apply ("This ad omits both, so I did not follow [1]; the clause decides"). This count is a keyword search; the same search matches 2 of 36 runs in the arm without memory.
+3. **Memory did not cost more.** A review with memory cost 0.89 times a review without. The earlier decisions add text to the request, but the agent then searched the policy library less: 2.0 searches per review against 2.6.
+4. **Run-to-run agreement was already complete.** Both arms reached the same decision in all three runs of every ad. The agent without memory is consistent on the delivery guarantee too: consistently wrong. What memory changed is agreement with the earlier decision, not agreement between runs.
+
+**How far this goes.** The benefit rests on one ad of 24, so it shows the mechanism and gives no rate. The test puts a relevant earlier decision in front of the agent every time: lookup returned the paired record for 24 of 24 ads, which was checked before the run without a model. It does not test lookup on a large store, a stored decision that is itself wrong, image ads, or decisions the agent wrote itself. Those are NOT RUN. Per-ad table: `results/memory-2026-11-16.report.md`.
+
 ## Expectations written before the run
 
 | Expectation | Outcome |
@@ -326,11 +360,14 @@ The full results are in `results/real-2026-11-14.summary.md` and `results/real-z
 
 SafeGuard-VL-RL was chosen after the plan was frozen, so no expectation was written for it.
 
+For the memory test, five of six expectations held; the one that did not was cost, expected at 1.1 to 1.6 times and measured at 0.89 times (preregistration, "Memory").
+
 The two text guardrails were also added after the freeze. Four expectations were written before their run (preregistration, change 6), and all four held. Qwen3Guard rejected 8 of 25 violating text ads, just under a third. Granite Guardian rejected 15. Granite was right on 85% of English and 58% of Chinese text ads. Both stayed below the model arms: 56% and 72%, against 100% and 97%.
 
 ## Limits
 
 - The real ads (46) are judged by regulators and courts under their own rules, which differ from this project's policy library (the UK code against TikTok's ad policy; Chinese decisions from before the 2023 guide). The arms read published descriptions of the ads, not the ads; the Chinese penalised items keep only the words the regulator quoted; only 11 of the 46 are compliant. Rulings from 2024 and 2025 may be in the model's training data.
+- The memory test has 24 ads and a store of 36 decisions written by the same author; the measured benefit comes from one ad. Lookup always found the paired decision, so the test says nothing about retrieval at scale, and a wrong stored decision was not tested.
 - The ads are synthetic, short and written by the same author as the labels; real ads are longer, noisier and more varied. Answers were fixed at writing; there is no second labeller, and one trap (the heritage listing) and one revision (old caption kept) turned out to be flawed.
 - Images are drawn, not photographed. The drinking scenes are illustrations; three photographic scenes were planned with an image model and not made.
 - The v1.1 check uses 12 new text ads, two runs per version; with these counts a difference of one or two conversations is noise.
