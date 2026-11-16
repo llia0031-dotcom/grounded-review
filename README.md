@@ -16,7 +16,7 @@ Grounded Review belongs to a set of projects built on one idea: an AI should sho
 
 - **Scenario: judgment.** Other projects in the set answer questions from documents, generate images with text, or run voice conversations. This one makes a call on an ad and backs it with the ad's own words and the clause's own words.
 - **Checking tool: [evidence-check](https://github.com/Jason-d-e/evidence-check).** Every ad quote and every clause quote in an answer goes through evidence-check's script. A quote that is not word for word in the ad or in the cited clause is caught before anyone reads the answer.
-- **Core of the evidence-backed labelling pipeline** (in progress). The pipeline sends incoming ads through this agent, checks the quotes, routes failed checks and uncertain calls to a review queue, and turns reviewed ads into new test items.
+- **Core of the [evidence-backed labelling pipeline](https://github.com/Jason-d-e/grounded-labelling-pipeline).** The pipeline sends incoming ads through this agent, checks the quotes, routes failed checks and uncertain calls to a review queue, and turns reviewed ads into new test items.
 
 ## What it does
 
