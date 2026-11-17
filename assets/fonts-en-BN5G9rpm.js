@@ -1,1 +1,0 @@
-import"./LangLink-AzolSXXE.js";var e=new URL(`noto-sans-sc-119-500-normal-Bg7BvryU.woff2`,import.meta.url).href,t=new URL(`noto-sans-sc-118-500-normal-BkdpJ3OC.woff2`,import.meta.url).href;for(let[n,r]of[[e,`U+4E2D`],[t,`U+6587`]])document.fonts.add(new FontFace(`Lang SC`,`url(${n}) format('woff2')`,{unicodeRange:r,weight:`500`,display:`swap`}));

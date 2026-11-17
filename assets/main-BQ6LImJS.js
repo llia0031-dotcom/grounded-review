@@ -1,1 +1,0 @@
-import{d as e,f as t,n,p as r}from"./LangLink-AzolSXXE.js";import"./fonts-BMij7JQI.js";import{t as i}from"./App-BYwlDJeZ.js";var a=r(t(),1),o=e(),s=n();document.documentElement.classList.add(`js`),(0,o.createRoot)(document.getElementById(`root`)).render((0,s.jsx)(a.StrictMode,{children:(0,s.jsx)(i,{lang:`zh`})}));
