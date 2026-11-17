@@ -32,14 +32,16 @@
 
 ## 怎么评测的
 
-两组模型用同一个模型、同一套类别、同一种输出格式：一组是把所有材料一次交给模型的单个提示词，一组是带工具的 Agent。每次跑之前，都先把计划、预期和文件哈希冻结（[`eval/PREREGISTRATION.md`](eval/PREREGISTRATION.md)）。完整报告见 [`eval/EVALUATION.md`](eval/EVALUATION.md)（英文）。产品方案（给谁用、指标、怎么上线、风险）见 [`product/PRD.zh-CN.md`](product/PRD.zh-CN.md)。
+两组模型用同一个模型、同一套类别、同一种输出格式：一组是把所有材料一次交给模型的单个提示词，一组是带工具的 Agent（演示页里叫“审核助手”）。每次跑之前，都先把计划、预期和文件哈希冻结（[`eval/PREREGISTRATION.md`](eval/PREREGISTRATION.md)）。完整报告见 [`eval/EVALUATION.md`](eval/EVALUATION.md)（英文）。产品方案（给谁用、指标、怎么上线、风险）见 [`product/PRD.zh-CN.md`](product/PRD.zh-CN.md)。
 
-| 题目 | 是什么 | 单个提示词 | Agent |
-|---|---|---|---|
-| 留出集 | 96 条自己写的图文广告，其中 30 条陷阱；答案在写题时定好 | 判对 191/192 | 187/192 |
-| 难题集 | 24 条自己写的广告：长文案、短视频截图、暗示性说法 | 48/48 | 48/48 |
-| 真实广告，英文 | 英国广告标准局（ASA）公开的 30 份裁决，其中 7 份判“不违规” | 49/60 | 51/60 |
-| 真实广告，中文 | 16 个公开案例：12 个被市场监管部门处罚，4 个被监管部门或法院认定合法 | 27/32 | 26/32 |
+每条广告每组各审两遍，所以下表数的是判断次数，每条广告两次。
+
+| 题目 | 是什么 | 判断次数 | 单个提示词判对 | Agent 判对 |
+|---|---|---|---|---|
+| 留出集 | 96 条自己写的图文广告，其中 30 条陷阱；答案在写题时定好 | 192 | 191 | 187 |
+| 难题集 | 24 条自己写的广告：长文案、短视频截图、暗示性说法 | 48 | 48 | 48 |
+| 真实广告，英文 | 英国广告标准局（ASA）公开的 30 份裁决，其中 7 份判“不违规” | 60 | 49 | 51 |
+| 真实广告，中文 | 16 个公开案例：12 个被市场监管部门处罚，4 个被监管部门或法院认定合法 | 32 | 27 | 26 |
 
 这些数字说明：
 
@@ -67,10 +69,12 @@ python eval/memory_report.py eval/results/my-memory-run.jsonl               # Ag
 
 - **密钥**：只从 `AD_REVIEW_ENV_FILE` 指定的文件读。`--batch` 走批量接口（Message Batches API），价格减半。
 - **evidence-check**：把 [evidence-check](https://github.com/Jason-d-e/evidence-check) 克隆到这个文件夹旁边，或者用 `EVIDENCE_CHECK_SCRIPT` 指向它的 `check_evidence.py`。
-- **英文广告需要 TikTok 政策页**：把 `policies/build_sources.py` 里列的每一页存成 Markdown 放进 `policies/raw/`，再运行 `python policies/build_sources.py`。中文广告不需要。
+- **英文广告需要 TikTok 政策页**：把 `policies/build_sources.py` 里列的每一页存成 Markdown 放进 `policies/raw/`，再运行 `python policies/build_sources.py`。脚本里列了六页：条款出自其中五页，另一页（医疗保健和药品）只读过，没有从里面截取条款。中文广告不需要。
 - **违禁词表**：违禁词表对比组需要的文件见 `third_party/README.md`。
 
-## 没有收录的
+## 收录了什么，没收录什么
+
+中文法规原文收录了：《广告法》和《广告绝对化用语执法指南》在 `policies/sources/`；`policies/raw/` 里是从监管部门网页存下来的文本，连网页上的导航文字一起。
 
 下面这些只放链接，不收录原文：
 
@@ -78,6 +82,23 @@ python eval/memory_report.py eval/results/my-memory-run.jsonl               # Ag
 - 违禁词表对比组用的词库；
 - 真实广告题背后的监管裁决和案例报道。选题规则、数量和来源页见 [`testset/real-sources.md`](testset/real-sources.md)。
 
+## 第三方的模型、代码和数据
+
+| 是什么 | 用来做什么 | 许可证 |
+|---|---|---|
+| [openai/clip-vit-base-patch32](https://huggingface.co/openai/clip-vit-base-patch32) | 零样本图像对比组 | [CLIP 代码仓库](https://github.com/openai/CLIP)是 MIT；模型卡没有写许可证 |
+| [google/siglip2-base-patch16-224](https://huggingface.co/google/siglip2-base-patch16-224) | 零样本图像对比组 | Apache-2.0 |
+| [tyodd/SafeGuard-VL-RL](https://huggingface.co/tyodd/SafeGuard-VL-RL) | 图片审核模型对比组 | Apache-2.0 |
+| [Qwen/Qwen3Guard-Gen-4B](https://huggingface.co/Qwen/Qwen3Guard-Gen-4B) | 文字审核模型对比组 | Apache-2.0 |
+| [ibm-granite/granite-guardian-3.3-8b](https://huggingface.co/ibm-granite/granite-guardian-3.3-8b) | 文字审核模型对比组 | Apache-2.0 |
+| [RapidOCR](https://github.com/RapidAI/RapidOCR)，配 [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR) 的 PP-OCRv6 模型 | 读图片里的字 | 都是 Apache-2.0 |
+| [rank_bm25](https://github.com/dorianbrown/rank_bm25) | 查条款、查以前的判定 | Apache-2.0 |
+| [AdLint](https://github.com/ftchvs/AdLint) 的政策文件 | 英文违禁词表对比组 | MIT；没有收录在这里 |
+| [sdhack/ecommerce-content-review](https://github.com/sdhack/ecommerce-content-review) 的规则库 | 中文违禁词表对比组 | 它的仓库没有写许可证；只在本地使用，没有收录在这里 |
+| Redaction、Geist、思源宋体、思源黑体（经 Fontsource） | 演示页字体 | OFL-1.1 |
+
+仓库里不含任何模型权重，脚本运行时从 Hugging Face 下载。
+
 ## 为公开改过的文件
 
-`eval/PREREGISTRATION.md` 里的文件哈希，对应的是当时实际运行的文件。这份公开版里，`agent/common.py`、`policies/library.py`、`policies/build_sources.py`、`testset/load.py`、`eval/run.py`、`eval/multiturn.py`、`agent/memory.py`、`tests/test_offline.py` 和 `baselines/` 下的 5 个文件，只改了默认路径和一行注释，并在缺少 TikTok 政策页时跳过相关内容。结果文件里的 TikTok 政策原文，换成了条款编号和页面链接。
+`eval/PREREGISTRATION.md` 里的文件哈希，对应的是当时实际运行的文件。这份公开版里，`agent/common.py`、`policies/library.py`、`policies/build_sources.py`、`testset/load.py`、`eval/run.py`、`eval/multiturn.py`、`agent/memory.py`、`tests/test_offline.py` 和 `baselines/` 下的 5 个文件，只改了默认路径和一行注释，并在缺少 TikTok 政策页时跳过相关内容。结果文件里的 TikTok 政策原文（包括调用核对工具时传入的条款引文），换成了条款编号和页面链接；接口报错原文里的账号编号和请求编号，换成了占位符。

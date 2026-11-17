@@ -427,7 +427,7 @@
    },
    {
     "arm": "oneshot",
-    "name": "一次提问",
+    "name": "单个提示词",
     "right": 113,
     "n": 114,
     "violRejected": 74,

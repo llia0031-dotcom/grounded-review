@@ -26,7 +26,7 @@ const SECTIONS: Record<Lang, (r: Results) => Section[]> = {
       h: '怎么测试的',
       p: [
         [`${r.ads} 条广告，中文、英文各 ${r.zh} 条，其中 ${r.images} 条是图片广告。每条违规的类别、对应的条款和广告里的原话，在写题时就定好；另有 30 条看着像违规、其实合规的广告。广告和品牌都是虚构的，图片由程序绘制。`],
-        ['测试计划和文件指纹在运行前写好、冻结。审核助手和一次提问各跑两遍，再和违禁词表、CLIP、SigLIP 2 以及三个开源审核模型比较：看图片的 SafeGuard-VL-RL，看文字的 Qwen3Guard 和 Granite Guardian。这三个是计划冻结后加的，各跑了一遍。'],
+        ['测试计划和文件指纹在运行前写好、冻结。审核助手和单个提示词各跑两遍，再和违禁词表、CLIP、SigLIP 2 以及三个开源审核模型比较：看图片的 SafeGuard-VL-RL，看文字的 Qwen3Guard 和 Granite Guardian。这三个是计划冻结后加的，各跑了一遍。'],
       ],
     },
     {

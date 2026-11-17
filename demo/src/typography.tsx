@@ -1,6 +1,6 @@
 // Chinese typography for display prose (the agent's explanations and replies), per the Chinese copywriting
 // guidelines (sparanoid/chinese-copywriting-guidelines): a space between Chinese and Latin letters or digits,
-// none around full-width punctuation. pangu.js (pinned 10.4.1, the version the chinese-web-typography skill tests)
+// none around full-width punctuation. pangu.js (pinned 10.4.1)
 // inserts the spaces; it also spaces Chinese curly quotes, which the guidelines do not, so those spaces are removed.
 // English prose (no Chinese characters) gets curly quotes instead.
 // Never applied to quotations: the ad's words and the clause text are shown exactly as written.

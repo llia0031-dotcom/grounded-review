@@ -6,7 +6,8 @@ prediction: if it is the compliant prompt the ad is approved, otherwise it is re
 category. Pure zero-shot: nothing is tuned on the test set, and the prompts were written before
 any image was scored. Image ads only; these models do not read captions.
 
-Models (Hugging Face, not gated): openai/clip-vit-base-patch32, google/siglip2-base-patch16-224.
+Models (Hugging Face, not gated): openai/clip-vit-base-patch32 (the CLIP repository is MIT; the model card states
+no licence) and google/siglip2-base-patch16-224 (Apache-2.0).
 Model files go to the Hugging Face cache (set HF_HOME to move it).
 `python baselines/clip_zeroshot.py --split test` writes eval/results/clip-<split>.jsonl and siglip2-<split>.jsonl.
 """

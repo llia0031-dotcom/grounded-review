@@ -122,12 +122,14 @@ The plan, expectations and file hashes are frozen before each run (`eval/PREREGI
 
 ### 7.1 Are the decisions right?
 
-| Set | One prompt | Agent |
-|---|---|---|
-| Held-out: 96 synthetic text and image ads, 30 of them traps | 191/192 decisions right | 187/192 |
-| Harder: 24 ads with long captions, video frames, implied claims | 48/48 | 48/48 |
-| Real, English: 30 published rulings of the UK ASA | 49/60 | 51/60 |
-| Real, Chinese: 16 published cases | 27/32 | 26/32 |
+Each method reviews every ad twice, so the counts are decisions, two per ad.
+
+| Set | Decisions | One prompt right | Agent right |
+|---|---|---|---|
+| Held-out: 96 synthetic text and image ads, 30 of them traps | 192 | 191 | 187 |
+| Harder: 24 ads with long captions, video frames, implied claims | 48 | 48 | 48 |
+| Real, English: 30 published rulings of the UK ASA | 60 | 49 | 51 |
+| Real, Chinese: 16 published cases | 32 | 27 | 26 |
 
 On written ads both methods reach the ceiling; on real ads they stay close and the agent is stricter. Most remaining errors come from rules, not from reading: a regulator judges under its own code, which differs from the policy library.
 
@@ -168,7 +170,7 @@ The agent costs more than one prompt: 2.2 times on the held-out set, and 2.4 to 
 
 | Metric | How it is computed | What it shows |
 |---|---|---|
-| Quote check pass rate | quotes that pass ÷ all quotes | whether the evidence is reliable (offline: 98%) |
+| Quote check pass rate | quotes that pass ÷ all quotes | whether the evidence is reliable (offline, held-out set: 781 of 789 quotes, 99.0%; ad quotes alone 98%) |
 | Acceptance rate | decisions reviewers accept as they are ÷ all decisions | whether decisions are useful [online only] |
 | Consistency rate | same advertiser, same kind of claim: share of calls that match the earlier one | whether memory works (offline, see 7.5) |
 | Misapplied earlier decisions | times an earlier decision is repeated when it should not be | whether memory misleads (offline, see 7.5) |

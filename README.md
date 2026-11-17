@@ -34,12 +34,14 @@ Grounded Review belongs to a set of projects built on one idea: an AI should sho
 
 Two model arms use the same model, the same categories and the same output format: one prompt that is given everything at once, and the agent with tools. The plan, expectations and file hashes were frozen before each run ([`eval/PREREGISTRATION.md`](eval/PREREGISTRATION.md)). The full report is [`eval/EVALUATION.md`](eval/EVALUATION.md). The product plan, with who it is for, metrics, rollout and risks, is [`product/PRD.md`](product/PRD.md).
 
-| Set | What it is | One prompt | Agent |
-|---|---|---|---|
-| Held-out | 96 synthetic text and image ads, 30 of them traps; answers fixed when the ads were written | 191/192 decisions right | 187/192 |
-| Harder | 24 synthetic ads: long captions, video frames, implied claims | 48/48 | 48/48 |
-| Real, English | 30 published rulings of the UK Advertising Standards Authority, 7 of them "not upheld" | 49/60 | 51/60 |
-| Real, Chinese | 16 published cases: 12 penalised by market regulators, 4 found lawful by a regulator or a court | 27/32 | 26/32 |
+Each arm reviews every ad twice, so the counts are decisions, two per ad.
+
+| Set | What it is | Decisions | One prompt right | Agent right |
+|---|---|---|---|---|
+| Held-out | 96 synthetic text and image ads, 30 of them traps; answers fixed when the ads were written | 192 | 191 | 187 |
+| Harder | 24 synthetic ads: long captions, video frames, implied claims | 48 | 48 | 48 |
+| Real, English | 30 published rulings of the UK Advertising Standards Authority, 7 of them "not upheld" | 60 | 49 | 51 |
+| Real, Chinese | 16 published cases: 12 penalised by market regulators, 4 found lawful by a regulator or a court | 32 | 27 | 26 |
 
 What the numbers say:
 
@@ -67,10 +69,12 @@ python eval/memory_report.py eval/results/my-memory-run.jsonl               # th
 
 - **API key.** It is read only from the file named in `AD_REVIEW_ENV_FILE`. `--batch` sends requests through the Message Batches API at half price.
 - **evidence-check.** Clone [evidence-check](https://github.com/Jason-d-e/evidence-check) next to this folder, or set `EVIDENCE_CHECK_SCRIPT` to its `check_evidence.py`.
-- **English ads need the TikTok pages.** Save each page listed in `policies/build_sources.py` as Markdown in `policies/raw/`, then run `python policies/build_sources.py`. Chinese ads run without them.
+- **English ads need the TikTok pages.** Save each page listed in `policies/build_sources.py` as Markdown in `policies/raw/`, then run `python policies/build_sources.py`. The script lists six pages: the five the clauses are cut from, and the healthcare and pharmaceuticals page, which was read and has no clause. Chinese ads run without them.
 - **Word lists.** The word-list baseline needs the files listed in `third_party/README.md`.
 
-## Not included
+## Included and not included
+
+The Chinese legal texts are included: the Advertising Law and the enforcement guide on absolute terms, in `policies/sources/`, with the text as saved from the regulators' pages (navigation text and all) in `policies/raw/`.
 
 These are linked, not copied:
 
@@ -78,10 +82,29 @@ These are linked, not copied:
 - the word lists used by the word-list baseline;
 - the regulator rulings and case reports behind the real ads. [`testset/real-sources.md`](testset/real-sources.md) gives the selection rules, counts and source pages.
 
+## Third-party models, code and data
+
+| What | Used for | Licence |
+|---|---|---|
+| [openai/clip-vit-base-patch32](https://huggingface.co/openai/clip-vit-base-patch32) | zero-shot image baseline | the [CLIP repository](https://github.com/openai/CLIP) is MIT; the model card states no licence |
+| [google/siglip2-base-patch16-224](https://huggingface.co/google/siglip2-base-patch16-224) | zero-shot image baseline | Apache-2.0 |
+| [tyodd/SafeGuard-VL-RL](https://huggingface.co/tyodd/SafeGuard-VL-RL) | image guardrail baseline | Apache-2.0 |
+| [Qwen/Qwen3Guard-Gen-4B](https://huggingface.co/Qwen/Qwen3Guard-Gen-4B) | text guardrail baseline | Apache-2.0 |
+| [ibm-granite/granite-guardian-3.3-8b](https://huggingface.co/ibm-granite/granite-guardian-3.3-8b) | text guardrail baseline | Apache-2.0 |
+| [RapidOCR](https://github.com/RapidAI/RapidOCR) with the PP-OCRv6 models of [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR) | reading the words in images | Apache-2.0 (both) |
+| [rank_bm25](https://github.com/dorianbrown/rank_bm25) | clause search and memory lookup | Apache-2.0 |
+| [AdLint](https://github.com/ftchvs/AdLint) policy files | English word-list baseline | MIT; not copied here |
+| [sdhack/ecommerce-content-review](https://github.com/sdhack/ecommerce-content-review) rule list | Chinese word-list baseline | no licence stated in its repository; used locally, not copied here |
+| Redaction, Geist, Noto Serif SC, Noto Sans SC (via Fontsource) | demo page fonts | OFL-1.1 |
+
+None of the model weights are in this repository; the scripts download them from Hugging Face.
+
 ## Files changed for publication
 
 The tables of file hashes in `eval/PREREGISTRATION.md` refer to the files as they were run. For this
 copy, `agent/common.py`, `policies/library.py`, `policies/build_sources.py`, `testset/load.py`,
 `eval/run.py`, `eval/multiturn.py`, `agent/memory.py`, `tests/test_offline.py` and five files in `baselines/` differ only
 in default paths, a comment, and skipping the TikTok pages when they are absent. In the result files,
-TikTok policy text is replaced by the clause id and a link to the page.
+TikTok policy text is replaced by the clause id and a link to the page, including the clause quotes passed
+to the checker in tool calls, and the account and request ids in stored API error messages are replaced
+by placeholders.

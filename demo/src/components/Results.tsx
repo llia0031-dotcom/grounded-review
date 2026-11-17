@@ -10,9 +10,9 @@ export default function Results({ t }: { t: Copy }) {
   const r = useData().results
   const f = t.results.figures
   const items = [
-    { fig: frac(r.violRejected.agent), label: f.caught.label, note: f.caught.note },
-    { fig: frac(r.clauseRight.agent), label: f.clause.label, note: f.clause.note },
-    { fig: frac(r.trapsOk.agent), label: f.traps.label, note: f.traps.note(frac(r.trapsOk.oneshot)) },
+    { fig: frac(r.violRejected.agent), label: f.caught.label, note: f.caught.note(r.violRejected.agent[1] / r.runs, r.violRejected.agent[1]) },
+    { fig: frac(r.clauseRight.agent), label: f.clause.label, note: f.clause.note(r.clauseRight.agent[1]) },
+    { fig: frac(r.trapsOk.agent), label: f.traps.label, note: f.traps.note(r.trapsOk.agent[1] / r.runs, r.trapsOk.agent[1], frac(r.trapsOk.oneshot)) },
   ]
   const always = (100 * r.alwaysReject[0]) / r.alwaysReject[1]
   return (
@@ -38,12 +38,13 @@ export default function Results({ t }: { t: Copy }) {
             <ul className="bars">
               {r.chart.map((row) => {
                 const share = (100 * row.right) / row.n
+                const count = t.results.chart.count(row.right, row.n, row.n > r.images)
                 return (
-                  <li key={row.arm} className="bar-row" tabIndex={0} aria-label={t.results.chart.aria(row.name, pct(row.right, row.n), row.right, row.n, t.results.chart.detail(`${row.violRejected} / ${row.viol}`, `${row.trapsOk} / ${row.traps}`))}>
+                  <li key={row.arm} className="bar-row" tabIndex={0} aria-label={t.results.chart.aria(row.name, pct(row.right, row.n), count, t.results.chart.detail(`${row.violRejected} / ${row.viol}`, `${row.trapsOk} / ${row.traps}`))}>
                     <span className="bar-name">{row.name}</span>
                     <span className="bar-track"><span className="bar-fill" style={{ width: `${share}%` }} /></span>
                     <span className="bar-val num">{pct(row.right, row.n)}</span>
-                    <span className="bar-tip" role="tooltip">{row.right} / {row.n} · {t.results.chart.detail(`${row.violRejected} / ${row.viol}`, `${row.trapsOk} / ${row.traps}`)}</span>
+                    <span className="bar-tip" role="tooltip">{count} · {t.results.chart.detail(`${row.violRejected} / ${row.viol}`, `${row.trapsOk} / ${row.traps}`)}</span>
                   </li>
                 )
               })}

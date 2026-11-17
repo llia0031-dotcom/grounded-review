@@ -49,7 +49,7 @@ CAT_NAMES = {
            "OTHER": "Other rule"},
 }
 CHART_NAMES = {
-    "zh": {"agent": "审核助手（带工具）", "oneshot": "一次提问", "wordlist": "违禁词表", "clip": "CLIP",
+    "zh": {"agent": "审核助手（带工具）", "oneshot": "单个提示词", "wordlist": "违禁词表", "clip": "CLIP",
            "siglip2": "SigLIP 2", "safeguard-vl": "SafeGuard-VL"},
     "en": {"agent": "Review agent (tools)", "oneshot": "One prompt", "wordlist": "Banned-word list", "clip": "CLIP",
            "siglip2": "SigLIP 2", "safeguard-vl": "SafeGuard-VL"},

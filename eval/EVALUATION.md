@@ -1,4 +1,4 @@
-# Ad review agent: evaluation brief (draft)
+# Ad review agent: evaluation brief
 
 *13 November 2026 · 96 held-out ads (48 Chinese, 48 English), and 24 harder ads on 14 November, with answers fixed when the ads were written (synthetic ads, fictional brands) · 46 real ads on 14 November, with answers from regulator and court decisions · a memory test of 24 new ads on 16 November · this is not a measurement on live traffic*
 
@@ -36,7 +36,7 @@ Both model arms use Claude Haiku 5.5 at effort `medium`, the same category list 
 
 ## Results
 
-**All 96 ads, two runs each** (word list: one run; it is deterministic). If every ad were rejected, 65% of decisions would be right.
+**All 96 ads, two runs each** (word list: one run; it is deterministic). For the two model arms every count in the tables of this report is over decisions, two per ad: 96 ads give 192 decisions, and the 62 violating ads give 124. If every ad were rejected, 65% of decisions would be right.
 
 | | one prompt | agent | word list |
 |---|---|---|---|
@@ -55,7 +55,7 @@ Both model arms use Claude Haiku 5.5 at effort `medium`, the same category list 
 | Same decision in both runs | 95/96 | 95/96 | |
 | Same categories in both runs | 88/96 | 87/96 | |
 
-**The 57 image ads, all arms.** Always rejecting would get 65% right here too.
+**The 57 image ads, all arms.** The model arms ran twice (114 decisions); the other arms ran once (57). Always rejecting would get 65% right here too.
 
 | | one prompt | agent | word list | CLIP | SigLIP 2 | SafeGuard-VL |
 |---|---|---|---|---|---|---|
@@ -170,7 +170,7 @@ The test split did not separate the two model arms on the decision. So 24 harder
 
 **How the requests were sent.** The model arms were sent through the Message Batches API instead of the standard Messages API; model and parameters are unchanged. Cost is counted at the batch price, half the list price. Time per ad is not measured, because it would be queue time. Each round of the agent's tool loop, across all ads, went out as one batch. There were 6 batches of about 2 minutes each, and every request succeeded. Both arms, two runs each over the 24 ads, took 12.7 minutes and cost US$0.092.
 
-**All 24 ads**, two runs each; the word list ran once. Always rejecting would get 71% right.
+**All 24 ads**, two runs each (48 decisions per model arm); the word list ran once. Always rejecting would get 71% right.
 
 | | one prompt | agent | word list |
 |---|---|---|---|
@@ -263,7 +263,7 @@ Both written sets hit the ceiling, so the last check uses real ads whose answers
 
 The requests were sent through the Message Batches API, as for the harder set.
 
-**30 English ads (ASA)**, two runs each; the local arms ran once. Always rejecting would get 77% right.
+**30 English ads (ASA)**, two runs each (60 decisions per model arm: 46 on the 23 upheld ads, 14 on the 7 not upheld); the local arms ran once. Always rejecting would get 77% right.
 
 | | one prompt | agent | word list | Qwen3Guard | Granite Guardian |
 |---|---|---|---|---|---|
@@ -278,7 +278,7 @@ The requests were sent through the Message Batches API, as for the harder set.
 | API calls per ad | 1.0 | 4.0 | 0 | 0 | 0 |
 | Same decision in both runs | 29/30 | 29/30 | | | |
 
-**16 Chinese ads**, two runs each. Always rejecting would get 75% right.
+**16 Chinese ads**, two runs each (32 decisions per model arm: 24 on the 12 penalised ads, 8 on the 4 lawful ones); the local arms ran once. Always rejecting would get 75% right.
 
 | | one prompt | agent | word list | Qwen3Guard | Granite Guardian |
 |---|---|---|---|---|---|
@@ -292,7 +292,7 @@ The requests were sent through the Message Batches API, as for the harder set.
 | API calls per ad | 1.0 | 3.4 | 0 | 0 | 0 |
 | Same decision in both runs | 15/16 | 16/16 | | | |
 
-The full results are in `results/real-2026-11-14.summary.md` and `results/real-zh-2026-11-14.summary.md`. The per-ad tables, which tie each item to its ruling or case, are not published; `testset/real-sources.md` gives the selection rules and source pages.
+The model arms' scores are in `results/real-2026-11-14.summary.md` (with the word list on the English ads) and `results/real-zh-2026-11-14.summary.md`. The counts for the word list and the two text guardrails on both languages are in `results/real-local-arms-2026-11-15.md`. The stored outputs of these runs hold the ads' words and are not published, and neither are the per-ad tables, which tie each item to its ruling or case; `testset/real-sources.md` gives the selection rules and source pages.
 
 **What the real ads show.**
 
