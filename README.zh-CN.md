@@ -10,15 +10,15 @@
 |---|---|---|
 | ![被拒的广告，附违规原话和条款](docs/images/review.jpg) | ![广告主问怎么改](docs/images/fix-and-resubmit.jpg) | ![留出集上的结果](docs/images/results.jpg) |
 
-**[在线演示](https://jason-d-e.github.io/grounded-review/)** · [English demo](https://jason-d-e.github.io/grounded-review/en.html)。页面展示的是存下的结果，不调用模型。截图是演示页的英文版。
+**[在线演示](https://llia0031-dotcom.github.io/grounded-review/)** · [English demo](https://llia0031-dotcom.github.io/grounded-review/en.html)。页面展示的是存下的结果，不调用模型。截图是演示页的英文版。
 
 ## 在整套项目里的位置
 
 有据审核属于一组围绕同一个想法做的项目：AI 要拿出证据。
 
 - **场景：判断类。** 同一组里，别的项目做的是按文档回答问题、生成带字的图片、语音对话。这一个是对一条广告下判断，并用广告原话和条款原文作依据。
-- **核对工具：[有据可查 evidence-check](https://github.com/Jason-d-e/evidence-check)。** 回答里的每段广告引文和条款引文，都要过 evidence-check 的脚本。不是逐字出自广告或所引条款的引文，在有人读到回答之前就会被拦下。
-- **[有据标注流水线](https://github.com/Jason-d-e/grounded-labelling-pipeline)的核心。**流水线把进来的广告交给这个 Agent，核对引文，把核对不过或拿不准的送进复核队列，复核过的广告再变成新的评测题。
+- **核对工具：[有据可查 evidence-check](https://github.com/llia0031-dotcom/evidence-check)。** 回答里的每段广告引文和条款引文，都要过 evidence-check 的脚本。不是逐字出自广告或所引条款的引文，在有人读到回答之前就会被拦下。
+- **[有据标注流水线](https://github.com/llia0031-dotcom/grounded-labelling-pipeline)的核心。**流水线把进来的广告交给这个 Agent，核对引文，把核对不过或拿不准的送进复核队列，复核过的广告再变成新的评测题。
 
 ## 它做什么
 
@@ -68,7 +68,7 @@ python eval/memory_report.py eval/results/my-memory-run.jsonl               # Ag
 ```
 
 - **密钥**：只从 `AD_REVIEW_ENV_FILE` 指定的文件读。`--batch` 走批量接口（Message Batches API），价格减半。
-- **evidence-check**：把 [evidence-check](https://github.com/Jason-d-e/evidence-check) 克隆到这个文件夹旁边，或者用 `EVIDENCE_CHECK_SCRIPT` 指向它的 `check_evidence.py`。
+- **evidence-check**：把 [evidence-check](https://github.com/llia0031-dotcom/evidence-check) 克隆到这个文件夹旁边，或者用 `EVIDENCE_CHECK_SCRIPT` 指向它的 `check_evidence.py`。
 - **英文广告需要 TikTok 政策页**：把 `policies/build_sources.py` 里列的每一页存成 Markdown 放进 `policies/raw/`，再运行 `python policies/build_sources.py`。脚本里列了六页：条款出自其中五页，另一页（医疗保健和药品）只读过，没有从里面截取条款。中文广告不需要。
 - **违禁词表**：违禁词表对比组需要的文件见 `third_party/README.md`。
 

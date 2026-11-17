@@ -10,15 +10,15 @@ An ad-review agent that says which rule an ad breaks and which words break it, a
 |---|---|---|
 | ![A rejected ad with the offending words and the clause](docs/images/review.jpg) | ![The advertiser asks how to fix the ad](docs/images/fix-and-resubmit.jpg) | ![Results on the held-out set](docs/images/results.jpg) |
 
-**[Live demo](https://jason-d-e.github.io/grounded-review/en.html)** · [中文演示](https://jason-d-e.github.io/grounded-review/). The page shows stored results and calls no model.
+**[Live demo](https://llia0031-dotcom.github.io/grounded-review/en.html)** · [中文演示](https://llia0031-dotcom.github.io/grounded-review/). The page shows stored results and calls no model.
 
 ## Where this fits
 
 Grounded Review belongs to a set of projects built on one idea: an AI should show its evidence.
 
 - **Scenario: judgment.** Other projects in the set answer questions from documents, generate images with text, or run voice conversations. This one makes a call on an ad and backs it with the ad's own words and the clause's own words.
-- **Checking tool: [evidence-check](https://github.com/Jason-d-e/evidence-check).** Every ad quote and every clause quote in an answer goes through evidence-check's script. A quote that is not word for word in the ad or in the cited clause is caught before anyone reads the answer.
-- **Core of the [evidence-backed labelling pipeline](https://github.com/Jason-d-e/grounded-labelling-pipeline).** The pipeline sends incoming ads through this agent, checks the quotes, routes failed checks and uncertain calls to a review queue, and turns reviewed ads into new test items.
+- **Checking tool: [evidence-check](https://github.com/llia0031-dotcom/evidence-check).** Every ad quote and every clause quote in an answer goes through evidence-check's script. A quote that is not word for word in the ad or in the cited clause is caught before anyone reads the answer.
+- **Core of the [evidence-backed labelling pipeline](https://github.com/llia0031-dotcom/grounded-labelling-pipeline).** The pipeline sends incoming ads through this agent, checks the quotes, routes failed checks and uncertain calls to a review queue, and turns reviewed ads into new test items.
 
 ## What it does
 
@@ -68,7 +68,7 @@ python eval/memory_report.py eval/results/my-memory-run.jsonl               # th
 ```
 
 - **API key.** It is read only from the file named in `AD_REVIEW_ENV_FILE`. `--batch` sends requests through the Message Batches API at half price.
-- **evidence-check.** Clone [evidence-check](https://github.com/Jason-d-e/evidence-check) next to this folder, or set `EVIDENCE_CHECK_SCRIPT` to its `check_evidence.py`.
+- **evidence-check.** Clone [evidence-check](https://github.com/llia0031-dotcom/evidence-check) next to this folder, or set `EVIDENCE_CHECK_SCRIPT` to its `check_evidence.py`.
 - **English ads need the TikTok pages.** Save each page listed in `policies/build_sources.py` as Markdown in `policies/raw/`, then run `python policies/build_sources.py`. The script lists six pages: the five the clauses are cut from, and the healthcare and pharmaceuticals page, which was read and has no clause. Chinese ads run without them.
 - **Word lists.** The word-list baseline needs the files listed in `third_party/README.md`.
 

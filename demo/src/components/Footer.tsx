@@ -12,7 +12,7 @@ export default function Footer({ t }: { t: Copy }) {
           <a href="#results">{t.nav.results}</a>
           <a href="#faq">{t.nav.faq}</a>
           <a href={t.aboutHref}>{t.footer.about}</a>
-          <a href="https://github.com/Jason-d-e/evidence-check">{t.footer.checker}</a>
+          <a href="https://github.com/llia0031-dotcom/evidence-check">{t.footer.checker}</a>
           <a href="#top">{t.footer.top}</a>
         </nav>
       </div>

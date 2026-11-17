@@ -29,7 +29,7 @@ from load import ad_text  # noqa: E402
 MODEL = "claude-haiku-5-5"  # cheapest current model
 EFFORT = "medium"
 PRICE = {"input": 0.10 / 1e6, "output": 0.50 / 1e6}  # Claude Haiku 5.5 list price, prompts up to 100K tokens
-# evidence-check (https://github.com/Jason-d-e/evidence-check) next to this folder, or set EVIDENCE_CHECK_SCRIPT.
+# evidence-check (https://github.com/llia0031-dotcom/evidence-check) next to this folder, or set EVIDENCE_CHECK_SCRIPT.
 CHECK_SCRIPT = Path(os.environ.get("EVIDENCE_CHECK_SCRIPT", ROOT.parent / "evidence-check" / "skills" / "evidence-check" / "scripts" / "check_evidence.py"))
 IMAGES = ROOT / "testset" / "images"
 CATEGORIES = list(library.categories().keys())  # the nine labelled categories

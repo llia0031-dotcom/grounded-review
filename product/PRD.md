@@ -111,7 +111,7 @@ Every ad-review decision carries its evidence: the rule that is broken and the w
 1. Read the image: OCR reads the words in the image; the model also looks at the image, because some problems are only in the picture.
 2. Look up earlier decisions: see 6.4.
 3. Look up clauses: search the policy library for clauses that may apply. The library has 32 clauses cut from the official texts by script; rules and guidance on when a rule does not apply are marked separately.
-4. Check the quotes: the ad's words and the clause's words go to [evidence-check](https://github.com/Jason-d-e/evidence-check)'s script, and a failed quote is redone.
+4. Check the quotes: the ad's words and the clause's words go to [evidence-check](https://github.com/llia0031-dotcom/evidence-check)'s script, and a failed quote is redone.
 5. Decide; when the advertiser asks, give the fix and corrected copy, then review the version the advertiser submits.
 
 The model is `claude-haiku-5-5`. Large, non-urgent runs go through the Message Batches API at half price.

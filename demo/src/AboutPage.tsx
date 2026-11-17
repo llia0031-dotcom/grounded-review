@@ -36,7 +36,7 @@ const SECTIONS: Record<Lang, (r: Results) => Section[]> = {
     {
       h: '用到的模型和工具',
       p: [
-        ['审核：claude-haiku-5-5（effort medium）。读图：RapidOCR。核对引文：', { text: 'evidence-check', href: 'https://github.com/Jason-d-e/evidence-check' }, ' 的核对脚本。'],
+        ['审核：claude-haiku-5-5（effort medium）。读图：RapidOCR。核对引文：', { text: 'evidence-check', href: 'https://github.com/llia0031-dotcom/evidence-check' }, ' 的核对脚本。'],
         ['页面展示的是测试时存下的结果，页面本身不调用模型。'],
       ],
     },
@@ -67,7 +67,7 @@ const SECTIONS: Record<Lang, (r: Results) => Section[]> = {
     {
       h: 'Models and tools',
       p: [
-        ['Review: claude-haiku-5-5 at medium effort. Reading images: RapidOCR. Checking quotes: the checker script of ', { text: 'evidence-check', href: 'https://github.com/Jason-d-e/evidence-check' }, '.'],
+        ['Review: claude-haiku-5-5 at medium effort. Reading images: RapidOCR. Checking quotes: the checker script of ', { text: 'evidence-check', href: 'https://github.com/llia0031-dotcom/evidence-check' }, '.'],
         ['The page shows results stored during testing and does not call a model.'],
       ],
     },

@@ -8,7 +8,7 @@ An ad reviewer has to say more than "reject": which rule the ad breaks and which
 
 ## Where this fits
 
-This project belongs to a set built on one idea: an AI should show its evidence. It is the set's judgment scenario: a call on an ad, backed by the ad's words and the clause's words. It uses [evidence-check](https://github.com/Jason-d-e/evidence-check) as its checking tool, and every quote below was run through that script. It is also the core of the [evidence-backed labelling pipeline](https://github.com/Jason-d-e/grounded-labelling-pipeline). The pipeline routes ads that fail the check, or that the agent is unsure about, to review, and turns reviewed ads into new test items.
+This project belongs to a set built on one idea: an AI should show its evidence. It is the set's judgment scenario: a call on an ad, backed by the ad's words and the clause's words. It uses [evidence-check](https://github.com/llia0031-dotcom/evidence-check) as its checking tool, and every quote below was run through that script. It is also the core of the [evidence-backed labelling pipeline](https://github.com/llia0031-dotcom/grounded-labelling-pipeline). The pipeline routes ads that fail the check, or that the agent is unsure about, to review, and turns reviewed ads into new test items.
 
 ## Setup
 
