@@ -1,0 +1,11 @@
+# Answer-key corrections found after every run (2026-11-18). The frozen item files are not changed; eval/rescore_corrected.py
+# applies these labels on top of them for a second scoring. Each ad lacks a statement its clause requires, and the frozen
+# key labelled such a gap only where it was an ad's sole problem. Found by eval/key_audit.py.
+# Category: the clause's own category in policies/clauses.yaml (the nine categories have none for a missing statement;
+# the model arms filed the health-food one as OTHER).
+- {id: zh-t08, add: {cat: MEDICAL, clauses: [CN-AL-18], absence: 保健食品广告没有显著标明“本品不能代替药物”}}
+- {id: zh-t24, add: {cat: MEDICAL, clauses: [CN-AL-18], absence: 保健食品广告没有显著标明“本品不能代替药物”}}
+- {id: en-t08, add: {cat: ALCOHOL, clauses: [TT-ALC], absence: "no alcohol strength and no responsible drinking disclaimer"}}
+- {id: en-t09, add: {cat: ALCOHOL, clauses: [TT-ALC], absence: "no alcohol strength and no responsible drinking disclaimer"}}
+- {id: en-t35, add: {cat: ALCOHOL, clauses: [TT-ALC], absence: "no responsible drinking disclaimer (the strength is stated)"}}
+- {id: en-t48, add: {cat: ALCOHOL, clauses: [TT-ALC], absence: "no alcohol strength and no responsible drinking disclaimer"}}
